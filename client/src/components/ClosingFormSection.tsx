@@ -38,8 +38,7 @@ export default function ClosingFormSection() {
             Tu historia también puede cambiar
           </h2>
           <p className="text-xl text-white/95 max-w-2xl mx-auto leading-relaxed">
-            No importa dónde estés, solo importa que empieces hoy. 
-            Completa el formulario y da el primer paso hacia tu transformación.
+            No importa dónde estés, solo importa que empieces hoy. Completa el formulario y da el primer paso hacia tu transformación.
           </p>
         </div>
         

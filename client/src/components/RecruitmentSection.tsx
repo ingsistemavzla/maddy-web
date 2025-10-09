@@ -1,6 +1,10 @@
 import { Check } from "lucide-react";
 
-export default function RecruitmentSection() {
+interface RecruitmentSectionProps {
+  onCTAClick: () => void;
+}
+
+export default function RecruitmentSection({ onCTAClick }: RecruitmentSectionProps) {
   const features = [
     "Advanced recruitment analytics",
     "AI-powered candidate matching",
@@ -42,6 +46,14 @@ export default function RecruitmentSection() {
                   <span className="text-gray-700">{feature}</span>
                 </div>
               ))}
+            </div>
+            <div className="mt-8">
+              <button
+                onClick={onCTAClick}
+                className="bg-gradient-to-r from-coral to-cyan-blue text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
+                🌟 Quiero ser el próximo testimonio
+              </button>
             </div>
           </div>
           

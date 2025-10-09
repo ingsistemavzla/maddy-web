@@ -20,8 +20,7 @@ export default function AuthoritySection() {
           
           <p className="text-lg text-[#FFFFF3]/90 max-w-3xl mx-auto leading-relaxed mb-12">
             Carta Business Group está respaldado por American Income Life – Globe Life, 
-            una empresa que cotiza en el S&P 500 con más de 70 años de historia ayudando 
-            a familias a construir seguridad financiera.
+            una empresa que cotiza en el S&P 500, con más de 70 años construyendo seguridad financiera para miles de familias.
           </p>
         </div>
         

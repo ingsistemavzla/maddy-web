@@ -19,7 +19,11 @@ const painPoints = [
   },
 ];
 
-export default function PainIdentificationSection() {
+interface PainIdentificationSectionProps {
+  onCTAClick: () => void;
+}
+
+export default function PainIdentificationSection({ onCTAClick }: PainIdentificationSectionProps) {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
@@ -55,9 +59,15 @@ export default function PainIdentificationSection() {
         </div>
         
         <div className="text-center">
-          <p className="text-lg italic text-coral font-medium">
-            "Yo también pasé por eso… y descubrí que el problema no era mi esfuerzo, sino el camino que estaba siguiendo."
+          <p className="text-lg italic text-coral font-medium mb-8">
+            “Yo también pasé por eso… y descubrí que el problema no era mi esfuerzo, sino el camino que estaba siguiendo.”
           </p>
+          <button
+            onClick={onCTAClick}
+            className="bg-gradient-to-r from-coral to-cyan-blue text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            💬 Quiero conocer cómo lo lograste
+          </button>
         </div>
       </div>
     </section>

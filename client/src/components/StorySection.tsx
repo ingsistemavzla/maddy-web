@@ -16,21 +16,18 @@ export default function StorySection() {
             </h2>
             
             <p className="text-lg text-white/95 leading-relaxed">
-              Yo también llegué a Estados Unidos con un sueño… y empecé desde cero. 
-              Hoy vivo ayudando a otros migrantes a encontrar un camino real de crecimiento, 
-              estabilidad y libertad financiera.
+              Yo también llegué a Estados Unidos con un sueño y empecé desde cero.
+              Hoy vivo ayudando a otros migrantes a construir un futuro real: estabilidad, propósito y libertad.
             </p>
             
             <p className="text-lg text-white/95 leading-relaxed">
-              Si yo pude, tú también puedes. No importa dónde estés hoy, 
-              lo que importa es que des el primer paso hacia tu transformación.
+              Si yo pude, tú también puedes.
             </p>
             
             <button 
-              className="bg-coral hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] text-white px-9 py-4 rounded-[40px] font-semibold text-base uppercase transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mt-4"
+              className="bg-coral hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] text-white px-9 py-4 rounded-[40px] font-semibold text-base transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mt-4"
               data-testid="button-story-cta"
             >
-              <MessageCircle className="w-5 h-5" />
               Quiero conocer cómo lo lograste
             </button>
           </div>

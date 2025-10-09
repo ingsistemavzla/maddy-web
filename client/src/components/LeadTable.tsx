@@ -1,0 +1,228 @@
+import { useState } from "react";
+import { Save, Trash2, RefreshCw } from "lucide-react";
+
+interface Lead {
+  id: number;
+  nombre: string;
+  apellido: string;
+  telefono: string;
+  ciudad: string;
+  zip: string;
+  email: string;
+  estado: 'nuevo' | 'procesado' | 'atendido';
+  fecha: string;
+}
+
+interface LeadTableProps {
+  leads: Lead[];
+  onUpdate: () => void;
+}
+
+export default function LeadTable({ leads, onUpdate }: LeadTableProps) {
+  const [editingStates, setEditingStates] = useState<Record<number, string>>({});
+  const [loading, setLoading] = useState<number | null>(null);
+
+  const getEstadoColor = (estado: string) => {
+    switch (estado) {
+      case 'nuevo':
+        return 'bg-gray-200 text-gray-800';
+      case 'procesado':
+        return 'bg-cyan-blue text-white';
+      case 'atendido':
+        return 'bg-coral text-white';
+      default:
+        return 'bg-gray-200 text-gray-800';
+    }
+  };
+
+  const cycleEstado = (currentEstado: string): string => {
+    switch (currentEstado) {
+      case 'nuevo':
+        return 'procesado';
+      case 'procesado':
+        return 'atendido';
+      case 'atendido':
+        return 'nuevo';
+      default:
+        return 'nuevo';
+    }
+  };
+
+  const handleEstadoClick = (leadId: number, currentEstado: string) => {
+    const nextEstado = cycleEstado(currentEstado);
+    setEditingStates(prev => ({ ...prev, [leadId]: nextEstado }));
+  };
+
+  const handleSave = async (leadId: number) => {
+    setLoading(leadId);
+    try {
+      const response = await fetch(`/api/leads/${leadId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ estado: editingStates[leadId] })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setEditingStates(prev => {
+          const newState = { ...prev };
+          delete newState[leadId];
+          return newState;
+        });
+        onUpdate();
+      } else {
+        alert('Error al actualizar: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al actualizar el lead');
+    } finally {
+      setLoading(null);
+    }
+  };
+
+  const handleDelete = async (leadId: number, nombre: string, apellido: string) => {
+    if (!confirm(`¿Estás seguro de eliminar el lead de ${nombre} ${apellido}?`)) {
+      return;
+    }
+
+    setLoading(leadId);
+    try {
+      const response = await fetch(`/api/leads/${leadId}`, {
+        method: 'DELETE'
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        onUpdate();
+      } else {
+        alert('Error al eliminar: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al eliminar el lead');
+    } finally {
+      setLoading(null);
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  if (leads.length === 0) {
+    return (
+      <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
+        <p className="text-gray-400 text-lg">No hay leads registrados</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="bg-gradient-to-r from-navy to-cyan-blue text-white">
+            <tr>
+              <th className="px-4 py-4 text-left text-sm font-semibold">#</th>
+              <th className="px-4 py-4 text-left text-sm font-semibold">Nombre Completo</th>
+              <th className="px-4 py-4 text-left text-sm font-semibold">Teléfono</th>
+              <th className="px-4 py-4 text-left text-sm font-semibold">Ciudad</th>
+              <th className="px-4 py-4 text-left text-sm font-semibold">ZIP</th>
+              <th className="px-4 py-4 text-left text-sm font-semibold">Correo</th>
+              <th className="px-4 py-4 text-left text-sm font-semibold">Estado</th>
+              <th className="px-4 py-4 text-left text-sm font-semibold">Fecha</th>
+              <th className="px-4 py-4 text-center text-sm font-semibold">Acciones</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {leads.map((lead, index) => {
+              const currentEstado = editingStates[lead.id] || lead.estado;
+              const hasChanges = editingStates[lead.id] && editingStates[lead.id] !== lead.estado;
+
+              return (
+                <tr 
+                  key={lead.id}
+                  className="hover:bg-gray-50 transition-colors"
+                >
+                  <td className="px-4 py-4 text-sm text-gray-600">{index + 1}</td>
+                  <td className="px-4 py-4 text-sm font-medium text-navy">
+                    {lead.nombre} {lead.apellido}
+                  </td>
+                  <td className="px-4 py-4 text-sm text-gray-600">{lead.telefono}</td>
+                  <td className="px-4 py-4 text-sm text-gray-600">{lead.ciudad}</td>
+                  <td className="px-4 py-4 text-sm text-gray-600">{lead.zip}</td>
+                  <td className="px-4 py-4 text-sm text-gray-600 max-w-xs truncate">
+                    {lead.email}
+                  </td>
+                  <td className="px-4 py-4">
+                    <button
+                      onClick={() => handleEstadoClick(lead.id, currentEstado)}
+                      disabled={loading === lead.id}
+                      className={`px-3 py-1 rounded-full text-xs font-semibold transition-all hover:scale-105 ${getEstadoColor(currentEstado)} disabled:opacity-50`}
+                    >
+                      {currentEstado}
+                    </button>
+                  </td>
+                  <td className="px-4 py-4 text-sm text-gray-600">
+                    {formatDate(lead.fecha)}
+                  </td>
+                  <td className="px-4 py-4">
+                    <div className="flex items-center justify-center gap-2">
+                      {hasChanges && (
+                        <button
+                          onClick={() => handleSave(lead.id)}
+                          disabled={loading === lead.id}
+                          className="p-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all hover:scale-105 disabled:opacity-50"
+                          title="Guardar cambios"
+                        >
+                          {loading === lead.id ? (
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          ) : (
+                            <Save className="w-4 h-4" />
+                          )}
+                        </button>
+                      )}
+                      <button
+                        onClick={() => handleDelete(lead.id, lead.nombre, lead.apellido)}
+                        disabled={loading === lead.id}
+                        className="p-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all hover:scale-105 disabled:opacity-50"
+                        title="Eliminar"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="bg-gray-50 px-6 py-4 flex justify-between items-center">
+        <p className="text-sm text-gray-600">
+          Total: <span className="font-semibold text-navy">{leads.length}</span> leads
+        </p>
+        <button
+          onClick={onUpdate}
+          className="flex items-center gap-2 px-4 py-2 bg-cyan-blue hover:bg-navy text-white rounded-lg transition-all hover:scale-105"
+        >
+          <RefreshCw className="w-4 h-4" />
+          Actualizar
+        </button>
+      </div>
+    </div>
+  );
+}

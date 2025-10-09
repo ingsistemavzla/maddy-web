@@ -1,7 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import heroImage from "@assets/20250910_2242_image (1)_1760024166015.png";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onCTAClick: () => void;
+}
+
+export default function HeroSection({ onCTAClick }: HeroSectionProps) {
   return (
     <section className="relative bg-white overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -15,27 +19,26 @@ export default function HeroSection() {
             <div className="w-16 h-1 bg-gradient-to-r from-cyan-blue to-cyan-500 rounded-full"></div>
             
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Opportunity<br />
-              <span className="text-gray-800">Unlimited</span>
+              Opportunity <span className="text-coral">Unlimited</span>
             </h1>
             
             <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-              Use nation entinimalare palcaobe; tuch echou stropps incloty motuh prossort alidr seertions to sdetralia #S227515.
+              Crecer, avanzar, lograr.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
+              Yo también llegué a Estados Unidos con un sueño… y empecé desde cero.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
+              Hoy quiero ayudarte a encontrar tu camino hacia la libertad financiera y el desarrollo personal.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
                 className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-8 py-3.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
                 data-testid="button-hero-primary"
+                onClick={onCTAClick}
               >
-                Queiir teilbone
-              </button>
-              <button 
-                className="text-gray-600 font-semibold hover:text-gray-900 transition-colors duration-200 flex items-center justify-center sm:justify-start gap-2"
-                data-testid="button-hero-secondary"
-              >
-                1AUS redursal
-                <ArrowRight className="w-4 h-4" />
+                QUIERO EMPEZAR AHORA
               </button>
             </div>
           </div>
