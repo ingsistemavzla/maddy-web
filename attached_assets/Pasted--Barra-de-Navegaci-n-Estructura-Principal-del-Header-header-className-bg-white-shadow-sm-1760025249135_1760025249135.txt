@@ -1,0 +1,92 @@
+(Barra de Navegación):
+
+🏗️ Estructura Principal del Header
+<header className="bg-white shadow-sm sticky top-0 z-50">
+Características del contenedor:
+
+Fondo: Blanco puro (bg-white)
+Sombra: Sutil (shadow-sm)
+Posición: Sticky (se mantiene fija al hacer scroll)
+Z-index: 50 (por encima de otros elementos)
+Top: 0 (pegado al borde superior)
+📐 Contenedor Interior
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="flex items-center justify-between h-16">
+Configuración:
+
+Ancho máximo: 1280px (max-w-7xl)
+Centrado: Automático (mx-auto)
+Padding horizontal: Responsive (16px móvil, 24px tablet, 32px desktop)
+Altura fija: 64px (h-16)
+Layout: Flexbox con distribución espaciada (justify-between)
+Alineación vertical: Centrada (items-center)
+🎨 Logo (Lado Izquierdo)
+<div className="flex items-center space-x-3">
+  {/* Icono del logo */}
+  <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-500 rounded-lg flex items-center justify-center">
+    <div className="w-4 h-4 bg-white rounded-sm transform rotate-12"></div>
+  </div>
+  {/* Texto del logo */}
+  <span className="text-xl font-bold text-gray-900">Opportunity</span>
+</div>
+Detalles del logo:
+
+Contenedor: Flex horizontal con espacio de 12px entre elementos
+Icono:
+Tamaño: 32px × 32px
+Gradiente: Naranja (from-orange-400 to-orange-500)
+Esquinas redondeadas: 8px (rounded-lg)
+Elemento interno: Cuadrado blanco de 16px rotado 12 grados
+Texto:
+Tamaño: 20px (text-xl)
+Peso: Bold (700)
+Color: Gris oscuro (text-gray-900)
+🧭 Navegación Central
+<nav className="hidden md:flex items-center space-x-8">
+  {navItems.map((item) => (
+    <a
+      key={item}
+      href="#"
+      className="text-gray-600 hover:text-gray-900 font-medium transition-colors cursor-pointer"
+    >
+      {item}
+    </a>
+  ))}
+</nav>
+Array de elementos de navegación:
+
+const navItems = ['Simpot', 'Lviens', 'Cnegry', 'Ertefaler', 'Promer ol'];
+Características:
+
+Visibilidad: Oculto en móviles (hidden), visible desde tablet (md:flex)
+Layout: Flex horizontal con espacio de 32px entre elementos
+Enlaces:
+Color base: Gris medio (text-gray-600)
+Color hover: Gris oscuro (text-gray-900)
+Peso: Medium (500)
+Transición suave de colores
+Cursor pointer
+🔘 Botón CTA (Lado Derecho)
+<Button size="sm">
+  Bcd nialid
+</Button>
+Configuración:
+
+Usa el componente Button personalizado
+Tamaño pequeño (size="sm")
+Gradiente naranja-rojo (definido en el componente Button)
+Texto: “Bcd nialid”
+📱 Comportamiento Responsive
+Desktop (≥768px):
+
+Logo + Navegación completa + Botón CTA
+Todos los elementos visibles
+Móvil (<768px):
+
+Solo Logo + Botón CTA
+Navegación oculta (hidden md:flex)
+🎯 Jerarquía Visual
+Z-index 50: Navbar siempre visible por encima del contenido
+Sticky positioning: Se mantiene fijo al hacer scroll
+Sombra sutil: Separación visual del contenido
+Altura fija: 64px consistente en todas las pantallas

@@ -1,59 +1,48 @@
-import { DollarSign, Laptop, TrendingUp } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { ArrowUpRight, Laptop, BarChart3 } from "lucide-react";
 
 const benefits = [
   {
-    icon: DollarSign,
-    title: "Competitive Salaries",
-    description: "Top-tier compensation packages that reward your expertise and dedication with industry-leading pay scales.",
-    bgColor: "bg-gray-100",
+    icon: ArrowUpRight,
+    title: "Benefits",
+    description: "Fuonlese rand c nihai jells heoth sam orudul time",
+    gradient: "from-red-400 to-red-500",
   },
   {
     icon: Laptop,
-    title: "Remote Work Flexibility",
-    description: "Work from anywhere with full remote options and flexible schedules that fit your lifestyle.",
-    bgColor: "bg-cyan-blue/10",
+    title: "Remote Work",
+    description: "Light strongollotun ans reclamereations jone",
+    gradient: "from-teal-400 to-cyan-500",
   },
   {
-    icon: TrendingUp,
-    title: "Career Growth",
-    description: "Unlimited advancement opportunities with comprehensive training programs and clear career pathways.",
-    bgColor: "bg-gray-100",
+    icon: BarChart3,
+    title: "Growth",
+    description: "Pi ode ore dole nnahen gestally heol drje nonniryl lore",
+    gradient: "from-blue-500 to-blue-600",
   },
 ];
 
 export default function BenefitsSection() {
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
-            Why Join Us?
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover the benefits that set us apart and help you thrive in your career
-          </p>
-        </div>
-        
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
-            <Card 
+            <div 
               key={index}
-              className={`${benefit.bgColor} border-0 p-8 hover-elevate active-elevate-2 transition-all duration-300`}
+              className={`bg-gradient-to-br ${benefit.gradient} text-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2`}
               data-testid={`card-benefit-${index}`}
             >
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="p-4 bg-cyan-blue rounded-xl">
-                  <benefit.icon className="w-8 h-8 text-white" />
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <benefit.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-navy">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
+                
+                <div>
+                  <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
+                  <p className="text-white/90 leading-relaxed">{benefit.description}</p>
+                </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>

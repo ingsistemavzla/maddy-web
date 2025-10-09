@@ -1,0 +1,153 @@
+PÁGINA WEB
+└── Contenedor Principal (Layout a ancho completo, fondo blanco)
+├── HEADER (Barra de Navegación Superior)
+│ ├── Logo: [Imagen: Cuadrado naranja] + "Opportunity"
+│ ├── Menú de Navegación
+│ │ ├── Enlace 1: "Simpot"
+│ │ ├── Enlace 2: "Lviens"
+│ │ ├── Enlace 3: "Cnegry"
+│ │ ├── Enlace 4: "Ertefaler"
+│ │ ├── Enlace 5: "Promer ol"
+│ └── Botón CTA Primario (Fondo degradado naranja/rojo)
+│ └── Texto: "Bcd nialid"
+│
+├── SECCIÓN 1: HERO
+│ ├── Columna Izquierda (Contenido Textual)
+│ │ ├── Título Principal (H1): "Opportunity Unlimited"
+│ │ ├── Párrafo Descriptivo: "Use rjation entinimalare..."
+│ │ └── Grupo de CTAs
+│ │ ├── Botón CTA Principal (Fondo rojo): "Queiir teilbone"
+│ │ └── Enlace Secundario: "TAUS redursal >"
+│ └── Columna Derecha (Contenido Visual)
+│ ├── Imagen: [Mujer de negocios sonriente con smartphone]
+│ └── Elementos de Fondo: [Formas abstractas y curvas grises/azules]
+│
+├── SECCIÓN 2: BENEFICIOS (Layout de 3 columnas)
+│ ├── Tarjeta 1 (Fondo rojo)
+│ │ ├── Icono: [Flecha de crecimiento]
+│ │ ├── Título: "Benefits"
+│ │ └── Texto: "Fuondssleend e nihai..."
+│ ├── Tarjeta 2 (Fondo turquesa)
+│ │ ├── Icono: [Monitor]
+│ │ ├── Título: "Remote Work"
+│ │ └── Texto: "Light enniyoilcitox..."
+│ └── Tarjeta 3 (Fondo azul)
+│ ├── Icono: [Gráfico de barras]
+│ ├── Título: "Growth"
+│ └── Texto: "Is one ote dote nuneien..."
+│
+├── SECCIÓN 3: ESTADÍSTICAS (Layout de 4 columnas)
+│ ├── Dato 1
+│ │ ├── Icono: [Nube]
+│ │ ├── Valor: "10% Gnect t Liar"
+│ │ └── Etiqueta: "Conficars"
+│ ├── Dato 2
+│ │ ├── Icono: [Medalla]
+│ │ ├── Valor: "95% Success Rate"
+│ │ └── Etiqueta: "Nely Succes Rde"
+│ ├── Dato 3
+│ │ ├── Icono: [Organigrama]
+│ │ ├── Valor: "7359,1 S81"
+│ │ └── Etiqueta: "DonlEcones"
+│ └── Dato 4
+│ ├── Icono: [Huella/Remolino]
+│ ├── Valor: "T389%, Hnled"
+│ └── Etiqueta: "Sulfinmers scocea"
+│
+└── SECCIÓN 4: RECLUTAMIENTO (Layout de 2 columnas)
+├── Columna Izquierda (Contenido Textual)
+│ ├── Título (H2): "Ruamivite Recruitment Alnd Insigess"
+│ └── Párrafo Descriptivo: "'Chlitanted insproctures..."
+└── Columna Derecha (Contenido Visual)
+└── Imagen: [Imagen parcial de otra mujer sonriente]
+
+DESCRIPCIÓN ULTRA DETALLADA DE LA IMAGEN
+🎨 Composición general
+
+Es una interfaz web corporativa moderna, tipo landing page o sitio institucional, con un estilo limpio, profesional y tecnológico.
+
+La estructura general está dividida en dos secciones principales:
+
+Encabezado (Hero Section) con imagen de persona y texto principal.
+
+Bloque inferior con métricas, beneficios y segunda imagen de persona.
+
+La paleta de colores combina tonos azules, grises, blancos y toques en rojo coral y amarillo mostaza.
+
+🧱 Estructura y distribución
+1. Encabezado superior (Header)
+
+Fondo: degradado suave entre blanco, gris claro (#F4F5F8 aprox.) y un tono celeste pálido (#DCE7F3).
+
+En la parte superior izquierda aparece el logo de la marca “Opportunity”, con un ícono cuadrado multicolor (gradiente amarillo → rosa → morado) seguido de la palabra Opportunity en negro o gris muy oscuro (#1E1E1E).
+
+En la parte superior derecha hay un menú horizontal minimalista con texto negro en tipografía sans serif fina (posiblemente Inter o Montserrat).
+Los ítems del menú son:
+
+Simpot
+
+Lviions
+
+Cnegrgy
+
+Ethelfaler
+
+Promer of
+
+(Y a la derecha un botón coral con el texto blanco “Bad nuild”).
+
+2. Hero Section (bloque principal)
+
+Ocupa aproximadamente el 60% superior de la imagen.
+
+Fondo principal: blanco con curvas suaves en tonos azul claro y gris.
+
+A la izquierda:
+
+Título principal: “Opportunity Unlimited” en tipografía sans serif bold, color negro (#111111).
+
+Texto secundario: una línea de texto gris medio (#6F7780), con palabras inventadas tipo Lorem Ipsum.
+
+Botones:
+
+Botón principal coral rojizo (#FF5C5C) con texto blanco.
+
+Botón secundario en texto gris con una pequeña flecha al final.
+
+A la derecha:
+
+Imagen de una mujer afrodescendiente, cabello rizado, gafas negras, vestida con traje azul marino y blusa blanca.
+
+Ella sostiene un teléfono móvil en ambas manos, mirando ligeramente hacia el frente con una sonrisa profesional.
+
+Luz suave de estudio, fondo blanco y gris con leve sombra difusa detrás.
+
+3. Sección de beneficios (cards de color)
+
+Debajo del título principal hay tres tarjetas rectangulares horizontales con bordes redondeados y texto dentro.
+
+Cada tarjeta tiene un ícono minimalista blanco en la esquina superior izquierda y texto centrado.
+
+🟥 Card 1 (izquierda):
+
+Fondo rojo coral (#FF6B6B).
+
+Título: “Benefits” (blanco).
+
+Texto: gris claro o semiblanco.
+
+🟦 Card 2 (centro):
+
+Fondo azul brillante (#3C9BFF).
+
+Título: “Remote Work”.
+
+Texto: blanco translúcido.
+
+🟩 Card 3 (derecha):
+
+Fondo azul oscuro a celeste (#2D82E5 → #77B6FF).
+
+Título: “Growth”.
+
+Texto: blanco claro.
