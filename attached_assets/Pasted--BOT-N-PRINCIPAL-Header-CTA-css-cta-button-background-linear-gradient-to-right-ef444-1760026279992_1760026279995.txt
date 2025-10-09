@@ -1,0 +1,228 @@
+. BOTÓN PRINCIPAL (Header CTA)
+css
+.cta-button {
+    background: linear-gradient(to right, #ef4444, #f97316);
+    color: white;
+    padding: 8px 24px;
+    border-radius: 9999px; /* Forma de píldora completa */
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background: linear-gradient(to right, #dc2626, #ea580c);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+Características:
+
+Forma: Píldora perfecta (border-radius: 9999px)
+
+Colores: Gradiente rojo-naranja (#ef4444 → #f97316)
+
+Hover: Gradiente más oscuro (#dc2626 → #ea580c)
+
+Sombras: Multiples capas suaves
+
+Transición: 0.2s ease
+
+2. BOTÓN HERO PRINCIPAL
+css
+.custom-btn-primary {
+    background: linear-gradient(to right, #ef4444, #f97316);
+    color: white;
+    border-radius: 9999px; /* Píldora completa */
+    padding: 14px 32px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.custom-btn-primary:hover {
+    background: linear-gradient(to right, #dc2626, #ea580c);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px); /* Efecto elevación */
+}
+Características:
+
+Forma: Píldora perfecta
+
+Colores: Mismo gradiente que header
+
+Hover: Elevación + sombra más intensa
+
+Extra: Efecto translateY(-2px) al hover
+
+3. BOTÓN SECUNDARIO (Hero)
+css
+.custom-link-secondary {
+    color: var(--text-secondary); /* #4B5563 */
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.custom-link-secondary:hover {
+    color: var(--text-primary); /* #111827 */
+}
+Características:
+
+Forma: Enlace sin fondo
+
+Colores: Gris (#4B5563) → Negro (#111827)
+
+Layout: Flex con icono
+
+Transición: Solo color
+
+4. BOTÓN "MI HISTORIA" (Story CTA)
+css
+.story-cta {
+    background: var(--warm-coral); /* #F28D77 */
+    color: var(--off-white); /* #FFFFF3 */
+    border: none;
+    border-radius: 40px; /* Píldora más suave */
+    padding: 14px 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(242, 141, 119, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.story-cta:hover {
+    box-shadow: 0 0 20px var(--cyan-blue); /* #048ABF */
+    transform: translateY(-2px);
+}
+Características:
+
+Forma: Píldora suave (40px)
+
+Colores: Coral (#F28D77) sobre off-white
+
+Tipografía: Montserrat, uppercase
+
+Hover: Glow azul y elevación
+
+Sombras: Sombra coral con glow azul al hover
+
+5. BOTÓN "LA OPORTUNIDAD"
+css
+.opportunity-cta {
+    background: var(--warm-coral); /* #F28D77 */
+    color: var(--off-white); /* #FFFFF3 */
+    border: none;
+    border-radius: 12px; /* Esquinas redondeadas estándar */
+    padding: 14px 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(242, 141, 119, 0.18);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.opportunity-cta:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 48px rgba(4, 138, 191, 0.14);
+}
+Características:
+
+Forma: Rectángulo redondeado (12px)
+
+Colores: Coral sólido (#F28D77)
+
+Hover: Escala + elevación + sombra azul
+
+Efecto: Transformación 3D suave
+
+6. BOTÓN FINAL (Cierre Motivacional)
+css
+.cta-button {
+    background-color: var(--warm-coral); /* #F28D77 */
+    border-radius: 25px; /* Píldora media */
+    padding: 18px 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--off-white); /* #FFFFF3 */
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(242, 141, 119, 0.3);
+}
+
+.cta-button:hover {
+    background-color: var(--cyan-blue); /* #048ABF */
+    box-shadow: 0 0 20px rgba(4, 138, 191, 0.4);
+    transform: translateY(-2px);
+}
+Características:
+
+Forma: Píldora media (25px)
+
+Colores: Coral → Azul cian al hover
+
+Tamaño: Más grande (1.2rem)
+
+Hover: Cambio de color completo
+
+Layout: Flex con icono
+
+7. BOTÓN "DISCOVER MORE" (About)
+css
+/* Usa la clase .custom-btn-primary - mismo estilo que Hero */
+📊 RESUMEN DE PATRONES
+Formas:
+🟠 Píldora Completa (9999px): Header, Hero
+
+🔶 Píldora Suave (40px): Mi Historia
+
+🔷 Rectángulo Redondeado (12px): La Oportunidad
+
+🔵 Píldora Media (25px): Cierre Final
+
+Paleta de Colores:
+🔴 Gradiente Rojo-Naranja: Header, Hero
+
+🍊 Coral Sólido (#F28D77): Mi Historia, La Oportunidad
+
+🔵 Azul Cian (#048ABF): Hover efectos
+
+⚪ Texto Off-White (#FFFFF3): Sobre fondos oscuros
+
+Efectos Comunes:
+✨ Elevación (translateY(-2px))
+
+🌈 Cambio de Sombra (más intensa o cambio de color)
+
+🔄 Transiciones Suaves (0.2s - 0.3s ease)
+
+🎯 Escala Sutil (scale(1.03))
+
+💫 Glow Effects (box-shadow con colores)

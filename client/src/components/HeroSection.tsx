@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import heroImage from "@assets/20250910_2242_image (1)_1760024166015.png";
 
@@ -25,15 +24,14 @@ export default function HeroSection() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg"
-                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-8"
+              <button 
+                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-8 py-3.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
                 data-testid="button-hero-primary"
               >
                 Queiir teilbone
-              </Button>
+              </button>
               <button 
-                className="text-gray-700 font-medium hover:text-gray-900 transition-colors flex items-center justify-center sm:justify-start gap-2"
+                className="text-gray-600 font-semibold hover:text-gray-900 transition-colors duration-200 flex items-center justify-center sm:justify-start gap-2"
                 data-testid="button-hero-secondary"
               >
                 1AUS redursal

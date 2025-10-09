@@ -43,6 +43,15 @@ export default function TestimonialSection() {
               </div>
             </div>
           </div>
+          
+          <div className="mt-8 text-center">
+            <button 
+              className="bg-coral hover:bg-cyan-blue text-white px-12 py-4 rounded-[25px] font-bold text-lg uppercase shadow-lg hover:shadow-[0_0_20px_rgba(4,138,191,0.4)] transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2"
+              data-testid="button-testimonial-cta"
+            >
+              Quiero ser el próximo testimonio
+            </button>
+          </div>
         </div>
       </div>
     </section>

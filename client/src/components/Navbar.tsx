@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-
 const navItems = ['Simpot', 'Lviens', 'Cnegry', 'Ertefaler', 'Promer ol'];
 
 export default function Navbar() {
@@ -27,13 +25,12 @@ export default function Navbar() {
             ))}
           </nav>
           
-          <Button 
-            size="sm"
-            className="bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white"
+          <button 
+            className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-6 py-2 rounded-full font-medium text-base shadow-lg hover:shadow-xl transition-all duration-200"
             data-testid="button-nav-cta"
           >
             Bcd nialid
-          </Button>
+          </button>
         </div>
       </div>
     </header>
