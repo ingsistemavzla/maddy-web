@@ -1,0 +1,112 @@
+A modern, professional, motivational landing page for a Latin female entrepreneur and mentor, Maddy Peñuela, representing Carta Business Group.
+The page should feel warm, confident, and aspirational — a story of growth, migration, and empowerment in the U.S.
+
+Overall aesthetic:
+Sleek, minimalistic, and elegant layout using smooth gradients, rounded corners, and generous white space.
+Balanced professional and emotional tone — a corporate look infused with warmth and humanity.
+
+Color palette:
+Deep navy #002C5F, light royal blue #0074E4, soft cyan accents #048ABF, warm coral gradient #FF6F61 → #E85A8E, off-white #FFFFF3, and light gray #F5F5F5.
+
+Typography: Montserrat and Poppins (semi-bold for titles, regular for body).
+
+Layout structure:
+1️⃣ Hero section (header):
+
+A young Latina woman (Maddy) smiling confidently, standing or sitting in a bright environment.
+
+Background: soft white or very light blue gradient, with subtle coral overlay.
+
+Headline: “Yo también llegué a Estados Unidos con un sueño… y empecé desde cero.”
+
+Subtitle: “Hoy vivo ayudando a otros migrantes a encontrar un camino real de crecimiento, estabilidad y libertad financiera. Si yo pude, tú también puedes.”
+
+Button (CTA): large coral button — “👉 Quiero conocer esta oportunidad”.
+
+Soft animation of the phrase “Si yo pude, tú también puedes.”
+
+2️⃣ “¿Te identificas?” section – Empathy questions:
+
+Light gray or soft blue background.
+
+Large title: “¿Sientes que trabajas sin ver resultados reales?”
+
+Four emotional bullets in cards or rows with subtle icons (💭, 💸, 💼, ⏳).
+
+Transition text in italic: “Yo también pasé por eso… y descubrí que el problema no era mi esfuerzo, sino el camino que estaba siguiendo.”
+
+3️⃣ “Mi historia” – Personal transformation story:
+
+Gradient background: navy → coral diagonal.
+
+Image or collage of Maddy’s evolution (before/after symbolic).
+
+Title: “Mi historia puede ser la tuya.”
+
+Text block: warm tone, white text over blue-coral gradient.
+
+Secondary CTA: “💬 Quiero conocer cómo lo lograste.”
+
+4️⃣ “La oportunidad” – Value proposition:
+
+Clean white background with 5 benefit icons in a 2x3 grid.
+
+Title: “Una oportunidad real para cambiar tu historia.”
+
+Subheading: “En Carta Business Group formamos y acompañamos a personas latinas para alcanzar libertad financiera y crecimiento profesional.”
+
+Icons: 💼, 🤝, 💰, 🕒, 🚀 — each inside rounded cards with alternating gray/blue backgrounds.
+
+CTA centered: “🔹 Quiero recibir información y orientación.”
+
+5️⃣ “Respaldo y confianza” – Authority section:
+
+Dark navy background, light blue typography.
+
+Logos of Globe Life, Dallas Cowboys, Lakers, Texas Rangers, and S&P 500 badge.
+
+Title: “No estás solo. Detrás de esta oportunidad hay una compañía sólida.”
+
+Paragraph: description of Carta Business Group backed by American Income Life – Globe Life.
+
+6️⃣ “Resultados reales” – Testimonials section:
+
+Light gray background with cyan overlay or abstract wave.
+
+Title: “Historias que inspiran 💫”
+
+Subtitle: “Conoce a otros que ya están viviendo su transformación.”
+
+3 testimonial cards with portraits, coral accents, and quotes:
+
+Daniela (Florida): “Era madre soltera y sin tiempo… hoy manejo mis horarios y mis ingresos.”
+
+José (Tennessee): “Pensé que era imposible empezar sin inglés. Hoy soy líder de equipo.”
+
+Luz (New Jersey): “Llegué con miedo, pero encontré una familia y una carrera.”
+
+CTA below: “🌟 Quiero ser el próximo testimonio.”
+
+7️⃣ Final emotional section (CTA closure):
+
+Gradient background navy → coral.
+
+Title: “Tu historia también puede cambiar.”
+
+Subtitle: “No importa dónde estés, solo importa que empieces hoy.”
+
+Text block: motivational, soft typography, centered.
+
+Form fields: [Nombre], [WhatsApp], [Ciudad], [Tu meta personal en una frase].
+
+Button: “QUIERO DAR EL PRIMER PASO” in bold white over coral.
+
+Footer: dark navy gradient with off-white text, copyright and tagline:
+“© 2025 Maddy Peñuela | Carta Business Group — Inspirando y guiando a la comunidad latina en EE.UU.”
+
+Visual style:
+Professional yet human. Minimalist grid layout with consistent spacing.
+Smooth fade-in animations, coral hover glow on buttons, subtle shadow depth on cards.
+Balanced contrasts between white space, blue tones, and warm coral accents.
+
+Goal: a clean, aspirational one-page design that emotionally connects with Latin audiences in the U.S., motivates trust, and drives action through empathy and storytelling.
