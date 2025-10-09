@@ -1,0 +1,72 @@
+“¿TE IDENTIFICAS?” – Section: Pain & Identification
+Prompt (visual + UI mockup):
+Design a modern web section titled “¿Te identificas?” for a motivational Latina recruitment landing page.  
+Style: clean, emotional, human-centered.  
+Background: very soft gradient (#F5F5F5 to #EAF2FB) with subtle diagonal abstract overlays in translucent cyan (#048ABF, 10% opacity).  
+Typography: Montserrat Regular for body text, SemiBold for questions.  
+Layout: centered heading in navy (#102C3A) with a subtle coral underline (#F28D77).  
+Below, show 4 bullet-style emotional questions, each inside rounded light-gray boxes with small icons (😔, 💭, 💸, ⏳).  
+Soft fade-in animation from bottom to top.  
+End with a small quote-style line in italic coral: “Yo también pasé por eso…”.  
+Use smooth spacing and minimal dividers (thin lines in light cyan).
+________________________________________
+MI HISTORIA” – Section: Storytelling
+Prompt (visual + UI mockup):
+Design a storytelling section titled “Mi historia puede ser la tuya” for a Latina entrepreneur landing page.  
+Visual layout: split screen — left side text, right side image of Maddy smiling, professional but approachable.  
+Background: soft gradient left-to-right (#0074E4 → #FF6F61).  
+Include floating geometric accents: thin circles and waves in translucent white (5–10% opacity) for depth.  
+Text in white and off-white (#FFFFF3).  
+Typography: Poppins SemiBold for title, Montserrat Regular for paragraphs.  
+Subtle fade-in of the image and text sequentially.  
+CTA button below text: rounded coral button (#F28D77) with white text “Quiero conocer cómo lo lograste”, glowing hover effect.  
+Add a soft shadow behind the image (blur 40px, opacity 25%).  
+Overall tone: hopeful, cinematic, warm.
+________________________________________
+🟧 LA OPORTUNIDAD” – Section: Value Proposition
+Prompt (visual + UI mockup):
+Create a clean, aspirational section titled “Una oportunidad real para cambiar tu historia” for a professional Latina landing page.  
+Background: gradient (#F5F5F5 → #E8F3FA).  
+Centered headline in dark navy (#102C3A), subheadline in lighter blue (#048ABF).  
+Use a 2-column grid: left column text and icons, right column photo or illustration symbolizing teamwork and growth.  
+Include 5 benefit cards with icons (💼, 🤝, 💰, 🕒, 🚀).  
+Each card: rounded corners, alternating background (#FFFFFF and #EAF3F9), subtle shadow (blur 20px, opacity 15%), icon in coral (#F28D77).  
+Button below: coral-to-cyan gradient background, white text “Quiero recibir información y orientación”.  
+Add subtle floating particles or light overlays near top corners for a dynamic, energetic vibe.
+________________________________________
+🟫 RESPALDO Y CONFIANZA” – Section: Authority & Trust
+Prompt (visual + UI mockup):
+Design a credibility section titled “No estás solo. Detrás de esta oportunidad hay una compañía sólida.”  
+Theme: trust, professionalism, corporate reliability.  
+Background: solid navy (#002C5F) with subtle horizontal gradient toward royal blue (#26358C).  
+Use light icons and text in off-white (#FFFFF3).  
+Show company logos (Carta Business Group, Globe Life, S&P 500, Dallas Cowboys, etc.) aligned horizontally on darker cards with blue borders.  
+Add a soft glow or reflection under the logos for premium feel.  
+Include a paragraph in the center with a clean sans-serif font, line spacing wide for readability.  
+Decorative graphic: subtle diagonal overlay texture in translucent gray-blue.  
+Fade-in animation from bottom for each logo.  
+Overall tone: stable, confident, elegant.
+________________________________________
+🟪 RESULTADOS REALES” – Section: Testimonials
+Prompt (visual + UI mockup):
+Design a testimonial section titled “Historias que inspiran 💫” for a motivational Latina landing page.  
+Layout: 3 testimonial cards side by side, each with photo circle, quote, and name.  
+Background: gradient from light gray (#F5F5F5) to light blue (#E8F3FA).  
+Each card: soft shadow (blur 25px, opacity 20%), coral accent border on hover.  
+Typography: Montserrat Italic for quotes, SemiBold for names in navy.  
+Add animated quote marks in coral (#F28D77).  
+Subtle floating glow or light ray effect behind cards.  
+CTA below cards: “Quiero ser el próximo testimonio”, button in coral (#FF6F61), glowing hover.  
+Add smooth left-to-right fade animation for card appearance.
+________________________________________
+🟦 “CIERRE MOTIVACIONAL / FORMULARIO” – Section: Emotional Closing & CTA
+Prompt (visual + UI mockup):
+Create a closing motivational section titled “Tu historia también puede cambiar” for a Latina recruitment landing page.  
+Background: gradient from soft blue (#0074E4) to coral (#FF6F61).  
+Overlay: very light abstract shapes (soft circles, flowing lines) in translucent white.  
+Centered text in white and off-white, emotional tone.  
+Typography: Poppins SemiBold for title, Montserrat Regular for paragraph.  
+Below, a form with 4 input fields (Name, WhatsApp, City, Personal Goal) inside semi-transparent white boxes (opacity 80%, rounded corners, subtle shadow).  
+CTA button: bright coral (#F28D77), white text “QUIERO DAR EL PRIMER PASO”, glowing on hover.  
+Soft floating heart or sparkle icons (SVG) animating gently in background (opacity 10%).  
+Footer: dark navy background with off-white text, small line divider in cyan (#048ABF).
