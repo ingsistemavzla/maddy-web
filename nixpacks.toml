@@ -7,5 +7,5 @@ cmds = ["npm ci --omit=dev"]
 [phases.build]
 cmds = ["npm run build"]
 
-[start]
-cmd = "npm run start"
+[phases.start]
+cmds = ["mkdir -p server/data", "touch server/data/leads.json", "npm run start"]

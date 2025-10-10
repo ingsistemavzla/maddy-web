@@ -2,9 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const LEADS_FILE = path.join(__dirname, '../data/leads.json');
+const LEADS_FILE = path.resolve(process.cwd(), 'server', 'data', 'leads.json');
 
 interface Lead {
   id: number;
@@ -21,8 +19,16 @@ interface Lead {
 // Función para leer leads del archivo
 function readLeads(): Lead[] {
   try {
+    // Crear directorio si no existe
+    const dataDir = path.dirname(LEADS_FILE);
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+      console.log('📁 Directorio creado:', dataDir);
+    }
+
     if (!fs.existsSync(LEADS_FILE)) {
       fs.writeFileSync(LEADS_FILE, JSON.stringify([], null, 2));
+      console.log('📄 Archivo leads.json creado');
       return [];
     }
     const data = fs.readFileSync(LEADS_FILE, 'utf-8');
