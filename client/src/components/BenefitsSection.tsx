@@ -3,27 +3,27 @@ import { ArrowUpRight, Laptop, BarChart3 } from "lucide-react";
 const benefits = [
   {
     icon: ArrowUpRight,
-    title: "Benefits",
-    description: "Fuonlese rand c nihai jells heoth sam orudul time",
+    title: "Crecimiento Real",
+    description: "Un sistema probado para que tus ingresos no tengan techo.",
     gradient: "from-red-400 to-red-500",
   },
   {
     icon: Laptop,
-    title: "Remote Work",
-    description: "Light strongollotun ans reclamereations jone",
+    title: "Acompañamiento",
+    description: "Un equipo y una comunidad que te apoyan en cada paso.",
     gradient: "from-teal-400 to-cyan-500",
   },
   {
     icon: BarChart3,
-    title: "Growth",
-    description: "Pi ode ore dole nnahen gestally heol drje nonniryl lore",
+    title: "Libertad y Tiempo",
+    description: "Recupera el control de tu horario y de tu vida personal.",
     gradient: "from-blue-500 to-blue-600",
   },
 ];
 
 export default function BenefitsSection() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (

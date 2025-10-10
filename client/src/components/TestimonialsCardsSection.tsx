@@ -3,22 +3,22 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const testimonials = [
   {
-    name: "Daniela M.",
-    location: "Florida",
-    quote: "Era madre soltera y sin tiempo… hoy manejo mis horarios y mis ingresos.",
-    initials: "DM",
+    name: "Carolina M.",
+    location: "Mentora",
+    quote: "Antes me sentía estancada. Hoy tengo libertad y propósito gracias al equipo.",
+    initials: "CM",
   },
   {
     name: "José R.",
-    location: "Tennessee",
-    quote: "Pensé que era imposible empezar sin inglés. Hoy soy líder de equipo.",
+    location: "Supervisor",
+    quote: "Encontré estabilidad, ingresos justos y un ambiente donde crecer.",
     initials: "JR",
   },
   {
-    name: "Luz P.",
-    location: "New Jersey",
-    quote: "Llegué con miedo, pero encontré una familia y una carrera estable.",
-    initials: "LP",
+    name: "M.P.",
+    location: "Community Leader",
+    quote: "Pasé de trabajar sin rumbo a vivir de lo que amo. Esta oportunidad cambió mi vida.",
+    initials: "MP",
   },
 ];
 
@@ -73,12 +73,12 @@ export default function TestimonialsCardsSection({ onCTAClick }: TestimonialsCar
         </div>
         
         <div className="text-center">
-          <button 
+          <button
             onClick={onCTAClick}
             className="bg-gradient-to-r from-[#FF6F61] to-coral hover:shadow-[0_0_20px_rgba(255,111,97,0.5)] text-white px-10 py-4 rounded-full font-bold text-lg uppercase transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
             data-testid="button-testimonials-cta"
           >
-            Quiero ser el próximo testimonio
+            🌟 Quiero ser el próximo testimonio
           </button>
         </div>
       </div>

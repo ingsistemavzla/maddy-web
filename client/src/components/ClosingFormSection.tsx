@@ -4,8 +4,9 @@ import { Sparkles } from "lucide-react";
 export default function ClosingFormSection() {
   const [formData, setFormData] = useState({
     name: "",
-    whatsapp: "",
+    phone: "",
     city: "",
+    email: "",
     goal: "",
   });
 
@@ -19,7 +20,7 @@ export default function ClosingFormSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-[#0074E4] to-[#FF6F61] relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-[#3A7FF7] to-[#234A75] relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 animate-pulse">
           <Sparkles className="w-8 h-8 text-white" />
@@ -35,10 +36,10 @@ export default function ClosingFormSection() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-            Tu historia también puede cambiar
+            Tu historia también <span className="text-coral">puede cambiar</span>
           </h2>
           <p className="text-xl text-white/95 max-w-2xl mx-auto leading-relaxed">
-            No importa dónde estés, solo importa que empieces hoy. Completa el formulario y da el primer paso hacia tu transformación.
+            El cambio empieza cuando decides creer en ti. Si has llegado hasta aquí es porque sabes que mereces más. Permíteme acompañarte a lograrlo.
           </p>
         </div>
         
@@ -59,13 +60,13 @@ export default function ClosingFormSection() {
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg">
             <input
               type="tel"
-              name="whatsapp"
-              placeholder="WhatsApp"
-              value={formData.whatsapp}
+              name="phone"
+              placeholder="Número de teléfono"
+              value={formData.phone}
               onChange={handleChange}
               className="w-full px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
               required
-              data-testid="input-whatsapp"
+              data-testid="input-phone"
             />
           </div>
           
@@ -73,7 +74,7 @@ export default function ClosingFormSection() {
             <input
               type="text"
               name="city"
-              placeholder="Ciudad"
+              placeholder="Ciudad o ZIP"
               value={formData.city}
               onChange={handleChange}
               className="w-full px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
@@ -82,6 +83,19 @@ export default function ClosingFormSection() {
             />
           </div>
           
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg">
+            <input
+              type="email"
+              name="email"
+              placeholder="Correo electrónico"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
+              required
+              data-testid="input-email"
+            />
+          </div>
+
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg">
             <textarea
               name="goal"

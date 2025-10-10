@@ -13,7 +13,7 @@ interface Lead {
   zip: string;
   email: string;
   estado: 'nuevo' | 'procesado' | 'atendido';
-  fecha: string;
+  fechaHora: string;
 }
 
 // Función para leer leads del archivo
@@ -58,7 +58,8 @@ export function getAllLeads() {
 }
 
 // Crear nuevo lead
-export function createLead(leadData: Omit<Lead, 'id' | 'fecha' | 'estado'>) {
+export function createLead(leadData: Omit<Lead, 'id' | 'fechaHora' | 'estado'>) {
+  console.log("➕ Creando nuevo lead con datos:", leadData);
   const leads = readLeads();
   const newId = leads.length > 0 ? Math.max(...leads.map(l => l.id)) + 1 : 1;
   
@@ -66,40 +67,54 @@ export function createLead(leadData: Omit<Lead, 'id' | 'fecha' | 'estado'>) {
     id: newId,
     ...leadData,
     estado: 'nuevo',
-    fecha: new Date().toISOString()
+    fechaHora: new Date().toISOString()
   };
   
   leads.push(newLead);
   writeLeads(leads);
+  console.log("✅ Lead creado con ID:", newId);
   
   return newLead;
 }
 
 // Actualizar lead
 export function updateLead(id: number, updates: Partial<Lead>) {
+  console.log(`🔄 Actualizando lead con ID: ${id}, con datos:`, updates);
   const leads = readLeads();
   const index = leads.findIndex(l => l.id === id);
   
   if (index === -1) {
+    console.error(`❌ No se encontró lead con ID: ${id}`);
     throw new Error('Lead no encontrado');
   }
   
   leads[index] = { ...leads[index], ...updates };
   writeLeads(leads);
+  console.log(`✅ Lead con ID: ${id} actualizado.`);
   
   return leads[index];
 }
 
 // Eliminar lead
 export function deleteLead(id: number) {
+  console.log(`🗑️ Eliminando lead con ID: ${id}`);
   const leads = readLeads();
-  const filteredLeads = leads.filter(l => l.id !== id);
+  const initialLength = leads.length;
   
-  if (leads.length === filteredLeads.length) {
+  let filteredLeads = leads.filter(l => l.id !== id);
+  
+  if (initialLength === filteredLeads.length) {
+    console.error(`❌ No se encontró lead con ID: ${id} para eliminar.`);
     throw new Error('Lead no encontrado');
   }
   
-  writeLeads(filteredLeads);
+  // Reordenar IDs
+  const reorderedLeads = filteredLeads.map((lead, index) => {
+    return { ...lead, id: index + 1 };
+  });
+  
+  writeLeads(reorderedLeads);
+  console.log(`✅ Lead con ID: ${id} eliminado y IDs reordenados.`);
   return { success: true };
 }
 
@@ -109,15 +124,15 @@ export function exportLeads(format: 'csv' | 'txt' | 'json'): string {
   
   switch (format) {
     case 'csv':
-      const csvHeader = 'ID,Nombre,Apellido,Teléfono,Ciudad,ZIP,Email,Estado,Fecha\n';
+      const csvHeader = 'ID,Nombre,Apellido,Teléfono,Ciudad,ZIP,Email,Estado,FechaHora\n';
       const csvRows = leads.map(l => 
-        `${l.id},"${l.nombre}","${l.apellido}","${l.telefono}","${l.ciudad}","${l.zip}","${l.email}","${l.estado}","${l.fecha}"`
+        `${l.id},"${l.nombre}","${l.apellido}","${l.telefono}","${l.ciudad}","${l.zip}","${l.email}","${l.estado}","${l.fechaHora}"`
       ).join('\n');
       return csvHeader + csvRows;
       
     case 'txt':
       return leads.map(l => 
-        `ID: ${l.id}\nNombre: ${l.nombre} ${l.apellido}\nTeléfono: ${l.telefono}\nCiudad: ${l.ciudad}\nZIP: ${l.zip}\nEmail: ${l.email}\nEstado: ${l.estado}\nFecha: ${l.fecha}\n${'='.repeat(50)}\n`
+        `ID: ${l.id}\nNombre: ${l.nombre} ${l.apellido}\nTeléfono: ${l.telefono}\nCiudad: ${l.ciudad}\nZIP: ${l.zip}\nEmail: ${l.email}\nEstado: ${l.estado}\nFechaHora: ${l.fechaHora}\n${'='.repeat(50)}\n`
       ).join('\n');
       
     case 'json':

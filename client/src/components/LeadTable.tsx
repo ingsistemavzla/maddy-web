@@ -10,7 +10,7 @@ interface Lead {
   zip: string;
   email: string;
   estado: 'nuevo' | 'procesado' | 'atendido';
-  fecha: string;
+  fechaHora: string;
 }
 
 interface LeadTableProps {
@@ -142,7 +142,7 @@ export default function LeadTable({ leads, onUpdate }: LeadTableProps) {
               <th className="px-4 py-4 text-left text-sm font-semibold">ZIP</th>
               <th className="px-4 py-4 text-left text-sm font-semibold">Correo</th>
               <th className="px-4 py-4 text-left text-sm font-semibold">Estado</th>
-              <th className="px-4 py-4 text-left text-sm font-semibold">Fecha</th>
+              <th className="px-4 py-4 text-left text-sm font-semibold">Fecha y Hora</th>
               <th className="px-4 py-4 text-center text-sm font-semibold">Acciones</th>
             </tr>
           </thead>
@@ -176,7 +176,7 @@ export default function LeadTable({ leads, onUpdate }: LeadTableProps) {
                     </button>
                   </td>
                   <td className="px-4 py-4 text-sm text-gray-600">
-                    {formatDate(lead.fecha)}
+                    {formatDate(lead.fechaHora)}
                   </td>
                   <td className="px-4 py-4">
                     <div className="flex items-center justify-center gap-2">

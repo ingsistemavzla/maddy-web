@@ -19,8 +19,8 @@ export default function AuthoritySection() {
           </h2>
           
           <p className="text-lg text-[#FFFFF3]/90 max-w-3xl mx-auto leading-relaxed mb-12">
-            Carta Business Group está respaldado por American Income Life – Globe Life, 
-            una empresa que cotiza en el S&P 500, con más de 70 años construyendo seguridad financiera para miles de familias.
+            Carta Business Group forma parte del ecosistema de American Income Life y Globe Life, empresas reconocidas en el S&P 500 y patrocinadores de los Dallas Cowboys y Los Angeles Lakers.
+Juntos, impulsamos el crecimiento y la estabilidad de las familias latinas en EE.UU.
           </p>
         </div>
         

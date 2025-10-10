@@ -6,9 +6,9 @@ interface RecruitmentSectionProps {
 
 export default function RecruitmentSection({ onCTAClick }: RecruitmentSectionProps) {
   const features = [
-    "Advanced recruitment analytics",
-    "AI-powered candidate matching",
-    "Real-time insights and reporting"
+    "Formación Integral y Gratuita: Aprende todo lo necesario sin costo.",
+    "Acompañamiento Personalizado: Un mentor te guía en cada paso.",
+    "Modelo de Ingresos Comprobado: Genera ganancias desde el inicio."
   ];
 
   return (
@@ -27,15 +27,15 @@ export default function RecruitmentSection({ onCTAClick }: RecruitmentSectionPro
           <div>
             {/* Título */}
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Ruamivite Recruitment<br />
-              <span className="text-gray-700">Alnd Insigess</span>
+              Un sistema claro para avanzar sin miedo
             </h2>
-            
+
             {/* Descripción */}
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Votiifanted insprooctures oarion ofr revit gendiyed eornesrially for ipestuation for sue lifactor and gucesment
+              No estás solo. Te acompañamos desde tu primera entrevista hasta tus primeros resultados.
+Con nuestro método probado, podrás crecer, formarte y alcanzar independencia paso a paso.
             </p>
-            
+
             {/* Lista con checkmarks */}
             <div className="space-y-4">
               {features.map((feature, index) => (
@@ -52,7 +52,7 @@ export default function RecruitmentSection({ onCTAClick }: RecruitmentSectionPro
                 onClick={onCTAClick}
                 className="bg-gradient-to-r from-coral to-cyan-blue text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                🌟 Quiero ser el próximo testimonio
+                Estoy listo para empezar
               </button>
             </div>
           </div>

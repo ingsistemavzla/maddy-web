@@ -3,15 +3,15 @@ import { Frown, MessageCircle, DollarSign, Clock } from "lucide-react";
 const painPoints = [
   {
     icon: Frown,
-    text: "¿Sientes que trabajas sin ver resultados reales?",
+    text: "¿Trabajas sin descanso y el dinero no te alcanza?",
   },
   {
     icon: MessageCircle,
-    text: "¿Te frustra no tener claridad sobre tu futuro profesional?",
+    text: "¿Sientes que no avanzas a pesar de tu esfuerzo?",
   },
   {
     icon: DollarSign,
-    text: "¿Cansado de ingresos que no reflejan tu esfuerzo?",
+    text: "¿El \"sueño americano\" se siente como una rutina?",
   },
   {
     icon: Clock,
@@ -60,13 +60,13 @@ export default function PainIdentificationSection({ onCTAClick }: PainIdentifica
         
         <div className="text-center">
           <p className="text-lg italic text-coral font-medium mb-8">
-            “Yo también pasé por eso… y descubrí que el problema no era mi esfuerzo, sino el camino que estaba siguiendo.”
+            "Yo también me sentí así… hasta que entendí que no era falta de esfuerzo, sino de dirección. Hoy quiero compartir contigo ese nuevo camino."
           </p>
           <button
             onClick={onCTAClick}
             className="bg-gradient-to-r from-coral to-cyan-blue text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
-            💬 Quiero conocer cómo lo lograste
+            Quiero conocer cómo lo lograste
           </button>
         </div>
       </div>

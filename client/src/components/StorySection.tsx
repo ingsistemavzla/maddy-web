@@ -16,12 +16,7 @@ export default function StorySection() {
             </h2>
             
             <p className="text-lg text-white/95 leading-relaxed">
-              Yo también llegué a Estados Unidos con un sueño y empecé desde cero.
-              Hoy vivo ayudando a otros migrantes a construir un futuro real: estabilidad, propósito y libertad.
-            </p>
-            
-            <p className="text-lg text-white/95 leading-relaxed">
-              Si yo pude, tú también puedes.
+              Llegué de Venezuela a Estados Unidos en 2021 con un sueño y muchas dudas trabajé en limpieza, restaurantes... Agradecida, pero agotada y sin un futuro claro. Hasta que encontré una forma de crecer con propósito y libertad. Hoy, ayudo a latinos a lograr lo mismo: recuperar el control de sus vidas.
             </p>
             
             <button 

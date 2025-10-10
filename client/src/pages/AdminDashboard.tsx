@@ -14,7 +14,7 @@ interface Lead {
   zip: string;
   email: string;
   estado: 'nuevo' | 'procesado' | 'atendido';
-  fecha: string;
+  fechaHora: string;
 }
 
 export default function AdminDashboard() {
@@ -40,6 +40,13 @@ export default function AdminDashboard() {
   useEffect(() => {
     checkAuth();
     loadLeads();
+
+    const intervalId = setInterval(() => {
+      console.log("🔄 Sincronizando datos...");
+      loadLeads();
+    }, 15000); // Actualizar cada 15 segundos
+
+    return () => clearInterval(intervalId); // Limpiar al desmontar
   }, []);
 
   useEffect(() => {
@@ -112,7 +119,7 @@ export default function AdminDashboard() {
     if (fechaFilter) {
       const filterDate = new Date(fechaFilter);
       filtered = filtered.filter(lead => {
-        const leadDate = new Date(lead.fecha);
+        const leadDate = new Date(lead.fechaHora);
         return leadDate.toDateString() === filterDate.toDateString();
       });
     }
@@ -127,7 +134,7 @@ export default function AdminDashboard() {
 
     setStats({
       total: leads.length,
-      hoy: leads.filter(l => new Date(l.fecha).toDateString() === hoy).length,
+      hoy: leads.filter(l => new Date(l.fechaHora).toDateString() === hoy).length,
       ciudades: ciudades.size,
       zips: zips.size
     });

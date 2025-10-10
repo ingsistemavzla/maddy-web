@@ -3,28 +3,28 @@ import { Briefcase, Handshake, DollarSign, Clock, Rocket } from "lucide-react";
 const benefits = [
   {
     icon: Briefcase,
-    title: "Formación profesional certificada.",
-    description: "Capacitación continua y certificaciones reconocidas",
+    title: "Formación Profesional",
+    description: "Capacitación continua sin importar tu experiencia o idioma.",
   },
   {
     icon: Handshake,
-    title: "Acompañamiento personalizado.",
-    description: "Mentores que te guían en cada paso del camino",
+    title: "Acompañamiento Personalizado",
+    description: "Un equipo humano te guía paso a paso hasta tus metas.",
   },
   {
     icon: DollarSign,
-    title: "Libertad financiera.",
-    description: "Ingresos ilimitados basados en tu esfuerzo",
+    title: "Libertad Financiera",
+    description: "Gana según tu esfuerzo, sin límites ni techos salariales.",
   },
   {
     icon: Clock,
-    title: "Flexibilidad total.",
-    description: "Maneja tus propios horarios y ritmo de trabajo",
+    title: "Flexibilidad Total",
+    description: "Diseña tus horarios y concilia trabajo y familia.",
   },
   {
     icon: Rocket,
-    title: "Crecimiento acelerado.",
-    description: "Oportunidades de liderazgo y desarrollo",
+    title: "Crecimiento Acelerado",
+    description: "Avanza en una estructura de liderazgo que recompensa tu progreso.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function OpportunitySection({ onCTAClick }: OpportunitySectionPro
             Una oportunidad real para cambiar tu historia
           </h2>
           <p className="text-xl text-cyan-blue max-w-3xl mx-auto">
-            En Carta Business Group, formamos y acompañamos a la comunidad latina para alcanzar libertad financiera y crecimiento profesional.
+            En Carta Business Group te ofrecemos herramientas, formación y acompañamiento para que transformes tu vida profesional.
           </p>
         </div>
         

@@ -53,7 +53,10 @@ export default function LeadForm({ onSuccess }: LeadFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      alert("Por favor, revise los campos en rojo y corrija los errores.");
+      return;
+    }
 
     setLoading(true);
     
@@ -67,8 +70,10 @@ export default function LeadForm({ onSuccess }: LeadFormProps) {
       });
 
       const result = await response.json();
+      console.log("📬 Respuesta del servidor:", result);
 
       if (result.success) {
+        console.log("✅ Formulario enviado con éxito");
         setShowSuccess(true);
         setFormData({
           nombre: "",
@@ -84,10 +89,11 @@ export default function LeadForm({ onSuccess }: LeadFormProps) {
           onSuccess?.();
         }, 3000);
       } else {
+        console.error("❌ Error en la respuesta del servidor:", result.message);
         alert("Error al enviar el formulario: " + result.message);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("💥 Error en la solicitud fetch:", error);
       alert("Error al enviar el formulario. Por favor, intente nuevamente.");
     } finally {
       setLoading(false);

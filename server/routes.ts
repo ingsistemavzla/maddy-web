@@ -31,43 +31,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // POST /api/leads - Crear nuevo lead
   app.post("/api/leads", (req, res) => {
+    console.log("📡 POST /api/leads - Solicitud recibida");
     try {
       const { nombre, apellido, telefono, ciudad, zip, email } = req.body;
       
       if (!nombre || !apellido || !telefono || !ciudad || !zip || !email) {
+        console.error("❌ Faltan campos en la solicitud POST /api/leads");
         return res.status(400).json({ 
           success: false, 
           message: "Todos los campos son requeridos" 
         });
       }
       
-      const newLead = createLead({ nombre, apellido, telefono, ciudad, zip, email });
-      res.status(201).json({ success: true, data: newLead });
+      createLead({ nombre, apellido, telefono, ciudad, zip, email });
+      console.log("✅ Solicitud POST /api/leads procesada exitosamente");
+      res.status(201).json({ success: true, message: "Registro guardado con éxito" });
     } catch (error: any) {
+      console.error("❌ Error en POST /api/leads:", error);
       res.status(500).json({ success: false, message: error.message });
     }
   });
 
   // PUT /api/leads/:id - Actualizar lead
   app.put("/api/leads/:id", (req, res) => {
+    console.log(`📡 PUT /api/leads/${req.params.id} - Solicitud recibida`);
     try {
       const id = parseInt(req.params.id);
       const updates = req.body;
       
       const updatedLead = updateLead(id, updates);
+      console.log(`✅ Solicitud PUT /api/leads/${id} procesada exitosamente`);
       res.json({ success: true, data: updatedLead });
     } catch (error: any) {
+      console.error(`❌ Error en PUT /api/leads/${req.params.id}:`, error);
       res.status(404).json({ success: false, message: error.message });
     }
   });
 
   // DELETE /api/leads/:id - Eliminar lead
   app.delete("/api/leads/:id", (req, res) => {
+    console.log(`📡 DELETE /api/leads/${req.params.id} - Solicitud recibida`);
     try {
       const id = parseInt(req.params.id);
       deleteLead(id);
+      console.log(`✅ Solicitud DELETE /api/leads/${id} procesada exitosamente`);
       res.json({ success: true, message: "Lead eliminado correctamente" });
     } catch (error: any) {
+      console.error(`❌ Error en DELETE /api/leads/${req.params.id}:`, error);
       res.status(404).json({ success: false, message: error.message });
     }
   });

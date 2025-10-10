@@ -5,6 +5,8 @@ import BenefitsSection from "@/components/BenefitsSection";
 import StatsSection from "@/components/StatsSection";
 import PainIdentificationSection from "@/components/PainIdentificationSection";
 import StorySection from "@/components/StorySection";
+import VideoSection from "@/components/VideoSection";
+import ShapeDivider from "@/components/ShapeDivider";
 import OpportunitySection from "@/components/OpportunitySection";
 import AuthoritySection from "@/components/AuthoritySection";
 import RecruitmentSection from "@/components/RecruitmentSection";
@@ -23,8 +25,10 @@ export default function Home() {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection onCTAClick={handleOpenModal} />
+      <ShapeDivider />
       <BenefitsSection />
       <StatsSection />
+      <VideoSection />
       <PainIdentificationSection onCTAClick={handleOpenModal} />
       <StorySection />
       <OpportunitySection onCTAClick={handleOpenModal} />
