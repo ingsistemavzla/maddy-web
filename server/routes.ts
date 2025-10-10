@@ -10,14 +10,21 @@ import {
 } from "./controllers/leadsController";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  console.log("🚀 Registrando rutas API...");
+
   // Rutas para gestión de leads
-  
+
   // GET /api/leads - Obtener todos los leads
   app.get("/api/leads", (req, res) => {
     try {
+      console.log("📡 GET /api/leads - Solicitud recibida desde", req.ip);
+      console.log("📝 Headers:", req.headers);
       const leads = getAllLeads();
+      console.log("📦 Leads obtenidos:", leads.length);
+      console.log("📤 Enviando respuesta JSON...");
       res.json({ success: true, data: leads });
     } catch (error: any) {
+      console.error("❌ Error en GET /api/leads:", error);
       res.status(500).json({ success: false, message: error.message });
     }
   });

@@ -45,7 +45,10 @@ function writeLeads(leads: Lead[]): void {
 
 // Obtener todos los leads
 export function getAllLeads() {
-  return readLeads();
+  console.log("🔍 getAllLeads() - Intentando leer leads del archivo");
+  const leads = readLeads();
+  console.log("📋 getAllLeads() - Leads leídos:", leads.length);
+  return leads;
 }
 
 // Crear nuevo lead

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Simple API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        button { padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Simple API</h1>
+
+    <button onclick="testTest()">Test /api/test</button>
+    <button onclick="testHealth()">Test /api/health</button>
+    <button onclick="testLeads()">Test /api/leads</button>
+
+    <div id="result"></div>
+
+    <script>
+        async function makeRequest(endpoint) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Testing ${endpoint}...`;
+
+            try {
+                console.log(`🚀 Testing ${endpoint}...`);
+                const response = await fetch(`http://localhost:5000${endpoint}`);
+
+                console.log(`📡 ${endpoint} response:`, response.status);
+
+                if (response.ok) {
+                    const data = await response.text();
+                    console.log(`📦 ${endpoint} data:`, data);
+
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ ${endpoint} SUCCESS</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Response:</strong> ${data}</p>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ ${endpoint} ERROR</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                    `;
+                }
+
+            } catch (error) {
+                console.error(`💥 ${endpoint} error:`, error);
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>💥 ${endpoint} NETWORK ERROR</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        function testTest() { makeRequest('/api/test'); }
+        function testHealth() { makeRequest('/api/health'); }
+        function testLeads() { makeRequest('/api/leads'); }
+
+        // Auto test on load
+        setTimeout(testTest, 500);
+    </script>
+</body>
+</html>

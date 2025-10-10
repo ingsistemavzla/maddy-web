@@ -175,6 +175,8 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
 
       if (result.success) {
         setSuccess(true);
+        // Show success alert
+        alert("✅ Tus datos se han enviado correctamente");
         setFormData({
           nombre: "",
           apellido: "",
@@ -190,11 +192,13 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
           setSuccess(false);
         }, 3000);
       } else {
-        setError(result.message || "Error al enviar la información");
+        setError(result.message || "Ha ocurrido un problema con el registro por favor inténtelo nuevamente");
+        alert("❌ Ha ocurrido un problema con el registro por favor inténtelo nuevamente");
       }
     } catch (error) {
       console.error('Error:', error);
-      setError("Error de conexión. Por favor, inténtalo de nuevo.");
+      setError("Ha ocurrido un problema con el registro por favor inténtelo nuevamente");
+      alert("❌ Ha ocurrido un problema con el registro por favor inténtelo nuevamente");
     } finally {
       setLoading(false);
     }
@@ -231,15 +235,30 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="bg-[#FFFFF3] rounded-[16px] p-0 max-w-[460px] w-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] border-none animate-fadeInUp">
-        <div className="relative">
-          {/* Right Side - Form */}
-          <div className="p-8">
-            <DialogHeader className="text-center mb-6">
-              <DialogTitle className="text-[#102C3A] text-2xl font-bold font-poppins mb-2">
+      <DialogContent className="bg-[#FFFFF3] rounded-[24px] p-0 max-w-4xl w-full shadow-[0_0_40px_rgba(0,0,0,0.15)] border-none animate-fadeInUp">
+        <div className="flex flex-col md:flex-row">
+          {/* Left Side - Image (appears first on mobile, second on desktop) */}
+          <div className="w-full md:w-1/2 order-1 md:order-1 relative">
+            <img
+              src={maddyImage}
+              alt="Maddy Peñuela"
+              className="object-cover w-full h-full rounded-l-[24px] md:rounded-l-[24px] md:rounded-r-none"
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-[#FF6F61] to-[#0074E4] rounded-bl-[24px] md:rounded-bl-[24px] md:rounded-br-none" />
+            <DialogClose asChild>
+              <button className="absolute top-4 right-4 w-8 h-8 bg-[#FF6F61] rounded-full text-white flex items-center justify-center hover:bg-[#048ABF] hover:rotate-90 transition-all duration-300 z-10">
+                <XIcon />
+              </button>
+            </DialogClose>
+          </div>
+
+          {/* Right Side - Form (appears second on mobile, first on desktop) */}
+          <div className="w-full md:w-1/2 p-8 order-2 md:order-2">
+            <DialogHeader className="text-left mb-6">
+              <DialogTitle className="text-[#102C3A] text-3xl font-bold font-poppins mb-2">
                 🚀 ¡Da el primer paso hacia tu nueva oportunidad!
               </DialogTitle>
-              <DialogDescription className="text-[#26358C] font-montserrat text-base">
+              <DialogDescription className="text-[#26358C] font-montserrat text-lg">
                 Completa tus datos y nuestro equipo te contactará para orientarte.
               </DialogDescription>
             </DialogHeader>
@@ -263,7 +282,7 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                   </div>
                 )}
 
-                <div className="space-y-4">
+                <div className="grid grid-cols-1 gap-6">
                   {/* Nombre completo */}
                   <div>
                     <Input
@@ -272,7 +291,7 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                       value={formData.nombre}
                       onChange={handleInputChange}
                       placeholder="Nombre completo"
-                      className={`w-full p-3 border rounded-lg bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
+                      className={`w-full px-4 py-3 border-2 rounded-xl bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
                         errors.nombre ? "border-[#F28D77]" : ""
                       }`}
                       disabled={loading}
@@ -294,7 +313,7 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                       value={formData.telefono}
                       onChange={handleInputChange}
                       placeholder="Teléfono móvil"
-                      className={`w-full p-3 border rounded-lg bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
+                      className={`w-full px-4 py-3 border-2 rounded-xl bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
                         errors.telefono ? "border-[#F28D77]" : ""
                       }`}
                       disabled={loading}
@@ -312,7 +331,7 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                     <select
                       value={formData.ciudad && formData.zip ? `${formData.ciudad} - ${formData.zip}` : ""}
                       onChange={handleCiudadZipChange}
-                      className={`w-full p-3 border rounded-lg bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all text-[#102C3A] ${
+                      className={`w-full px-4 py-3 border-2 rounded-xl bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all text-[#102C3A] ${
                         errors.ciudad || errors.zip ? "border-[#F28D77]" : ""
                       }`}
                       disabled={loading}
@@ -340,7 +359,7 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Correo electrónico (opcional)"
-                      className={`w-full p-3 border rounded-lg bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
+                      className={`w-full px-4 py-3 border-2 rounded-xl bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
                         errors.email ? "border-[#F28D77]" : ""
                       }`}
                       disabled={loading}
@@ -358,7 +377,7 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full text-white font-bold text-lg py-6 rounded-xl bg-gradient-to-r from-[#FF6F61] to-[#048ABF] shadow-[0px_8px_24px_rgba(4,138,191,0.3)] hover:shadow-[0_0_20px_#FF6F61] hover:scale-103 transition-all duration-250 ease-in-out active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full text-white font-bold text-lg py-4 px-8 rounded-xl bg-gradient-to-r from-[#F28D77] to-[#048ABF] shadow-[0px_8px_24px_rgba(4,138,191,0.3)] hover:shadow-[0_0_20px_#F28D77] hover:scale-103 transition-all duration-250 ease-in-out active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {loading ? (
                       <>
@@ -367,7 +386,7 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                       </>
                     ) : (
                       <>
-                        QUIERO DAR EL PRIMER PASO 🚀
+                        Enviar Aplicación
                       </>
                     )}
                   </Button>
@@ -377,23 +396,9 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
 
             <div className="text-center mt-6">
               <p className="text-[#6B7A8F] text-xs tracking-wider">
-                🔒 Tu información está segura. Carta Business Group – Member of Globe Life / S&P 500
+                🔒 Tus datos están protegidos. Solo los usamos para tu aplicación.
               </p>
             </div>
-          </div>
-          {/* Left Side - Image */}
-          <div className="w-full md:w-1/2 order-1 md:order-2 relative">
-            <img
-              src={maddyImage}
-              alt="Maddy Peñuela"
-              className="object-cover w-full h-full rounded-r-[24px] md:block hidden"
-            />
-             <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-[#FF6F61] to-[#0074E4] rounded-br-[24px] md:block hidden" />
-            <DialogClose asChild>
-              <button className="absolute top-4 right-4 w-8 h-8 bg-[#FF6F61] rounded-full text-white flex items-center justify-center hover:bg-[#048ABF] hover:rotate-90 transition-all duration-300 z-10">
-                <XIcon />
-              </button>
-            </DialogClose>
           </div>
         </div>
       </DialogContent>

@@ -59,19 +59,40 @@ export default function AdminDashboard() {
 
   const loadLeads = async () => {
     setLoading(true);
+    setError("");
+
     try {
-      const response = await fetch("/api/leads");
+      console.log("🔍 Intentando conectar a la API...");
+      const response = await fetch("/api/leads", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+
+      console.log("📡 Respuesta del servidor:", response.status, response.statusText);
+      console.log("📝 Response headers:", Object.fromEntries(response.headers.entries()));
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("❌ Error response:", errorText);
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
+      console.log("📦 Datos recibidos:", result);
 
       if (result.success) {
-        setLeads(result.data);
+        setLeads(result.data || []);
         setError("");
+        console.log("✅ Leads cargados exitosamente:", result.data?.length || 0);
       } else {
-        setError("Error al cargar los leads: " + result.message);
+        setError("Error al cargar los leads: " + (result.message || "Respuesta inválida del servidor"));
       }
     } catch (error) {
-      console.error("Error:", error);
-      setError("Error de conexión con el servidor");
+      console.error("❌ Error de conexión:", error);
+      setError(`Error de conexión con el servidor: ${error instanceof Error ? error.message : 'Error desconocido'}`);
     } finally {
       setLoading(false);
     }

@@ -4,22 +4,22 @@ export default function ExportButtons() {
   const handleExport = async (format: 'csv' | 'txt' | 'json') => {
     try {
       const response = await fetch(`/api/export/${format}`);
-      
+
       if (!response.ok) {
         throw new Error('Error en la exportación');
       }
-      
+
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      
+
       const date = new Date().toISOString().split('T')[0];
       a.download = `leads_${date}.${format}`;
-      
+
       document.body.appendChild(a);
       a.click();
-      
+
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     } catch (error) {

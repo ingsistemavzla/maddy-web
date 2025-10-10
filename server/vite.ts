@@ -41,9 +41,18 @@ export async function setupVite(app: Express, server: Server) {
   });
 
   app.use(vite.middlewares);
+
+  // IMPORTANT: API routes should be handled BEFORE this catch-all
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
+    // CRITICAL: Skip ALL API routes - they MUST be handled by Express first
+    if (url.startsWith("/api/") || url.includes("/api")) {
+      console.log("🔄 API route detected, skipping Vite catch-all:", url);
+      return next();
+    }
+
+    // Only serve frontend for non-API routes
     try {
       const clientTemplate = path.resolve(
         path.dirname(new URL(import.meta.url).pathname),

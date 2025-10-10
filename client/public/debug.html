@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug API Connection</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; color: #155724; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; color: #721c24; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; color: #0c5460; }
+        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Debug API Connection</h1>
+
+    <div class="test-section info">
+        <h3>📋 Información del Sistema</h3>
+        <p><strong>URL Actual:</strong> <span id="current-url"></span></p>
+        <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+        <p><strong>Tiempo:</strong> <span id="timestamp"></span></p>
+    </div>
+
+    <div class="test-section">
+        <h3>🧪 Test 1: Verificar si el servidor responde</h3>
+        <button onclick="testServerHealth()">Probar Servidor</button>
+        <div id="server-health-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>📡 Test 2: Probar endpoint /api/leads</h3>
+        <button onclick="testAPIEndpoint()">Probar API</button>
+        <div id="api-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>🔄 Test 3: Probar envío de datos</h3>
+        <button onclick="testDataSubmission()">Enviar Datos de Prueba</button>
+        <div id="submission-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>📊 Test 4: Ver estado del archivo leads.json</h3>
+        <button onclick="checkLeadsFile()">Verificar Archivo</button>
+        <div id="file-result"></div>
+    </div>
+
+    <script>
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+
+        async function makeRequest(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    method: options.method || 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    },
+                    body: options.body ? JSON.stringify(options.body) : undefined
+                });
+
+                const result = {
+                    url,
+                    status: response.status,
+                    statusText: response.statusText,
+                    headers: Object.fromEntries(response.headers.entries()),
+                    ok: response.ok
+                };
+
+                // Leer el body una sola vez
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    try {
+                        result.data = await response.json();
+                    } catch (e) {
+                        result.error = 'Invalid JSON response';
+                    }
+                } else {
+                    try {
+                        result.text = await response.text();
+                    } catch (e) {
+                        result.error = 'Could not read response text';
+                    }
+                }
+
+                return result;
+            } catch (error) {
+                return {
+                    url,
+                    error: error.message,
+                    ok: false
+                };
+            }
+        }
+
+        async function testServerHealth() {
+            const resultDiv = document.getElementById('server-health-result');
+            resultDiv.innerHTML = '🔄 Probando...';
+
+            const result = await makeRequest('http://localhost:5000/');
+
+            if (result.ok) {
+                resultDiv.className = 'test-section success';
+                resultDiv.innerHTML = `
+                    <h4>✅ Servidor respondiendo correctamente</h4>
+                    <p><strong>Status:</strong> ${result.status} ${result.statusText}</p>
+                    <p><strong>Respuesta:</strong> ${result.text || 'Página cargada'}</p>
+                `;
+            } else {
+                resultDiv.className = 'test-section error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Error de conexión</h4>
+                    <p><strong>Error:</strong> ${result.error || 'No se pudo conectar al servidor'}</p>
+                    <p><strong>URL:</strong> ${result.url}</p>
+                `;
+            }
+        }
+
+        async function testAPIEndpoint() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '🔄 Probando API...';
+
+            const result = await makeRequest('http://localhost:5000/api/leads');
+
+            if (result.ok) {
+                resultDiv.className = 'test-section success';
+                resultDiv.innerHTML = `
+                    <h4>✅ API funcionando correctamente</h4>
+                    <p><strong>Status:</strong> ${result.status}</p>
+                    <p><strong>Datos:</strong> ${result.data ? JSON.stringify(result.data, null, 2) : 'Sin datos'}</p>
+                `;
+            } else {
+                resultDiv.className = 'test-section error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Error en API</h4>
+                    <p><strong>Error:</strong> ${result.error || `Status: ${result.status}`}</p>
+                    <p><strong>URL:</strong> ${result.url}</p>
+                `;
+            }
+        }
+
+        async function testDataSubmission() {
+            const resultDiv = document.getElementById('submission-result');
+            resultDiv.innerHTML = '🔄 Enviando datos...';
+
+            const testData = {
+                nombre: "Test",
+                apellido: "User",
+                telefono: "555123456",
+                ciudad: "Test City",
+                zip: "12345",
+                email: "test@example.com"
+            };
+
+            const result = await makeRequest('http://localhost:5000/api/leads', {
+                method: 'POST',
+                body: testData
+            });
+
+            if (result.ok) {
+                resultDiv.className = 'test-section success';
+                resultDiv.innerHTML = `
+                    <h4>✅ Datos enviados correctamente</h4>
+                    <p><strong>Status:</strong> ${result.status}</p>
+                    <p><strong>Respuesta:</strong> ${JSON.stringify(result.data, null, 2)}</p>
+                `;
+            } else {
+                resultDiv.className = 'test-section error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Error enviando datos</h4>
+                    <p><strong>Error:</strong> ${result.error || `Status: ${result.status}`}</p>
+                    <p><strong>Datos enviados:</strong> ${JSON.stringify(testData, null, 2)}</p>
+                `;
+            }
+        }
+
+        async function checkLeadsFile() {
+            const resultDiv = document.getElementById('file-result');
+            resultDiv.innerHTML = '🔄 Verificando archivo...';
+
+            // Primero obtener los leads actuales
+            const currentResult = await makeRequest('http://localhost:5000/api/leads');
+
+            if (currentResult.ok) {
+                resultDiv.className = 'test-section success';
+                resultDiv.innerHTML = `
+                    <h4>✅ Archivo leads.json funcionando</h4>
+                    <p><strong>Total de leads:</strong> ${currentResult.data?.data?.length || 0}</p>
+                    <p><strong>Datos:</strong> ${JSON.stringify(currentResult.data, null, 2)}</p>
+                `;
+            } else {
+                resultDiv.className = 'test-section error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Problema con el archivo</h4>
+                    <p><strong>Error:</strong> ${currentResult.error || `Status: ${currentResult.status}`}</p>
+                `;
+            }
+        }
+
+        // Ejecutar pruebas automáticamente al cargar la página
+        window.onload = function() {
+            setTimeout(() => {
+                testServerHealth();
+                setTimeout(testAPIEndpoint, 1000);
+            }, 500);
+        };
+    </script>
+</body>
+</html>

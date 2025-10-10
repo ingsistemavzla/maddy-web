@@ -1,8 +1,16 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import cors from "cors";
 
 const app = express();
+
+// CORS configuration for development
+app.use(cors({
+  origin: ["http://localhost:5000", "http://localhost:3000", "http://127.0.0.1:5000"],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -37,19 +45,50 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Register API routes FIRST before any catch-all routes
   const server = await registerRoutes(app);
 
+  // API routes that should be processed BEFORE Vite catch-all
+  app.get("/api/health", (req, res) => {
+    console.log("🏥 Health check endpoint called");
+    const response = {
+      success: true,
+      message: "API is working",
+      timestamp: new Date().toISOString(),
+      server: "express",
+      environment: process.env.NODE_ENV || "development"
+    };
+    console.log("📤 Health response:", response);
+    res.json(response);
+  });
+
+  // Simple test endpoint
+  app.get("/api/test", (req, res) => {
+    console.log("🧪 Test endpoint called");
+    res.json({
+      success: true,
+      message: "Test endpoint working",
+      data: "Hello from API"
+    });
+  });
+
+  // API error handler for API routes
+  app.use("/api", (err: any, _req: Request, res: Response, _next: NextFunction) => {
+    console.error("❌ API Error:", err);
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+    res.status(status).json({ success: false, message });
+  });
+
+  // General error handler
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
     res.status(status).json({ message });
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
+  // Setup Vite AFTER API routes are registered
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
