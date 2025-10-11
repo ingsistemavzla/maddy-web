@@ -101,7 +101,7 @@ app.use((req, res, next) => {
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
 
-  // Bind to 0.0.0.0 for production deployment (Railway, Heroku, etc.)
+  // Bind to 0.0.0.0 for production deployment (Render, cloud platforms)
   // Use 127.0.0.1 for local development
   const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1';
 

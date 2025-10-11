@@ -283,14 +283,14 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                 )}
 
                 <div className="grid grid-cols-1 gap-6">
-                  {/* Nombre completo */}
+                  {/* Nombre */}
                   <div>
                     <Input
                       type="text"
                       name="nombre"
                       value={formData.nombre}
                       onChange={handleInputChange}
-                      placeholder="Nombre completo"
+                      placeholder="Nombre"
                       className={`w-full px-4 py-3 border-2 rounded-xl bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
                         errors.nombre ? "border-[#F28D77]" : ""
                       }`}
@@ -301,6 +301,48 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                       <p className="text-[#F28D77] text-sm mt-1 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         {errors.nombre}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Apellido */}
+                  <div>
+                    <Input
+                      type="text"
+                      name="apellido"
+                      value={formData.apellido}
+                      onChange={handleInputChange}
+                      placeholder="Apellido"
+                      className={`w-full px-4 py-3 border-2 rounded-xl bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
+                        errors.apellido ? "border-[#F28D77]" : ""
+                      }`}
+                      disabled={loading}
+                    />
+                    {errors.apellido && (
+                      <p className="text-[#F28D77] text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="w-3 h-3" />
+                        {errors.apellido}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <Input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Correo electrónico"
+                      className={`w-full px-4 py-3 border-2 rounded-xl bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
+                        errors.email ? "border-[#F28D77]" : ""
+                      }`}
+                      disabled={loading}
+                    />
+                    {errors.email && (
+                      <p className="text-[#F28D77] text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="w-3 h-3" />
+                        {errors.email}
                       </p>
                     )}
                   </div>
@@ -347,27 +389,6 @@ export const OrientationModal = ({ isOpen, onOpenChange }: OrientationModalProps
                       <p className="text-[#F28D77] text-sm mt-1 flex items-center gap-1">
                         <AlertCircle className="w-3 h-3" />
                         Selecciona una ciudad válida
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Email (opcional) */}
-                  <div>
-                    <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="Correo electrónico (opcional)"
-                      className={`w-full px-4 py-3 border-2 rounded-xl bg-[#F7F7F7] border-[#CCCCCC] focus:border-[#048ABF] focus:ring-2 focus:ring-[#048ABF]/50 transition-all ${
-                        errors.email ? "border-[#F28D77]" : ""
-                      }`}
-                      disabled={loading}
-                    />
-                    {errors.email && (
-                      <p className="text-[#F28D77] text-sm mt-1 flex items-center gap-1">
-                        <AlertCircle className="w-3 h-3" />
-                        {errors.email}
                       </p>
                     )}
                   </div>

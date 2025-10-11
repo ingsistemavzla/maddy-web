@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "id": 1,
+    "nombre": "Maria",
+    "apellido": "Garcia",
+    "telefono": "555-5678",
+    "ciudad": "Los Angeles",
+    "zip": "90210",
+    "email": "maria.garcia@example.com",
+    "estado": "nuevo",
+    "fechaHora": "2025-10-10T23:51:32.657Z"
+  },
+  {
+    "id": 2,
+    "nombre": "Maddy",
+    "apellido": "Pneuela",
+    "telefono": "4156995741",
+    "ciudad": "Texas",
+    "zip": "77003",
+    "email": "madupenuela@gmail.com",
+    "estado": "nuevo",
+    "fechaHora": "2025-10-11T00:40:40.858Z"
+  },
+  {
+    "id": 3,
+    "nombre": "sergio",
+    "apellido": "suniaga",
+    "telefono": "3242342424",
+    "ciudad": "Texas",
+    "zip": "77004",
+    "email": "seegriosuniaga@gmail.com",
+    "estado": "nuevo",
+    "fechaHora": "2025-10-11T00:48:35.209Z"
+  }
+]
