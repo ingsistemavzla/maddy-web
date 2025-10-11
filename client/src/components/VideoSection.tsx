@@ -1,6 +1,10 @@
 import React from "react";
 
-const VideoSection: React.FC = () => {
+interface VideoSectionProps {
+  onCTAClick: () => void;
+}
+
+const VideoSection: React.FC<VideoSectionProps> = ({ onCTAClick }) => {
   return (
     <section
       id="descubre-oportunidad"
@@ -60,12 +64,12 @@ const VideoSection: React.FC = () => {
         </p>
 
         {/* Botón CTA */}
-        <a
-          href="#oportunidad"
+        <button
+          onClick={onCTAClick}
           className="inline-block bg-white text-coral px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-coral hover:text-white"
         >
           💫 Quiero saber más
-        </a>
+        </button>
       </div>
 
       <style dangerouslySetInnerHTML={{

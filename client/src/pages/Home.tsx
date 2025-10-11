@@ -23,14 +23,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onCTAClick={handleOpenModal} />
       <HeroSection onCTAClick={handleOpenModal} />
       <ShapeDivider />
       <BenefitsSection />
       <StatsSection />
-      <VideoSection />
+      <VideoSection onCTAClick={handleOpenModal} />
       <PainIdentificationSection onCTAClick={handleOpenModal} />
-      <StorySection />
+      <StorySection onCTAClick={handleOpenModal} />
       <OpportunitySection onCTAClick={handleOpenModal} />
       <AuthoritySection />
       <RecruitmentSection onCTAClick={handleOpenModal} />

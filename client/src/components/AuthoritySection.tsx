@@ -1,8 +1,8 @@
 export default function AuthoritySection() {
   const companies = [
     { name: "Globe Life", logo: "/images/GLOBE.png" },
-    { name: "Carta Business Group", logo: null },
-    { name: "S&P 500", logo: null },
+    { name: "Carta Business Group", logo: "/images/CBG.png" },
+    { name: "S&P 500", logo: "/images/SP500.png" },
     { name: "American Income Life", logo: "/images/AIL.png" }
   ];
 

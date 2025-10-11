@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Sparkles, CheckCircle2, Loader2 } from "lucide-react";
+import { Sparkles, CheckCircle2, Loader2, User, Mail, Phone, MapPin, Hash } from "lucide-react";
 
 export default function ClosingFormSection() {
   const [formData, setFormData] = useState({
@@ -14,6 +14,22 @@ export default function ClosingFormSection() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showZipList, setShowZipList] = useState(false);
+  const [consent, setConsent] = useState(false);
+
+  // Mismos 3 estados que el modal
+  const estadosZipCodes: Record<string, string[]> = {
+    "Tennessee": ["37010", "37011", "37012", "37013", "37014", "37015", "37016", "37018", "37019", "37020", "37022", "37027", "37029", "37030", "37031", "37032", "37034", "37035", "37036", "37037"],
+    "Ohio": ["43001", "43002", "43003", "43004", "43005", "43006", "43007", "43008", "43009", "43010", "43011", "43013", "43014", "43015", "43016", "43017", "43018", "43019", "43021", "43022"],
+    "New Jersey": ["07001", "07002", "07003", "07004", "07005", "07006", "07007", "07008", "07009", "07010", "07011", "07012", "07013", "07014", "07015", "07016", "07017", "07018", "07019", "07020"]
+  };
+
+  const getFilteredZips = () => {
+    if (!formData.ciudad) return [];
+    const zips = estadosZipCodes[formData.ciudad] || [];
+    if (!formData.zip) return zips;
+    return zips.filter(zip => zip.includes(formData.zip));
+  };
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,9 +41,9 @@ export default function ClosingFormSection() {
 
     if (!formData.nombre.trim()) newErrors.nombre = "El nombre es requerido";
     if (!formData.apellido.trim()) newErrors.apellido = "El apellido es requerido";
-    if (!formData.telefono.trim()) newErrors.telefono = "El teléfono es requerido";
-    if (!formData.ciudad.trim()) newErrors.ciudad = "La ciudad es requerida";
-    if (!formData.zip.trim()) newErrors.zip = "El ZIP es requerido";
+    if (!formData.telefono.trim() || formData.telefono.length !== 10) newErrors.telefono = "Ingresa 10 dígitos";
+    if (!formData.ciudad.trim()) newErrors.ciudad = "Selecciona un estado";
+    if (!formData.zip.trim()) newErrors.zip = "Selecciona un ZIP";
     if (!formData.email.trim()) {
       newErrors.email = "El email es requerido";
     } else if (!validateEmail(formData.email)) {
@@ -40,6 +56,11 @@ export default function ClosingFormSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!consent) {
+      alert("Por favor, acepta el consentimiento de uso de datos");
+      return;
+    }
     
     if (!validateForm()) {
       alert("Por favor, completa todos los campos correctamente.");
@@ -61,6 +82,7 @@ export default function ClosingFormSection() {
 
       if (result.success) {
         setSuccess(true);
+        setConsent(false);
         setFormData({
           nombre: "",
           apellido: "",
@@ -84,7 +106,7 @@ export default function ClosingFormSection() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     if (errors[name]) {
@@ -131,6 +153,7 @@ export default function ClosingFormSection() {
         )}
         
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Nombre */}
           <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg ${errors.nombre ? 'ring-2 ring-red-400' : ''}`}>
             <input
               type="text"
@@ -147,6 +170,7 @@ export default function ClosingFormSection() {
             )}
           </div>
 
+          {/* Apellido */}
           <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg ${errors.apellido ? 'ring-2 ring-red-400' : ''}`}>
             <input
               type="text"
@@ -163,6 +187,7 @@ export default function ClosingFormSection() {
             )}
           </div>
           
+          {/* Email */}
           <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg ${errors.email ? 'ring-2 ring-red-400' : ''}`}>
             <input
               type="email"
@@ -179,58 +204,116 @@ export default function ClosingFormSection() {
             )}
           </div>
 
-          <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg ${errors.telefono ? 'ring-2 ring-red-400' : ''}`}>
+          {/* Teléfono con prefijo +1 (fondo coral/rosado integrado) */}
+          <div className={`bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg flex items-stretch ${errors.telefono ? 'ring-2 ring-red-400' : ''}`}>
+            <div className="flex items-center justify-center px-4 text-white font-bold text-lg" style={{ 
+              background: 'linear-gradient(90deg, #FF9AA2 0%, #FFB6A3 100%)'
+            }}>
+              +1
+            </div>
             <input
               type="tel"
               name="telefono"
-              placeholder="Número de teléfono"
+              placeholder="1234567890"
               value={formData.telefono}
               onChange={handleChange}
-              className="w-full px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
+              maxLength={10}
+              className="flex-1 px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
               required
               data-testid="input-telefono"
             />
             {errors.telefono && (
-              <p className="text-red-600 text-sm px-6 pb-2">{errors.telefono}</p>
+              <p className="text-red-600 text-sm px-6 pb-2 absolute">{errors.telefono}</p>
             )}
           </div>
           
+          {/* Estado */}
           <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg ${errors.ciudad ? 'ring-2 ring-red-400' : ''}`}>
-            <input
-              type="text"
+            <select
               name="ciudad"
-              placeholder="Ciudad"
               value={formData.ciudad}
-              onChange={handleChange}
-              className="w-full px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
+              onChange={(e) => {
+                handleChange(e);
+                setFormData(prev => ({ ...prev, zip: "" }));
+                setShowZipList(true);
+              }}
+              className="w-full px-6 py-4 bg-transparent border-none outline-none text-gray-900 text-lg"
               required
               data-testid="input-ciudad"
-            />
+            >
+              <option value="">Selecciona tu Estado</option>
+              {Object.keys(estadosZipCodes).map((estado) => (
+                <option key={estado} value={estado}>
+                  {estado}
+                </option>
+              ))}
+            </select>
             {errors.ciudad && (
               <p className="text-red-600 text-sm px-6 pb-2">{errors.ciudad}</p>
             )}
           </div>
 
-          <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg ${errors.zip ? 'ring-2 ring-red-400' : ''}`}>
+          {/* ZIP Code con búsqueda integrada - solo aparece si hay estado seleccionado */}
+          {formData.ciudad && (
+            <div className="relative">
+              <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg ${errors.zip ? 'ring-2 ring-red-400' : ''}`}>
+                <input
+                  type="text"
+                  name="zip"
+                  value={formData.zip}
+                  onChange={(e) => {
+                    setFormData(prev => ({ ...prev, zip: e.target.value }));
+                    setShowZipList(true);
+                  }}
+                  onFocus={() => setShowZipList(true)}
+                  placeholder="Busca y selecciona ZIP Code"
+                  maxLength={5}
+                  className="w-full px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
+                  data-testid="input-zip"
+                />
+                {errors.zip && (
+                  <p className="text-red-600 text-sm px-6 pb-2">{errors.zip}</p>
+                )}
+              </div>
+              
+              {showZipList && getFilteredZips().length > 0 && (
+                <div className="absolute z-10 w-full mt-2 max-h-48 overflow-y-auto bg-white rounded-2xl border-2 border-gray-200 shadow-2xl">
+                  {getFilteredZips().map((zip) => (
+                    <button
+                      key={zip}
+                      type="button"
+                      onClick={() => {
+                        setFormData(prev => ({ ...prev, zip }));
+                        setShowZipList(false);
+                      }}
+                      className="w-full px-6 py-3 text-left hover:bg-blue-50 transition-colors border-b border-gray-100 last:border-none text-base font-medium text-gray-800"
+                    >
+                      {zip}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Checkbox de consentimiento */}
+          <div className="flex items-center justify-center gap-3 bg-white/60 rounded-2xl p-5">
             <input
-              type="text"
-              name="zip"
-              placeholder="Código Postal (ZIP)"
-              value={formData.zip}
-              onChange={handleChange}
-              className="w-full px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
-              required
-              data-testid="input-zip"
+              type="checkbox"
+              id="consent-footer"
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              className="w-5 h-5 rounded border-2 border-blue-400 accent-blue-600"
             />
-            {errors.zip && (
-              <p className="text-red-600 text-sm px-6 pb-2">{errors.zip}</p>
-            )}
+            <label htmlFor="consent-footer" className="text-base leading-tight font-medium" style={{ color: '#2D61A6' }}>
+              Acepto el uso de mis datos para contactarme
+            </label>
           </div>
           
           <div className="text-center pt-4">
             <button 
               type="submit"
-              disabled={loading}
+              disabled={loading || !consent}
               className="bg-coral hover:bg-cyan-blue text-white px-12 py-5 rounded-[25px] font-bold text-xl uppercase shadow-[0_4px_15px_rgba(242,141,119,0.3)] hover:shadow-[0_0_20px_rgba(4,138,191,0.4)] transition-all duration-300 hover:-translate-y-0.5 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 mx-auto"
               data-testid="button-submit-form"
             >

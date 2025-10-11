@@ -1,6 +1,10 @@
 import { MessageCircle } from "lucide-react";
 
-export default function StorySection() {
+interface StorySectionProps {
+  onCTAClick: () => void;
+}
+
+export default function StorySection({ onCTAClick }: StorySectionProps) {
   return (
     <section id="historias" className="py-20 bg-gradient-to-r from-[#0074E4] to-[#FF6F61] relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
@@ -20,6 +24,7 @@ export default function StorySection() {
             </p>
             
             <button 
+              onClick={onCTAClick}
               className="bg-coral hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] text-white px-9 py-4 rounded-[40px] font-semibold text-base transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mt-4"
               data-testid="button-story-cta"
             >
