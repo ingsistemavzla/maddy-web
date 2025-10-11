@@ -6,13 +6,13 @@ interface RecruitmentSectionProps {
 
 export default function RecruitmentSection({ onCTAClick }: RecruitmentSectionProps) {
   const features = [
-    "Formación Integral y Gratuita: Aprende todo lo necesario sin costo.",
-    "Acompañamiento Personalizado: Un mentor te guía en cada paso.",
-    "Modelo de Ingresos Comprobado: Genera ganancias desde el inicio."
+    { title: "Formación Integral y Gratuita:", description: "Aprende todo lo necesario sin costo." },
+    { title: "Acompañamiento Personalizado:", description: "Un mentor te guía en cada paso." },
+    { title: "Modelo de Ingresos Comprobado:", description: "Genera ganancias desde el inicio." }
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section id="formacion" className="py-20 bg-white relative overflow-hidden">
       {/* Círculos decorativos de fondo */}
       <div className="absolute inset-0 z-0">
         <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-purple-100 to-pink-200 rounded-full opacity-40"></div>
@@ -27,7 +27,7 @@ export default function RecruitmentSection({ onCTAClick }: RecruitmentSectionPro
           <div>
             {/* Título */}
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Un sistema claro para avanzar sin miedo
+              Un <span className="relative inline-block px-3 py-1 rounded-md" style={{ backgroundColor: 'rgba(54, 125, 217, 0.25)', color: '#367DD9' }}>sistema</span> <em style={{ color: '#F2887E' }}>claro</em> para <span className="underline decoration-2 decoration-[#2D61A6]" style={{ color: '#2D61A6' }}>avanzar</span> sin <span className="relative inline-block px-2" style={{ backgroundColor: 'rgba(242, 136, 126, 0.3)', color: '#F2887E' }}>miedo</span>
             </h2>
 
             {/* Descripción */}
@@ -39,11 +39,14 @@ Con nuestro método probado, podrás crecer, formarte y alcanzar independencia p
             {/* Lista con checkmarks */}
             <div className="space-y-4">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-center space-x-3" data-testid={`feature-${index}`}>
-                  <div className="w-6 h-6 bg-teal-400 rounded-full flex items-center justify-center flex-shrink-0">
+                <div key={index} className="flex items-start space-x-3" data-testid={`feature-${index}`}>
+                  <div className="w-6 h-6 bg-teal-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Check className="w-4 h-4 text-white" strokeWidth={3} />
                   </div>
-                  <span className="text-gray-700">{feature}</span>
+                  <span className="text-gray-700">
+                    <span className="font-bold" style={{ color: '#2D61A6' }}>{feature.title}</span>{' '}
+                    {feature.description}
+                  </span>
                 </div>
               ))}
             </div>
@@ -62,8 +65,8 @@ Con nuestro método probado, podrás crecer, formarte y alcanzar independencia p
             <div className="absolute -top-6 -left-6 w-28 h-28 bg-gradient-to-br from-purple-200 to-pink-300 rounded-full opacity-50 z-0"></div>
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://ext.same-assets.com/2339639548/3160881759.false"
-                alt="Professional man"
+                src="/images/maddy-2.jpg"
+                alt="Maddy Peñuela - Sistema de formación"
                 className="w-full h-auto object-cover"
               />
             </div>

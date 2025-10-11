@@ -1,27 +1,34 @@
-const navItems = ['Inicio', 'Historias', 'Oportunidad', 'Formación', 'Contacto'];
+const navItems = [
+  { name: 'Inicio', href: '#inicio' },
+  { name: 'Historias', href: '#historias' },
+  { name: 'Oportunidad', href: '#oportunidad' },
+  { name: 'Formación', href: '#formacion' },
+  { name: 'Contacto', href: '#contacto' }
+];
 
 export default function Navbar() {
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center">
+          <div className="flex items-center -my-2">
             <img
               src="/images/logo-maddy.png"
               alt="Carta Business Group Logo"
-              className="w-[187px] h-[76px] object-contain mr-[-10px]"
+              className="w-[187px] h-[76px] object-contain -ml-2"
             />
           </div>
           
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <a
-                key={item}
-                href="#"
-                className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                data-testid={`link-nav-${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
+                className="font-medium transition-colors hover:opacity-70"
+                style={{ color: '#1a1a2e' }}
+                data-testid={`link-nav-${item.name.toLowerCase()}`}
               >
-                {item}
+                {item.name}
               </a>
             ))}
           </nav>

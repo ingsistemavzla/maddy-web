@@ -41,10 +41,10 @@ const VideoSection: React.FC = () => {
           <div className="w-full max-w-4xl">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">
               <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src="https://www.youtube.com/embed/0a4909bZ3uQ?si=Ig71YaL44tvmXof2"
                 title="Descubre la Oportunidad"
                 className="w-full aspect-video rounded-3xl"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
             </div>

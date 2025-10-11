@@ -2,7 +2,7 @@ import { MessageCircle } from "lucide-react";
 
 export default function StorySection() {
   return (
-    <section className="py-20 bg-gradient-to-r from-[#0074E4] to-[#FF6F61] relative overflow-hidden">
+    <section id="historias" className="py-20 bg-gradient-to-r from-[#0074E4] to-[#FF6F61] relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-64 h-64 border-2 border-white rounded-full"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 border-2 border-white rounded-full"></div>
@@ -30,9 +30,11 @@ export default function StorySection() {
           <div className="relative">
             <div className="absolute inset-0 bg-white/10 rounded-3xl blur-3xl"></div>
             <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-              <div className="aspect-square bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center">
-                <div className="text-white text-6xl font-bold">MP</div>
-              </div>
+              <img 
+                src="/images/maddy-1.jpg" 
+                alt="Maddy Peñuela - Mi historia" 
+                className="w-full h-full object-cover aspect-square"
+              />
             </div>
           </div>
         </div>

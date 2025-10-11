@@ -7,7 +7,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onCTAClick }: HeroSectionProps) {
   return (
-    <section className="relative bg-white overflow-hidden">
+    <section id="inicio" className="relative bg-white overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-20 right-0 w-96 h-96 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full transform translate-x-32 -translate-y-16 opacity-60"></div>
         <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full opacity-40"></div>
@@ -18,8 +18,9 @@ export default function HeroSection({ onCTAClick }: HeroSectionProps) {
           <div className="space-y-6">
             <div className="w-16 h-1 bg-gradient-to-r from-cyan-blue to-cyan-500 rounded-full"></div>
             
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Yo también empecé <span className="text-coral">desde cero</span>
+            <h1 className="text-[42px] lg:text-[54px] font-bold text-gray-900 leading-tight">
+              La <span className="relative inline-block px-3 py-1 rounded-md" style={{ backgroundColor: 'rgba(242, 136, 126, 0.3)', color: '#F2887E' }}>oportunidad</span> de <span style={{ color: '#367DD9' }}>vivir</span> <em style={{ color: '#2D61A6' }}>plenamente</em>, <span className="relative inline-block px-2" style={{ backgroundColor: 'rgba(54, 125, 217, 0.2)', color: '#2A5E8C' }}>hoy</span>.<br />
+              <span className="text-3xl lg:text-4xl">Está aquí en <span className="underline decoration-4 decoration-[#F2887E]" style={{ color: '#F2887E' }}>tus manos</span>!</span>
             </h1>
             
             <p className="text-lg text-gray-600 leading-relaxed max-w-lg">

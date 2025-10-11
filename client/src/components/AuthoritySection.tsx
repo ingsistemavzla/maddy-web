@@ -1,9 +1,9 @@
 export default function AuthoritySection() {
   const companies = [
-    "Globe Life",
-    "Carta Business Group",
-    "S&P 500",
-    "American Income Life"
+    { name: "Globe Life", logo: "/images/GLOBE.png" },
+    { name: "Carta Business Group", logo: null },
+    { name: "S&P 500", logo: null },
+    { name: "American Income Life", logo: "/images/AIL.png" }
   ];
 
   return (
@@ -15,7 +15,11 @@ export default function AuthoritySection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#FFFFF3] mb-6 leading-tight">
-            No estás solo. Detrás de esta oportunidad hay una compañía sólida.
+            <span className="underline decoration-2 decoration-[#FFB6A3]">No</span> <em>estás</em> <span className="underline decoration-2 decoration-[#FF9AA2]">solo</span>.
+            <br />
+            <span className="text-2xl md:text-3xl block mt-3">
+              Detrás de esta <span className="bg-gradient-to-r from-[#40E0D0] to-[#7FDBFF] bg-clip-text text-transparent font-bold">oportunidad</span> hay una <em style={{ color: '#FFB6A3' }}>compañía</em> <span style={{ color: '#FFFFFF', textShadow: '0 0 15px #40E0D0, 0 0 25px #7FDBFF' }}>sólida</span>.
+            </span>
           </h2>
           
           <p className="text-lg text-[#FFFFF3]/90 max-w-3xl mx-auto leading-relaxed mb-12">
@@ -33,9 +37,17 @@ Juntos, impulsamos el crecimiento y la estabilidad de las familias latinas en EE
               data-testid={`company-card-${index}`}
             >
               <div className="flex items-center justify-center h-20">
-                <p className="text-[#FFFFF3] font-bold text-center text-lg">
-                  {company}
-                </p>
+                {company.logo ? (
+                  <img 
+                    src={company.logo} 
+                    alt={company.name}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                ) : (
+                  <p className="text-[#FFFFF3] font-bold text-center text-lg">
+                    {company.name}
+                  </p>
+                )}
               </div>
             </div>
           ))}

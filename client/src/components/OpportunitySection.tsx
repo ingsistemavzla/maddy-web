@@ -34,14 +34,14 @@ interface OpportunitySectionProps {
 
 export default function OpportunitySection({ onCTAClick }: OpportunitySectionProps) {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+    <section id="oportunidad" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-blue/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-coral/5 rounded-full blur-3xl"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
-            Una oportunidad real para cambiar tu historia
+            Una <span className="underline decoration-2 decoration-[#367DD9]" style={{ color: '#367DD9' }}>oportunidad</span> <em style={{ color: '#F2887E' }}>real</em> para <em style={{ color: '#2D61A6' }}>cambiar</em> tu <span className="underline decoration-2 decoration-[#F2887E]" style={{ color: '#F2887E' }}>historia</span>
           </h2>
           <p className="text-xl text-cyan-blue max-w-3xl mx-auto">
             En Carta Business Group te ofrecemos herramientas, formación y acompañamiento para que transformes tu vida profesional.

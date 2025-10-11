@@ -93,7 +93,7 @@ export default function ClosingFormSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-[#3A7FF7] to-[#234A75] relative overflow-hidden">
+    <section id="contacto" className="py-20 bg-gradient-to-r from-[#3A7FF7] to-[#234A75] relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 animate-pulse">
           <Sparkles className="w-8 h-8 text-white" />
