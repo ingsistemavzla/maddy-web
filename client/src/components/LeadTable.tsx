@@ -22,16 +22,42 @@ export default function LeadTable({ leads, onUpdate }: LeadTableProps) {
   const [editingStates, setEditingStates] = useState<Record<number, string>>({});
   const [loading, setLoading] = useState<number | null>(null);
 
-  const getEstadoColor = (estado: string) => {
+  const getEstadoPosition = (estado: string) => {
     switch (estado) {
       case 'nuevo':
-        return 'bg-gray-200 text-gray-800';
+        return 'left-1'; // Izquierda
       case 'procesado':
-        return 'bg-cyan-blue text-white';
+        return 'left-[calc(50%-0.75rem)]'; // Centro
       case 'atendido':
-        return 'bg-coral text-white';
+        return 'right-1'; // Derecha
       default:
-        return 'bg-gray-200 text-gray-800';
+        return 'left-1';
+    }
+  };
+
+  const getEstadoBackgroundColor = (estado: string) => {
+    switch (estado) {
+      case 'nuevo':
+        return 'bg-gradient-to-r from-pink-400 to-coral'; // Rosado coral
+      case 'procesado':
+        return 'bg-gradient-to-r from-orange-400 to-orange-500'; // Naranja salmón
+      case 'atendido':
+        return 'bg-gradient-to-r from-blue-400 to-cyan-blue'; // Azul
+      default:
+        return 'bg-gray-300';
+    }
+  };
+
+  const getEstadoLabel = (estado: string) => {
+    switch (estado) {
+      case 'nuevo':
+        return 'Nuevo';
+      case 'procesado':
+        return 'Procesado';
+      case 'atendido':
+        return 'Atendido';
+      default:
+        return 'Nuevo';
     }
   };
 
@@ -167,13 +193,27 @@ export default function LeadTable({ leads, onUpdate }: LeadTableProps) {
                     {lead.email}
                   </td>
                   <td className="px-4 py-4">
-                    <button
-                      onClick={() => handleEstadoClick(lead.id, currentEstado)}
-                      disabled={loading === lead.id}
-                      className={`px-3 py-1 rounded-full text-xs font-semibold transition-all hover:scale-105 ${getEstadoColor(currentEstado)} disabled:opacity-50`}
-                    >
-                      {currentEstado}
-                    </button>
+                    <div className="flex flex-col items-center gap-2">
+                      {/* Switch de tres estados */}
+                      <button
+                        onClick={() => handleEstadoClick(lead.id, currentEstado)}
+                        disabled={loading === lead.id}
+                        className={`relative w-32 h-10 rounded-full transition-all duration-300 ${getEstadoBackgroundColor(currentEstado)} disabled:opacity-50 shadow-md hover:shadow-lg`}
+                        title={`Click para cambiar estado. Actual: ${getEstadoLabel(currentEstado)}`}
+                      >
+                        {/* Indicador deslizante (círculo blanco) */}
+                        <div 
+                          className={`absolute top-1 ${getEstadoPosition(currentEstado)} w-6 h-6 bg-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center`}
+                        >
+                          <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                        </div>
+                        
+                        {/* Texto del estado */}
+                        <span className="text-white text-xs font-bold absolute inset-0 flex items-center justify-center">
+                          {getEstadoLabel(currentEstado)}
+                        </span>
+                      </button>
+                    </div>
                   </td>
                   <td className="px-4 py-4 text-sm text-gray-600">
                     {formatDate(lead.fechaHora)}
