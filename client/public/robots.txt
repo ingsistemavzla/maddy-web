@@ -1,0 +1,20 @@
+# robots.txt para maddypenuela.com
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/*
+
+# Sitemap
+Sitemap: https://maddypenuela.com/sitemap.xml
+
+# Bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl-delay para bots que lo respeten
+Crawl-delay: 1
+

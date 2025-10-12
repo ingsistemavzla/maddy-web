@@ -147,18 +147,171 @@ En Render Free, los archivos **NO son persistentes**. Cada deploy borra los dato
 
 ---
 
-## 🌐 DOMINIO PERSONALIZADO
+## 🌐 DOMINIO PERSONALIZADO - HOSTINGER
 
 ### Dominio Gratuito de Render:
 ```
 https://maddy-web.onrender.com
 ```
 
-### Dominio Personalizado:
-1. Ve a **Settings** → **Custom Domains**
-2. Agrega tu dominio: `www.tudominio.com`
-3. Configura DNS según instrucciones de Render
-4. SSL se configura automáticamente (gratis)
+### Conectar Dominio de Hostinger: maddypenuela.com
+
+#### **PASO 1: Configuración en Render**
+
+1. Ve a tu servicio en [Render Dashboard](https://dashboard.render.com)
+2. Click en tu servicio `maddy-web`
+3. Ve a **Settings** → **Custom Domains**
+4. Click en **Add Custom Domain**
+5. Agrega dos dominios:
+   - `maddypenuela.com` (dominio raíz)
+   - `www.maddypenuela.com` (con www)
+
+Render te mostrará los registros DNS que necesitas configurar.
+
+#### **PASO 2: Configuración DNS en Hostinger**
+
+1. Inicia sesión en [Hostinger](https://hpanel.hostinger.com)
+2. Ve a **Dominios** → Selecciona `maddypenuela.com`
+3. Click en **DNS / Zona DNS**
+
+#### **Configuración de Registros DNS:**
+
+##### Para `maddypenuela.com` (dominio raíz):
+
+**Opción A - Registro CNAME (Recomendado):**
+```
+Tipo: CNAME
+Nombre: @
+Destino: [tu-app].onrender.com
+TTL: 3600
+```
+
+**Opción B - Registro A (Alternativa):**
+Si Hostinger no permite CNAME en raíz, usa registros A:
+```
+Tipo: A
+Nombre: @
+Destino: [IP proporcionada por Render]
+TTL: 3600
+```
+
+##### Para `www.maddypenuela.com`:
+
+```
+Tipo: CNAME
+Nombre: www
+Destino: [tu-app].onrender.com
+TTL: 3600
+```
+
+#### **PASO 3: Registros DNS Completos**
+
+Elimina o modifica estos registros si existen:
+- ❌ Elimina registros A antiguos que apunten a otros IPs
+- ❌ Elimina registros CNAME antiguos
+- ✅ Mantén registros MX (si usas email)
+- ✅ Mantén registros TXT de verificación
+
+**Configuración final debe verse así:**
+
+| Tipo  | Nombre | Destino/Valor              | TTL  |
+|-------|--------|---------------------------|------|
+| CNAME | @      | maddy-web.onrender.com    | 3600 |
+| CNAME | www    | maddy-web.onrender.com    | 3600 |
+
+#### **PASO 4: Verificación**
+
+1. **Tiempo de Propagación:** 5 minutos - 48 horas (usualmente < 1 hora)
+
+2. **Verificar DNS con herramientas:**
+   ```
+   https://www.whatsmydns.net/
+   ```
+   Busca: `maddypenuela.com` y `www.maddypenuela.com`
+
+3. **Verificar con comandos (opcional):**
+   ```bash
+   # Windows PowerShell
+   nslookup maddypenuela.com
+   nslookup www.maddypenuela.com
+   
+   # Verificar propagación
+   ping maddypenuela.com
+   ```
+
+#### **PASO 5: SSL/HTTPS (Automático)**
+
+✅ Render configura automáticamente certificados SSL (Let's Encrypt)
+- Se activa una vez que el DNS esté propagado
+- Puede tomar 5-15 minutos después de la propagación
+- Renovación automática cada 90 días
+
+#### **PASO 6: Redirecciones (Opcional)**
+
+Para redirigir automáticamente `www` a dominio raíz (o viceversa):
+
+1. En Render, ve a **Settings** → **Redirects**
+2. Configura:
+   ```
+   Desde: www.maddypenuela.com
+   Hacia: maddypenuela.com
+   Tipo: 301 (Permanente)
+   ```
+
+#### **Configuración Recomendada en Hostinger:**
+
+1. **Parking de Dominio:** Desactiva si está activo
+2. **Proxy de Cloudflare:** Desactiva temporalmente para configuración inicial
+3. **Email:** Si usas email con Hostinger, mantén registros MX:
+   ```
+   Tipo: MX
+   Nombre: @
+   Destino: mx1.hostinger.com (o tu servidor de email)
+   Prioridad: 10
+   ```
+
+#### **Verificación Final:**
+
+Después de 1-24 horas, verifica:
+
+- ✅ `http://maddypenuela.com` → redirige a `https://maddypenuela.com`
+- ✅ `http://www.maddypenuela.com` → redirige a `https://www.maddypenuela.com`
+- ✅ Certificado SSL activo (candado verde en navegador)
+- ✅ Todas las páginas cargan correctamente
+- ✅ Formularios funcionan
+- ✅ Panel admin accesible
+
+---
+
+### 🔧 TROUBLESHOOTING - Dominio
+
+#### DNS no Propaga
+**Síntoma:** Dominio no carga después de 24 horas
+- Verifica que los registros estén correctos (sin espacios extra)
+- Usa `https://dnschecker.org/` para ver propagación global
+- Limpia caché DNS local:
+  ```bash
+  # Windows
+  ipconfig /flushdns
+  ```
+
+#### SSL no se Activa
+**Síntoma:** "Not Secure" en navegador
+- Espera 15-30 minutos después de propagación DNS
+- Verifica que el DNS apunte correctamente a Render
+- En Render, ve a **Settings** → **Custom Domains** y verifica estado SSL
+
+#### Página no Carga (502/504)
+**Síntoma:** Error de gateway
+- Verifica que tu servicio en Render esté activo (no dormido)
+- Revisa logs en Render Dashboard
+- Confirma que el servidor esté escuchando en `0.0.0.0`
+
+#### Dominio Carga pero sin Estilos
+**Síntoma:** Página sin CSS/JS
+- Verifica que los assets se sirvan correctamente
+- Revisa la consola del navegador (F12) para errores
+- Confirma que las rutas en tu código sean relativas o absolutas correctas
 
 ---
 

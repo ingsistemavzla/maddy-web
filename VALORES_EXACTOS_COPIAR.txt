@@ -1,0 +1,222 @@
+═══════════════════════════════════════════════════════════════
+    VALORES EXACTOS PARA COPIAR/PEGAR - HOSTINGER DNS
+═══════════════════════════════════════════════════════════════
+
+📋 DOMINIO: maddypenuela.com
+🔧 SERVICIO: maddy-web.onrender.com
+📅 FECHA: 12 de Octubre, 2025
+
+═══════════════════════════════════════════════════════════════
+
+✅ REGISTRO 1 - DOMINIO PRINCIPAL
+───────────────────────────────────────────────────────────────
+Tipo de registro:     A
+Nombre/Host:          @
+Valor/Apunta a:       216.24.57.1
+TTL:                  3600
+
+COPIAR IP (sin espacios):
+216.24.57.1
+
+═══════════════════════════════════════════════════════════════
+
+✅ REGISTRO 2 - SUBDOMINIO WWW
+───────────────────────────────────────────────────────────────
+Tipo de registro:     CNAME
+Nombre/Host:          www
+Valor/Apunta a:       maddy-web.onrender.com
+TTL:                  3600
+
+COPIAR DOMINIO (sin espacios, sin https://, sin punto final):
+maddy-web.onrender.com
+
+═══════════════════════════════════════════════════════════════
+
+⚠️  IMPORTANTE - NO INCLUIR:
+───────────────────────────────────────────────────────────────
+❌ NO agregar: https://
+❌ NO agregar: http://
+❌ NO agregar: punto final (.)
+❌ NO agregar: espacios
+❌ NO agregar: comillas ("")
+
+✅ CORRECTO:   maddy-web.onrender.com
+❌ INCORRECTO: https://maddy-web.onrender.com
+❌ INCORRECTO: maddy-web.onrender.com.
+❌ INCORRECTO: "maddy-web.onrender.com"
+
+═══════════════════════════════════════════════════════════════
+
+📊 TABLA COMPLETA DE REGISTROS DNS
+───────────────────────────────────────────────────────────────
+
+Tipo    | Nombre | Valor                  | TTL
+--------|--------|------------------------|------
+A       | @      | 216.24.57.1            | 3600
+CNAME   | www    | maddy-web.onrender.com | 3600
+
+═══════════════════════════════════════════════════════════════
+
+🔍 VERIFICACIÓN CON NSLOOKUP
+───────────────────────────────────────────────────────────────
+
+Comando 1 (copiar y pegar en PowerShell):
+ipconfig /flushdns
+
+Comando 2:
+nslookup maddypenuela.com
+
+RESULTADO ESPERADO:
+Address: 216.24.57.1
+
+Comando 3:
+nslookup www.maddypenuela.com
+
+RESULTADO ESPERADO:
+www.maddypenuela.com
+        canonical name = maddy-web.onrender.com
+Address: 216.24.57.1
+
+═══════════════════════════════════════════════════════════════
+
+🌐 URLS IMPORTANTES
+───────────────────────────────────────────────────────────────
+
+Hostinger Panel:
+https://hpanel.hostinger.com
+
+Render Dashboard:
+https://dashboard.render.com
+
+Verificar DNS (copiar y pegar):
+https://www.whatsmydns.net/#A/maddypenuela.com
+https://www.whatsmydns.net/#CNAME/www.maddypenuela.com
+
+Verificar SSL:
+https://www.ssllabs.com/ssltest/analyze.html?d=maddypenuela.com
+
+═══════════════════════════════════════════════════════════════
+
+✅ CHECKLIST SUPER RÁPIDO
+───────────────────────────────────────────────────────────────
+
+HOSTINGER:
+[ ] Abrir hpanel.hostinger.com
+[ ] Ir a Dominios → maddypenuela.com → DNS
+[ ] Eliminar registro A antiguo en @
+[ ] Agregar: A | @ | 216.24.57.1 | 3600
+[ ] Eliminar registros antiguos en www
+[ ] Agregar: CNAME | www | maddy-web.onrender.com | 3600
+[ ] Click Guardar Cambios
+
+POWERSHELL:
+[ ] ipconfig /flushdns
+[ ] nslookup maddypenuela.com → debe mostrar 216.24.57.1
+[ ] nslookup www.maddypenuela.com → debe mostrar maddy-web.onrender.com
+
+RENDER:
+[ ] Abrir dashboard.render.com
+[ ] Ir a maddy-web → Settings → Custom Domains
+[ ] Click Verify en maddypenuela.com
+[ ] Click Verify en www.maddypenuela.com
+[ ] Esperar estado "Verified" ✅
+
+NAVEGADOR (después de 30 min):
+[ ] https://maddypenuela.com → carga con candado verde
+[ ] https://www.maddypenuela.com → redirige a principal
+
+═══════════════════════════════════════════════════════════════
+
+⏰ TIEMPOS ESTIMADOS
+───────────────────────────────────────────────────────────────
+
+Configuración en Hostinger:       2-3 minutos
+Configuración en Render:          1 minuto
+Propagación DNS:                  5-30 minutos
+Verificación en Render:           1 minuto
+Generación SSL:                   10-20 minutos
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TOTAL:                            20-60 minutos ⏱️
+
+═══════════════════════════════════════════════════════════════
+
+📞 SOPORTE
+───────────────────────────────────────────────────────────────
+
+Hostinger Chat 24/7:
+→ Abre hpanel.hostinger.com
+→ Click en el icono de chat (esquina inferior derecha)
+→ Mensaje sugerido si hay problemas:
+
+"Hola, necesito ayuda configurando DNS para mi dominio 
+maddypenuela.com. Necesito agregar un registro A en @ 
+apuntando a 216.24.57.1 para mi aplicación en Render. 
+¿Me pueden ayudar?"
+
+Render Support:
+→ https://community.render.com
+→ https://render.com/docs/custom-domains
+
+═══════════════════════════════════════════════════════════════
+
+💾 INFORMACIÓN PARA GUARDAR
+───────────────────────────────────────────────────────────────
+
+Dominio comprado:       maddypenuela.com
+Comprado en:            Hostinger
+Fecha de compra:        ___/___/2025
+Renovación:             ___/___/____
+
+Hosting aplicación:     Render.com
+Nombre del servicio:    maddy-web
+URL Render:             maddy-web.onrender.com
+IP Asignada:            216.24.57.1
+Plan Render:            Free / Starter ($7/mes)
+
+DNS configurado:        ___/___/2025
+SSL activado:           ___/___/2025
+
+Usuario Hostinger:      _______________________
+Usuario Render:         _______________________
+
+═══════════════════════════════════════════════════════════════
+
+🎉 RESULTADO FINAL
+───────────────────────────────────────────────────────────────
+
+Tu sitio web estará disponible en:
+
+    🌐  https://maddypenuela.com
+
+Con:
+✅ SSL/HTTPS automático (candado verde)
+✅ Redirección automática de www → dominio principal
+✅ Certificado renovado automáticamente cada 90 días
+✅ Deploy automático cuando hagas push a GitHub
+
+═══════════════════════════════════════════════════════════════
+
+📝 NOTAS ADICIONALES
+───────────────────────────────────────────────────────────────
+
+- La IP 216.24.57.1 es la IP de Render y puede cambiar en el
+  futuro. Si Render cambia la IP, ellos te notificarán.
+
+- El certificado SSL se renueva automáticamente. No necesitas
+  hacer nada.
+
+- Si estás en plan Free de Render, el sitio se "duerme" después
+  de 15 minutos sin actividad. Primera carga tardará ~30 seg.
+
+- Considera upgradar a plan Starter ($7/mes) para que el sitio
+  esté siempre activo.
+
+- Puedes agregar Google Analytics, Google Search Console, etc.
+  después de que el dominio esté funcionando.
+
+═══════════════════════════════════════════════════════════════
+
+Archivo creado: 12 de Octubre, 2025
+Versión: 1.0
+Instrucciones basadas en: Render Custom Domains
+

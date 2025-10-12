@@ -13,6 +13,7 @@ import RecruitmentSection from "@/components/RecruitmentSection";
 import TestimonialsCardsSection from "@/components/TestimonialsCardsSection";
 import ClosingFormSection from "@/components/ClosingFormSection";
 import { OrientationModal } from "@/components/OrientationModal";
+import SEO from "@/components/SEO";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <SEO />
       <Navbar onCTAClick={handleOpenModal} />
       <HeroSection onCTAClick={handleOpenModal} />
       <ShapeDivider />
