@@ -11,7 +11,7 @@ interface SEOProps {
 export default function SEO({
   title = "Maddy Peñuela | Construye un Futuro sin Límites ni Fronteras",
   description = "Descubre cómo transformar tu vida con una oportunidad real de crecimiento personal y financiero. Conoce la historia de Maddy Peñuela y únete a una comunidad latina que te apoya paso a paso hacia tu libertad y estabilidad. 💪✨",
-  image = "https://maddypenuela.com/images/maddy-hero.png",
+  image = "https://maddypenuela.com/images/logo-maddy.png",
   url = "https://maddypenuela.com",
   type = "website"
 }: SEOProps) {
