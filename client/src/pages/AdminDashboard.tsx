@@ -44,7 +44,7 @@ export default function AdminDashboard() {
     const intervalId = setInterval(() => {
       console.log("🔄 Sincronizando datos...");
       loadLeads();
-    }, 15000); // Actualizar cada 15 segundos
+    }, 60000); // Actualizar cada 60 segundos (1 minuto)
 
     return () => clearInterval(intervalId); // Limpiar al desmontar
   }, []);

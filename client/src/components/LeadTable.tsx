@@ -25,13 +25,13 @@ export default function LeadTable({ leads, onUpdate }: LeadTableProps) {
   const getEstadoPosition = (estado: string) => {
     switch (estado) {
       case 'nuevo':
-        return 'left-1'; // Izquierda
+        return 'left-0.5'; // Izquierda
       case 'procesado':
-        return 'left-[calc(50%-0.75rem)]'; // Centro
+        return 'left-[calc(50%-0.5rem)]'; // Centro (ajustado para w-4)
       case 'atendido':
-        return 'right-1'; // Derecha
+        return 'right-0.5'; // Derecha
       default:
-        return 'left-1';
+        return 'left-0.5';
     }
   };
 
@@ -198,18 +198,18 @@ export default function LeadTable({ leads, onUpdate }: LeadTableProps) {
                       <button
                         onClick={() => handleEstadoClick(lead.id, currentEstado)}
                         disabled={loading === lead.id}
-                        className={`relative w-32 h-10 rounded-full transition-all duration-300 ${getEstadoBackgroundColor(currentEstado)} disabled:opacity-50 shadow-md hover:shadow-lg`}
+                        className={`relative w-20 h-6 rounded-full transition-all duration-300 ${getEstadoBackgroundColor(currentEstado)} disabled:opacity-50 shadow-md hover:shadow-lg`}
                         title={`Click para cambiar estado. Actual: ${getEstadoLabel(currentEstado)}`}
                       >
                         {/* Indicador deslizante (círculo blanco) */}
                         <div 
-                          className={`absolute top-1 ${getEstadoPosition(currentEstado)} w-6 h-6 bg-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center`}
+                          className={`absolute top-0.5 ${getEstadoPosition(currentEstado)} w-4 h-4 bg-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center`}
                         >
-                          <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                          <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                         </div>
                         
                         {/* Texto del estado */}
-                        <span className="text-white text-xs font-bold absolute inset-0 flex items-center justify-center">
+                        <span className="text-white text-[9px] font-bold absolute inset-0 flex items-center justify-center">
                           {getEstadoLabel(currentEstado)}
                         </span>
                       </button>
