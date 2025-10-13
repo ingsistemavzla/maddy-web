@@ -1,45 +1,46 @@
 import { useState, useEffect } from "react";
 import { Play, Instagram, Facebook, Linkedin, User, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import TestimonialModal from "./TestimonialModal";
 
 const testimonials = [
   {
-    name: "Carolina M.",
-    role: "Mentora",
+    name: "Carol Fernández",
+    role: "MGA - Master General Agent",
     quote: "Antes me sentía estancada, sin propósito y trabajando en algo que no me llenaba. Hoy, gracias a esta oportunidad y al increíble equipo que me rodea, he encontrado libertad financiera, un propósito claro y la capacidad de ayudar a otros a transformar sus vidas también.",
     shortQuote: "Antes me sentía estancada. Hoy tengo libertad y propósito gracias al equipo.",
-    initials: "CM",
-    image: "/images/maddy-1.jpg", // Usar imagen placeholder por ahora
-    audioUrl: "/audio/carolina-testimonio.mp3", // Agregar audio cuando esté disponible
+    initials: "CF",
+    image: "/images/Carol.jpg",
+    audioUrl: "/audio/carol-testimonio.mp3",
     socials: {
-      instagram: "https://instagram.com/carolinam",
-      facebook: "https://facebook.com/carolinam",
+      instagram: "https://www.instagram.com/penuelamaddy",
+      facebook: "https://www.facebook.com/maddy.penuela",
     }
   },
   {
-    name: "José R.",
-    role: "Supervisor",
+    name: "Aknerson Hernández",
+    role: "SA - Supervisor Agent",
     quote: "Trabajaba largas horas sin ver resultados justos ni tener tiempo para mi familia. Desde que me uní, no solo he encontrado estabilidad económica e ingresos justos, sino también un ambiente donde puedo crecer profesionalmente mientras mantengo el balance que siempre busqué.",
     shortQuote: "Encontré estabilidad, ingresos justos y un ambiente donde crecer.",
-    initials: "JR",
-    image: "/images/maddy-2.jpg",
-    audioUrl: "/audio/jose-testimonio.mp3",
+    initials: "AH",
+    image: "/images/Aknerson.jpg",
+    audioUrl: "/audio/aknerson-testimonio.mp3",
     socials: {
-      instagram: "https://instagram.com/joser",
-      linkedin: "https://linkedin.com/in/joser",
+      instagram: "https://www.instagram.com/penuelamaddy",
+      facebook: "https://www.facebook.com/maddy.penuela",
+      linkedin: "https://www.linkedin.com",
     }
   },
   {
-    name: "M.P.",
-    role: "Community Leader",
+    name: "Carlos Penalver",
+    role: "Agente",
     quote: "Durante años trabajé sin rumbo, saltando de empleo en empleo sin sentir que realmente estaba construyendo algo. Esta oportunidad cambió completamente mi vida. Ahora vivo de lo que amo, lidero una comunidad increíble y cada día me levanto con emoción por lo que hago.",
     shortQuote: "Pasé de trabajar sin rumbo a vivir de lo que amo. Esta oportunidad cambió mi vida.",
-    initials: "MP",
-    image: "/images/logo-maddy.png",
-    audioUrl: "/audio/mp-testimonio.mp3",
+    initials: "CP",
+    image: "/images/Carlos.jpg",
+    audioUrl: "/audio/carlos-testimonio.mp3",
     socials: {
-      instagram: "https://instagram.com/mp",
-      facebook: "https://facebook.com/mp",
-      linkedin: "https://linkedin.com/in/mp",
+      instagram: "https://www.instagram.com/penuelamaddy",
+      facebook: "https://www.facebook.com/maddy.penuela",
     }
   },
 ];
@@ -48,10 +49,20 @@ interface TestimonialsCardsSectionProps {
   onCTAClick: () => void;
 }
 
-const TestimonialCard = ({ testimonial, index, isCenter = false }: { testimonial: typeof testimonials[0], index: number, isCenter?: boolean }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const TestimonialCard = ({ 
+  testimonial, 
+  index, 
+  isCenter = false,
+  onOpenBio,
+  onOpenTestimonio
+}: { 
+  testimonial: typeof testimonials[0], 
+  index: number, 
+  isCenter?: boolean,
+  onOpenBio: (testimonial: typeof testimonials[0]) => void,
+  onOpenTestimonio: (testimonial: typeof testimonials[0]) => void
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showBio, setShowBio] = useState(false);
 
   const toggleAudio = () => {
     setIsPlaying(!isPlaying);
@@ -71,7 +82,7 @@ const TestimonialCard = ({ testimonial, index, isCenter = false }: { testimonial
       }}
       data-testid={`testimonial-card-${index}`}
     >
-      <div className="grid grid-cols-[40%_60%] gap-0 h-[110px] sm:h-[130px] md:h-[155px] lg:h-[185px] bg-[#FF8C7A]">
+      <div className="grid grid-cols-[40%_60%] gap-0 h-[145px] sm:h-[130px] md:h-[155px] lg:h-[185px] bg-[#FF8C7A]">
         {/* Columna 1 (IZQUIERDA 40%) - Imagen con overlay */}
         <div className="relative h-full overflow-hidden">
           {/* Imagen de fondo que cubre TODO */}
@@ -88,40 +99,40 @@ const TestimonialCard = ({ testimonial, index, isCenter = false }: { testimonial
             }}
           />
           
-          {/* Contenido sobre el overlay - MÁS ARRIBA */}
-          <div className="relative h-full flex flex-col justify-end pb-1 sm:pb-1.5 md:pb-2 px-2 sm:px-2.5 md:px-3 text-white z-10 w-full">
+          {/* Contenido sobre el overlay - Ajustado para móvil */}
+          <div className="relative h-full flex flex-col justify-end pb-2 sm:pb-1.5 md:pb-2 px-3 sm:px-2.5 md:px-3 text-white z-10 w-full">
             {/* Nombre - alineado a la derecha */}
-            <div className="text-right mb-0.5">
-              <h3 className="text-[7px] sm:text-[8px] md:text-[10px] lg:text-[11px] font-bold text-white drop-shadow-lg">
+            <div className="text-right mb-1">
+              <h3 className="text-[9px] sm:text-[8px] md:text-[10px] lg:text-[11px] font-bold text-white drop-shadow-lg">
                 {testimonial.name}
               </h3>
             </div>
 
             {/* Divisor/línea blanca entre nombre y cargo */}
-            <div className="flex justify-end mb-0.5">
-              <div className="h-[1px] sm:h-[1.5px] w-5 sm:w-6 md:w-8 bg-white/60 rounded-full"></div>
+            <div className="flex justify-end mb-1">
+              <div className="h-[1.5px] w-7 sm:w-6 md:w-8 bg-white/60 rounded-full"></div>
             </div>
 
             {/* Cargo - alineado a la derecha */}
-            <div className="text-right mb-1 sm:mb-1.5">
-              <p className="text-[5px] sm:text-[6px] md:text-[7px] lg:text-[8px] font-medium text-white/95 drop-shadow-md">
+            <div className="text-right mb-2 sm:mb-1.5">
+              <p className="text-[7px] sm:text-[6px] md:text-[7px] lg:text-[8px] font-medium text-white/95 drop-shadow-md">
                 {testimonial.role}
               </p>
             </div>
 
             {/* Fila con Redes (izquierda) y Botón Bio (derecha) */}
-            <div className="flex justify-between items-center w-full gap-1">
+            <div className="flex justify-between items-center w-full gap-1.5">
               {/* Iconos de redes sociales */}
-              <div className="flex gap-0.5">
+              <div className="flex gap-1">
                 {testimonial.socials.facebook && (
                   <a 
                     href={testimonial.socials.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 bg-[#1877F2] rounded-full flex items-center justify-center hover:-translate-y-0.5 transition-all shadow-sm"
+                    className="w-4 h-4 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 bg-[#1877F2] rounded-full flex items-center justify-center hover:-translate-y-0.5 transition-all shadow-sm"
                     aria-label="Facebook"
                   >
-                    <Facebook className="w-1.5 h-1.5 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 text-white" fill="white" />
+                    <Facebook className="w-2 h-2 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 text-white" fill="white" />
                   </a>
                 )}
                 {testimonial.socials.instagram && (
@@ -129,10 +140,10 @@ const TestimonialCard = ({ testimonial, index, isCenter = false }: { testimonial
                     href={testimonial.socials.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 bg-gradient-to-br from-[#FD5949] via-[#D6249F] to-[#285AEB] rounded-full flex items-center justify-center hover:-translate-y-0.5 transition-all shadow-sm"
+                    className="w-4 h-4 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 bg-gradient-to-br from-[#FD5949] via-[#D6249F] to-[#285AEB] rounded-full flex items-center justify-center hover:-translate-y-0.5 transition-all shadow-sm"
                     aria-label="Instagram"
                   >
-                    <Instagram className="w-1.5 h-1.5 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 text-white" />
+                    <Instagram className="w-2 h-2 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 text-white" />
                   </a>
                 )}
                 {testimonial.socials.linkedin && (
@@ -140,18 +151,18 @@ const TestimonialCard = ({ testimonial, index, isCenter = false }: { testimonial
                     href={testimonial.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 bg-[#0A66C2] rounded-full flex items-center justify-center hover:-translate-y-0.5 transition-all shadow-sm"
+                    className="w-4 h-4 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 bg-[#0A66C2] rounded-full flex items-center justify-center hover:-translate-y-0.5 transition-all shadow-sm"
                     aria-label="LinkedIn"
                   >
-                    <Linkedin className="w-1.5 h-1.5 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 text-white" fill="white" />
+                    <Linkedin className="w-2 h-2 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 text-white" fill="white" />
                   </a>
                 )}
               </div>
 
               {/* Botón Biografía */}
               <button
-                onClick={() => setShowBio(!showBio)}
-                className="bg-white hover:bg-white/90 text-coral px-1.5 sm:px-2 md:px-2.5 py-0.5 rounded-full font-bold text-[5px] sm:text-[6px] md:text-[7px] transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
+                onClick={() => onOpenBio(testimonial)}
+                className="bg-white hover:bg-white/90 text-coral px-2.5 sm:px-2 md:px-2.5 py-1 sm:py-0.5 rounded-full font-bold text-[7px] sm:text-[6px] md:text-[7px] transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
                 aria-label="Ver biografía completa"
               >
                 Biografía
@@ -161,71 +172,60 @@ const TestimonialCard = ({ testimonial, index, isCenter = false }: { testimonial
         </div>
 
         {/* Columna 2 (DERECHA 60%) - Contenido del testimonio */}
-        <div className="relative p-2 sm:p-2.5 md:p-3 flex flex-col justify-between text-white">
+        <div className="relative p-3 sm:p-2.5 md:p-3 flex flex-col justify-between text-white">
           {/* Icono de comillas - Apertura (responsive) */}
-          <Quote className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white opacity-50 mb-0.5" />
+          <Quote className="w-6 h-6 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white opacity-50 mb-1" />
 
           {/* Contenido del testimonio (responsive) */}
           <div className="flex-1 flex flex-col justify-center relative z-10">
-            <p className="text-white text-[6px] sm:text-[7px] md:text-[9px] lg:text-[10px] font-semibold italic leading-[1.3] tracking-[-0.01em]" style={{ textShadow: '0 1px 4px rgba(16,44,58,0.12)' }}>
-              {isExpanded ? testimonial.quote : testimonial.shortQuote}
+            <p className="text-white text-[8px] sm:text-[7px] md:text-[9px] lg:text-[10px] font-semibold italic leading-[1.3] tracking-[-0.01em]" style={{ textShadow: '0 1px 4px rgba(16,44,58,0.12)' }}>
+              {testimonial.shortQuote}
             </p>
             
             {/* "Leer más" alineado a la derecha */}
-            <div className="flex justify-end mt-0.5">
-              {!isExpanded && testimonial.quote !== testimonial.shortQuote && (
-                <button
-                  onClick={() => setIsExpanded(true)}
-                  className="text-white font-semibold text-[5px] sm:text-[6px] md:text-[7px] underline decoration-1 underline-offset-2 hover:decoration-[rgba(255,255,255,0.6)] transition-all"
-                  aria-label="Leer testimonio completo"
-                >
-                  Leer más
-                </button>
-              )}
-              
-              {isExpanded && (
-                <button
-                  onClick={() => setIsExpanded(false)}
-                  className="text-white font-semibold text-[5px] sm:text-[6px] md:text-[7px] underline decoration-1 underline-offset-2 hover:decoration-[rgba(255,255,255,0.6)] transition-all"
-                >
-                  Leer menos
-                </button>
-              )}
+            <div className="flex justify-end mt-1">
+              <button
+                onClick={() => onOpenTestimonio(testimonial)}
+                className="text-white font-semibold text-[7px] sm:text-[6px] md:text-[7px] underline decoration-1 underline-offset-2 hover:decoration-[rgba(255,255,255,0.6)] transition-all"
+                aria-label="Leer testimonio completo"
+              >
+                Leer más
+              </button>
             </div>
           </div>
 
           {/* Icono de comillas - Cierre (responsive) */}
-          <div className="flex justify-end mb-0.5">
-            <Quote className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white opacity-50" />
+          <div className="flex justify-end mb-1">
+            <Quote className="w-6 h-6 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white opacity-50" />
           </div>
 
           {/* Leyenda antes del audio */}
-          <p className="text-white/70 text-[4.5px] sm:text-[5px] md:text-[6px] lg:text-[6.5px] italic mb-0.5 text-center">
+          <p className="text-white/70 text-[6px] sm:text-[5px] md:text-[6px] lg:text-[6.5px] italic mb-1 text-center">
             Escucha el testimonio de {testimonial.name.split(' ')[0]}
           </p>
 
-          {/* Reproductor de Audio (responsive) */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-md sm:rounded-lg p-1 sm:p-1.5 border border-white/20 relative z-10">
+          {/* Reproductor de Audio - Glassmorphism mejorado */}
+          <div className="bg-white/35 backdrop-blur-sm rounded-md sm:rounded-lg p-1 sm:p-1.5 border border-white/40 shadow-[inset_0_1px_2px_rgba(255,255,255,0.5)] relative z-10">
             <div className="flex items-center gap-1 sm:gap-1.5">
               <button
                 onClick={toggleAudio}
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center transition-all ${
+                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center transition-all border ${
                   isPlaying 
-                    ? 'bg-white text-coral shadow-sm' 
-                    : 'bg-white/20 text-white border border-white hover:bg-white hover:text-coral'
+                    ? 'bg-white text-coral border-coral shadow-md' 
+                    : 'bg-white text-coral border-coral hover:shadow-lg'
                 }`}
               >
-                <Play className="w-2 h-2 sm:w-2.5 sm:h-2.5" fill={isPlaying ? 'currentColor' : 'none'} />
+                <Play className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-coral" fill={isPlaying ? 'currentColor' : 'none'} />
               </button>
 
               <div className="flex-1">
                 <div className="flex items-center gap-0.5 sm:gap-1 mb-0.5">
-                  <span className="text-[5px] sm:text-[6px] md:text-[7px] font-semibold text-white">🎙️</span>
-                  <span className="text-[4px] sm:text-[5px] md:text-[6px] text-white/80">0:00 / 2:15</span>
+                  <span className="text-[5px] sm:text-[6px] md:text-[7px] font-semibold text-white drop-shadow-sm">🎙️</span>
+                  <span className="text-[4px] sm:text-[5px] md:text-[6px] text-white/90 drop-shadow-sm">0:00 / 2:15</span>
                 </div>
-                <div className="h-0.5 sm:h-1 bg-white/20 rounded-full overflow-hidden">
+                <div className="h-0.5 sm:h-1 bg-white/40 rounded-full overflow-hidden shadow-inner">
                   <div 
-                    className="h-full bg-white rounded-full transition-all duration-300"
+                    className="h-full bg-coral rounded-full transition-all duration-300 shadow-sm"
                     style={{ width: isPlaying ? '45%' : '0%' }}
                   />
                 </div>
@@ -235,16 +235,6 @@ const TestimonialCard = ({ testimonial, index, isCenter = false }: { testimonial
         </div>
 
       </div>
-
-      {/* Modal Bio (opcional) */}
-      {showBio && (
-        <div className="bg-gradient-to-r from-[#FF8C7A]/10 to-transparent p-6 border-t border-[#FF8C7A]/20">
-          <h4 className="font-bold text-navy mb-2">Sobre {testimonial.name.split(' ')[0]}</h4>
-          <p className="text-gray-600 text-sm">
-            {testimonial.role} en Carta Business Group. Historia de transformación inspiradora.
-          </p>
-        </div>
-      )}
     </div>
   );
 };
@@ -252,6 +242,9 @@ const TestimonialCard = ({ testimonial, index, isCenter = false }: { testimonial
 export default function TestimonialsCardsSection({ onCTAClick }: TestimonialsCardsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedTestimonial, setSelectedTestimonial] = useState<typeof testimonials[0] | null>(null);
+  const [modalInitialTab, setModalInitialTab] = useState<'biografia' | 'testimonio'>('biografia');
 
   // Auto-play del carrusel
   useEffect(() => {
@@ -277,6 +270,18 @@ export default function TestimonialsCardsSection({ onCTAClick }: TestimonialsCar
   const goToSlide = (index: number) => {
     setIsAutoPlaying(false);
     setCurrentIndex(index);
+  };
+
+  const openBioModal = (testimonial: typeof testimonials[0]) => {
+    setSelectedTestimonial(testimonial);
+    setModalInitialTab('biografia');
+    setModalOpen(true);
+  };
+
+  const openTestimonioModal = (testimonial: typeof testimonials[0]) => {
+    setSelectedTestimonial(testimonial);
+    setModalInitialTab('testimonio');
+    setModalOpen(true);
   };
 
   // Calcular cards visibles (anterior, actual, siguiente)
@@ -324,25 +329,34 @@ export default function TestimonialsCardsSection({ onCTAClick }: TestimonialsCar
           </button>
 
           {/* Contenedor del carrusel - Responsive */}
-          <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 px-4 sm:px-8 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16">
+          <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 px-12 sm:px-8 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16">
             {visibleIndexes.map((testimonialIndex, position) => {
               const isCenter = position === 1;
+              // En móvil, solo mostrar la card central
+              const isMobileHidden = !isCenter;
+              
               return (
                 <div
                   key={testimonialIndex}
                   className={`transition-all duration-500 ${
                     isCenter
-                      ? 'w-full max-w-5xl z-10 opacity-100'
-                      : 'w-full max-w-2xl opacity-40 hover:opacity-60'
-                  }`}
+                      ? 'w-[90.5%] md:w-full max-w-5xl z-10 opacity-100'
+                      : 'w-full max-w-2xl opacity-40 hover:opacity-60 hidden md:block'
+                  } ${isMobileHidden ? 'hidden md:block' : ''}`}
                   style={{
-                    transform: isCenter ? 'scale(1.50) translateY(-8px)' : 'scale(0.87)',
+                    transform: isCenter 
+                      ? window.innerWidth < 768 
+                        ? 'scale(1.30) translateY(0px)' // Móvil: 30% más grande
+                        : 'scale(1.50) translateY(-8px)' // Desktop: 50% más grande
+                      : 'scale(0.87)',
                   }}
                 >
                   <TestimonialCard
                     testimonial={testimonials[testimonialIndex]}
                     index={testimonialIndex}
                     isCenter={isCenter}
+                    onOpenBio={openBioModal}
+                    onOpenTestimonio={openTestimonioModal}
                   />
                 </div>
               );
@@ -376,6 +390,16 @@ export default function TestimonialsCardsSection({ onCTAClick }: TestimonialsCar
           </button>
         </div>
       </div>
+
+      {/* Modal de Biografía/Testimonio */}
+      {selectedTestimonial && (
+        <TestimonialModal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          testimonial={selectedTestimonial}
+          initialTab={modalInitialTab}
+        />
+      )}
     </section>
   );
 }
