@@ -4,6 +4,20 @@ import TestimonialModal from "./TestimonialModal";
 
 const testimonials = [
   {
+    name: "Aknerson Hernández",
+    role: "SA - Supervisor Agent",
+    quote: "Bueno, honestamente quiero agradecerte sinceramente por todo el apoyo, la guía, la confianza que siempre has depositado en mí desde el primer día. Gracias a tu liderazgo, a tu compromiso conmigo. Todo eso siempre ha sido fundamental para mi crecimiento profesional y personal dentro de la compañía. Honestamente gracias por siempre inspirarme, por creer en mí, por empujarme siempre a dar lo mejor de mí mismo. Valoro mucho tu ejemplo, todo lo que he aprendido trabajando de la mano contigo de verdad aprecio mucho y gracias a tu compañía esto ha sido algo increíble gracias.",
+    shortQuote: "Gracias por todo el apoyo y la confianza desde el primer día. Tu liderazgo ha sido fundamental para mi crecimiento.",
+    initials: "AH",
+    image: "/images/Aknerson.jpg",
+    audioUrl: "/audio/aknerson-testimonio.ogg",
+    socials: {
+      instagram: "https://www.instagram.com/penuelamaddy",
+      facebook: "https://www.facebook.com/maddy.penuela",
+      linkedin: "https://www.linkedin.com",
+    }
+  },
+  {
     name: "Carol Fernández",
     role: "MGA - Master General Agent",
     quote: "Antes me sentía estancada, sin propósito y trabajando en algo que no me llenaba. Hoy, gracias a esta oportunidad y al increíble equipo que me rodea, he encontrado libertad financiera, un propósito claro y la capacidad de ayudar a otros a transformar sus vidas también.",
@@ -17,20 +31,6 @@ const testimonials = [
     }
   },
   {
-    name: "Aknerson Hernández",
-    role: "SA - Supervisor Agent",
-    quote: "Trabajaba largas horas sin ver resultados justos ni tener tiempo para mi familia. Desde que me uní, no solo he encontrado estabilidad económica e ingresos justos, sino también un ambiente donde puedo crecer profesionalmente mientras mantengo el balance que siempre busqué.",
-    shortQuote: "Encontré estabilidad, ingresos justos y un ambiente donde crecer.",
-    initials: "AH",
-    image: "/images/Aknerson.jpg",
-    audioUrl: "/audio/aknerson-testimonio.mp3",
-    socials: {
-      instagram: "https://www.instagram.com/penuelamaddy",
-      facebook: "https://www.facebook.com/maddy.penuela",
-      linkedin: "https://www.linkedin.com",
-    }
-  },
-  {
     name: "Carlos Penalver",
     role: "Agente",
     quote: "Durante años trabajé sin rumbo, saltando de empleo en empleo sin sentir que realmente estaba construyendo algo. Esta oportunidad cambió completamente mi vida. Ahora vivo de lo que amo, lidero una comunidad increíble y cada día me levanto con emoción por lo que hago.",
@@ -41,6 +41,20 @@ const testimonials = [
     socials: {
       instagram: "https://www.instagram.com/penuelamaddy",
       facebook: "https://www.facebook.com/maddy.penuela",
+    }
+  },
+  {
+    name: "Génesis Díaz",
+    role: "Agente Especializada",
+    quote: "Llegar a Estados Unidos fue como abrir un libro en blanco, lleno de oportunidades. Antes trabajaba en delivery y fábricas, empleos que me enseñaron a luchar pero no a soñar en grande. Con American Income Life, ahora genero en una semana lo que antes ganaba en un mes. Este trabajo me ha transformado, me ha enseñado a confiar en mí misma y a valorar que nuestro crecimiento no se mide solo en ingresos, sino en la capacidad de cambiar nuestra vida y tocar la de los demás.",
+    shortQuote: "Ahora genero en una semana lo que antes ganaba en un mes. Este trabajo me transformó completamente.",
+    initials: "GD",
+    image: "/images/Genesis.jpg",
+    audioUrl: "/audio/genesis-testimonio.mp3",
+    socials: {
+      instagram: "https://www.instagram.com/penuelamaddy",
+      facebook: "https://www.facebook.com/maddy.penuela",
+      linkedin: "https://www.linkedin.com",
     }
   },
 ];
@@ -63,12 +77,60 @@ const TestimonialCard = ({
   onOpenTestimonio: (testimonial: typeof testimonials[0]) => void
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [audioError, setAudioError] = useState(false);
+  const audioRef = useState<HTMLAudioElement | null>(() => {
+    if (typeof window !== 'undefined' && testimonial.audioUrl) {
+      const audio = new Audio(testimonial.audioUrl);
+      audio.addEventListener('loadedmetadata', () => {
+        setDuration(audio.duration);
+      });
+      audio.addEventListener('timeupdate', () => {
+        setCurrentTime(audio.currentTime);
+      });
+      audio.addEventListener('ended', () => {
+        setIsPlaying(false);
+        setCurrentTime(0);
+      });
+      audio.addEventListener('error', () => {
+        console.error('Error loading audio:', testimonial.audioUrl);
+        setAudioError(true);
+      });
+      return audio;
+    }
+    return null;
+  })[0];
 
   const toggleAudio = () => {
-    setIsPlaying(!isPlaying);
-    // Aquí se implementaría la lógica para reproducir el audio
-    // Por ahora solo cambia el estado del botón
+    if (!audioRef) return;
+    
+    if (isPlaying) {
+      audioRef.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.play();
+      setIsPlaying(true);
+    }
   };
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+  // Limpiar audio al desmontar
+  useEffect(() => {
+    return () => {
+      if (audioRef) {
+        audioRef.pause();
+        audioRef.src = '';
+      }
+    };
+  }, [audioRef]);
   
   return (
     <div 
@@ -209,11 +271,15 @@ const TestimonialCard = ({
             <div className="flex items-center gap-1 sm:gap-1.5">
               <button
                 onClick={toggleAudio}
+                disabled={audioError || !audioRef}
                 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center transition-all border ${
-                  isPlaying 
-                    ? 'bg-white text-coral border-coral shadow-md' 
-                    : 'bg-white text-coral border-coral hover:shadow-lg'
+                  audioError || !audioRef
+                    ? 'bg-gray-300 text-gray-500 border-gray-400 cursor-not-allowed'
+                    : isPlaying 
+                      ? 'bg-white text-coral border-coral shadow-md' 
+                      : 'bg-white text-coral border-coral hover:shadow-lg'
                 }`}
+                title={audioError ? 'Error al cargar el audio' : ''}
               >
                 <Play className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-coral" fill={isPlaying ? 'currentColor' : 'none'} />
               </button>
@@ -221,12 +287,14 @@ const TestimonialCard = ({
               <div className="flex-1">
                 <div className="flex items-center gap-0.5 sm:gap-1 mb-0.5">
                   <span className="text-[5px] sm:text-[6px] md:text-[7px] font-semibold text-white drop-shadow-sm">🎙️</span>
-                  <span className="text-[4px] sm:text-[5px] md:text-[6px] text-white/90 drop-shadow-sm">0:00 / 2:15</span>
+                  <span className="text-[4px] sm:text-[5px] md:text-[6px] text-white/90 drop-shadow-sm">
+                    {formatTime(currentTime)} / {formatTime(duration || 0)}
+                  </span>
                 </div>
                 <div className="h-0.5 sm:h-1 bg-white/40 rounded-full overflow-hidden shadow-inner">
                   <div 
                     className="h-full bg-coral rounded-full transition-all duration-300 shadow-sm"
-                    style={{ width: isPlaying ? '45%' : '0%' }}
+                    style={{ width: `${progress}%` }}
                   />
                 </div>
               </div>

@@ -55,9 +55,33 @@ Cuando te dejas guiar, te enfocas y te apalancas en un sistema que funciona y pu
 
 Mi enfoque está en construir relaciones genuinas y ofrecer soluciones reales que marquen la diferencia.`,
     
-    "Carlos Penalver": `Agente comprometido con transformar vidas a través de oportunidades reales. Mi misión es ayudar a otros a descubrir su potencial y alcanzar la libertad que merecen.
+    "Carlos Penalver": `Soy Carlos Peñalver. Venezolano, nacido en Maracay. Llegué a Estados Unidos hace 3 años dejando a toda mi familia en Venezuela y con mucha fe de iniciar un nuevo rumbo y con muchas ganas de salir adelante.
 
-Cada día trabajo con pasión para construir un futuro mejor para mi familia y las familias que confían en mí.`
+Al llegar a este país te das cuenta que a veces las cosas no marchan como tú las esperas, pero siempre hay que continuar. 
+
+Empecé trabajando en las madrugadas entregando paquetes. Luego trabajé en distintas empresas donde hasta llegaba a cumplir 12 horas seguidas trabajando. 
+
+Desde el día 1 de llegar a los Estados Unidos yo tenía un propósito claro y era conseguir un trabajo que me permitiera crecer profesionalmente, personalmente y económicamente. 
+
+Hace 4 meses entré a trabajar en American Income Life y puedo decir que mi vida a dado un giro completamente.
+
+Estoy rodeado de grandes personas, de mentores maravillosos y de compañeros increíbles. Gracias al esfuerzo y la dedicación que he tenido he podido ver grandes resultados. En mi primera semana el primero pago fue de 2.900$, entendí que había llegado al lugar correcto y que todo dependía de mi disciplina y mis ganas de cada día ser mejor y aprender más.
+
+Todos los días salgo a la calle a bendecir y ayudar a las familias hispanas y haciendo todo desde el amor, empatía y constancia. Cada día veo más resultados.
+
+Me queda mucho por avanzar en esta maravillosa carrera y no dudo que mi crecimiento cada día irá de mejor en mejor porque tengo la oportunidad de empleo que tanto desee para poder crecer. Todo es enfoque, disciplina, amor, sacrificio y una meta siempre clara.`,
+    
+    "Génesis Díaz": `Mi nombre es Génesis Díaz y soy de Venezuela. 
+
+Llegar a Estados Unidos fue como abrir un libro en blanco, un lugar lleno de oportunidades que no siempre sabía cómo alcanzar, pero que despertaba en mí ganas de aprender y crecer. Antes, mi vida pasaba entre trabajos de delivery y fábricas, empleos que me enseñaron a luchar, pero no a soñar en grande. Cuando comencé con American Income Life, jamás imaginé que podía generar en una semana lo que antes ganaba en un mes, ni que este camino me ofrecería tanta libertad y posibilidades.
+
+Me he mudado tres veces de estado, y donde voy llevo la bandera de AIL, porque creo en lo que hago y en su propósito. 
+
+Cada día tengo la oportunidad de educar a familias, de proteger su futuro y de mostrarles que la seguridad y la tranquilidad son posibles cuando alguien se atreve a dar un paso con corazón y convicción.
+
+Este trabajo me ha transformado de muchas formas, me ha enseñado a confiar en mí misma, a escuchar, a valorar el esfuerzo diario y a comprender que nuestro crecimiento no se mide solo en ingresos, sino en la capacidad de cambiar nuestra propia vida y tocar la de los demás.
+
+Mi historia es un recordatorio de que, cuando uno se atreve a creer, a persistir y a dar lo mejor de sí mismo, la vida se abre en caminos llenos de posibilidades. Y cada día que dedico a lo que amo, siento que estoy construyendo algo más grande que yo misma, algo que tiene propósito, sentido y alma.`
   };
 
   const biography = biographies[testimonial.name] || "Biografía disponible próximamente.";

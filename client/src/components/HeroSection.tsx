@@ -1,11 +1,28 @@
 import { ArrowRight } from "lucide-react";
 import heroImage from "@assets/20250910_2242_image (1)_1760024166015.png";
+import { useState, useEffect } from "react";
 
 interface HeroSectionProps {
   onCTAClick: () => void;
 }
 
 export default function HeroSection({ onCTAClick }: HeroSectionProps) {
+  const heroImages = [
+    "/images/maddy-hero1.png",
+    "/images/maddy-hero2.png",
+    "/images/maddy-hero3.png"
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 2000); // Cambiar cada 2 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="inicio" className="relative bg-white overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -65,9 +82,11 @@ export default function HeroSection({ onCTAClick }: HeroSectionProps) {
 
             <div className="relative z-10 p-0 m-0">
               <img
-                src="/images/maddy-hero.png"
+                src={heroImages[currentImageIndex]}
                 alt="Professional businesswoman"
-                className="w-full max-w-lg mx-auto h-auto transform scale-150 -mr-10 relative z-20"
+                className={`w-full max-w-lg mx-auto h-auto transform -mr-10 relative z-20 transition-all duration-500 ${
+                  currentImageIndex === 2 ? 'scale-125' : 'scale-110'
+                }`}
                 style={{
                   marginRight: '-10px',
                   borderRadius: '0px',
