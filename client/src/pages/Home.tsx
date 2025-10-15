@@ -9,6 +9,7 @@ import VideoSection from "@/components/VideoSection";
 import ShapeDivider from "@/components/ShapeDivider";
 import OpportunitySection from "@/components/OpportunitySection";
 import AuthoritySection from "@/components/AuthoritySection";
+import AchievementsSection from "@/components/AchievementsSection";
 import RecruitmentSection from "@/components/RecruitmentSection";
 import TestimonialsCardsSection from "@/components/TestimonialsCardsSection";
 import ClosingFormSection from "@/components/ClosingFormSection";
@@ -35,6 +36,7 @@ export default function Home() {
       <StorySection onCTAClick={handleOpenModal} />
       <OpportunitySection onCTAClick={handleOpenModal} />
       <AuthoritySection />
+      <AchievementsSection />
       <RecruitmentSection onCTAClick={handleOpenModal} />
       <TestimonialsCardsSection onCTAClick={handleOpenModal} />
       <ClosingFormSection />
