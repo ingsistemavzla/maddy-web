@@ -144,7 +144,7 @@ const TestimonialCard = ({
       }}
       data-testid={`testimonial-card-${index}`}
     >
-      <div className="grid grid-cols-[40%_60%] gap-0 h-[160px] sm:h-[145px] md:h-[165px] lg:h-[185px] bg-[#FF8C7A]">
+      <div className="grid grid-cols-[40%_60%] gap-0 h-[167px] sm:h-[145px] md:h-[165px] lg:h-[185px] bg-[#FF8C7A]">
         {/* Columna 1 (IZQUIERDA 40%) - Imagen con overlay */}
         <div className="relative h-full overflow-hidden">
           {/* Imagen de fondo que cubre TODO */}
@@ -408,7 +408,7 @@ export default function TestimonialsCardsSection({ onCTAClick }: TestimonialsCar
                   key={testimonialIndex}
                   className={`transition-all duration-500 ${
                     isCenter
-                      ? 'w-[90.5%] md:w-full max-w-5xl z-10 opacity-100'
+                      ? 'w-[95%] md:w-full max-w-5xl z-10 opacity-100'
                       : 'w-full max-w-2xl opacity-40 hover:opacity-60 hidden md:block'
                   } ${isMobileHidden ? 'hidden md:block' : ''}`}
                   style={{
