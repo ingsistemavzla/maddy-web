@@ -169,7 +169,7 @@ export default function AwardsSection() {
                     <div className="flex justify-center mb-4">
                       <div className="relative">
                         <div className="absolute inset-0 bg-coral/20 rounded-full blur-lg group-hover:blur-xl transition-all duration-500"></div>
-                        <div className="relative w-24 h-24 bg-white rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110 overflow-hidden border-2 border-coral/20">
+                        <div className="relative w-56 h-56 bg-white rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110 overflow-hidden border-2 border-coral/20">
                           <img 
                             src={award.image} 
                             alt={award.title}
