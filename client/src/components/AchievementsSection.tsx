@@ -117,11 +117,11 @@ export default function AchievementsSection() {
     setCurrentIndex((prev) => (prev - 1 + achievements.length) % achievements.length);
   };
 
-  // Auto-play: loop infinito cada 1.5 segundos
+  // Auto-play: loop infinito cada 5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       goToNext();
-    }, 1500); // 1.5 segundos
+    }, 5000); // 5 segundos
 
     return () => clearInterval(interval);
   }, [currentIndex]);
@@ -149,17 +149,17 @@ export default function AchievementsSection() {
   const renderCard = (achievement: typeof achievements[0], isCenter: boolean) => {
     return (
       <div 
-        className={`bg-gradient-to-br ${achievement.bgGradient} rounded-3xl shadow-2xl p-3.5 md:p-5 transition-all duration-500 w-full`}
-        style={{ minWidth: '540px' }}
+        className={`bg-gradient-to-br ${achievement.bgGradient} rounded-2xl shadow-xl p-3 md:p-4 transition-all duration-500 w-full`}
+        style={{ minWidth: '480px', minHeight: '220px' }}
       >
         {/* Grid: Imagen (izquierda) + Info (derecha) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 md:gap-5 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-3 items-center">
           {/* Imagen del certificado - Más rectangular (85% de altura, 15% menos) */}
           <div 
             className={`relative group ${isCenter ? 'cursor-pointer' : 'pointer-events-none'}`}
             onClick={() => isCenter && openModal(achievement)}
           >
-            <div className="bg-white rounded-xl shadow-xl overflow-hidden border-2 md:border-4 border-white relative" style={{ aspectRatio: '1 / 0.85' }}>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative" style={{ aspectRatio: '1 / 0.85' }}>
               {/* Visor del certificado PDF */}
               <embed
                 src={achievement.image}
@@ -171,8 +171,8 @@ export default function AchievementsSection() {
               {isCenter && (
                 <div className="absolute inset-0 bg-navy/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                   <div className="text-white text-center">
-                    <TrendingUp className="w-7 h-7 md:w-11 md:h-11 mx-auto mb-2" />
-                    <p className="font-semibold text-xs md:text-sm">Ver certificado completo</p>
+                    <TrendingUp className="w-5 h-5 md:w-8 md:h-8 mx-auto mb-1.5" />
+                    <p className="font-semibold" style={{ fontSize: '0.48rem' /* 20% más pequeño */ }}>Ver certificado completo</p>
                   </div>
                 </div>
               )}
@@ -181,32 +181,32 @@ export default function AchievementsSection() {
 
           {/* Información del logro - Reducido 5% */}
           <div className="text-center md:text-left">
-            <div className="inline-block bg-coral/10 text-coral px-2.5 py-1.5 md:px-3.5 md:py-1.5 rounded-full font-bold mb-2.5" style={{ fontSize: '0.665rem' /* ~11px, 5% menos que text-xs */ }}>
+            <div className="inline-block bg-coral/10 text-coral px-1.5 py-0.5 md:px-2.5 md:py-0.5 rounded-full font-bold mb-1.5" style={{ fontSize: '0.528rem' /* 10% más grande que 0.48rem */ }}>
               🏆 Reconocimiento Oficial
             </div>
             
-            <h3 className="font-bold text-navy mb-2" style={{ fontSize: '1rem', lineHeight: '1.4rem' /* text-lg reducido 5% */ }}>
+            <h3 className="font-bold text-navy mb-1" style={{ fontSize: '0.828rem', lineHeight: '1.104rem' /* 15% más grande que 0.72rem */ }}>
               {achievement.title}
             </h3>
             
-            <div className="mb-3.5">
-              <div className="font-bold bg-gradient-to-r from-coral to-orange-500 bg-clip-text text-transparent mb-1.5" style={{ fontSize: '2.75rem', lineHeight: '3rem' /* text-5xl reducido 5% */ }}>
+            <div className="mb-2.5">
+              <div className="font-bold bg-gradient-to-r from-coral to-orange-500 bg-clip-text text-transparent mb-0.5" style={{ fontSize: '1.76rem', lineHeight: '1.92rem' /* 20% más pequeño */ }}>
                 {achievement.amount}
               </div>
-              <p className="text-gray-700 font-semibold" style={{ fontSize: '0.95rem' /* text-lg reducido 5% */ }}>
+              <p className="text-gray-700 font-semibold" style={{ fontSize: '0.68rem' /* 20% más pequeño */ }}>
                 {achievement.description}
               </p>
             </div>
 
-            <div className="flex items-center justify-center md:justify-start gap-1.5 text-gray-600 mb-3.5" style={{ fontSize: '0.855rem' /* text-base reducido 5% */ }}>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center justify-center md:justify-start gap-1 text-gray-600 mb-2.5" style={{ fontSize: '0.6rem' /* 20% más pequeño */ }}>
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span className="font-medium">{achievement.date}</span>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-lg md:rounded-xl p-2.5 md:p-3.5 border-l-4 border-coral">
-              <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.76rem' /* text-sm reducido 5% */ }}>
+            <div className="bg-white/60 backdrop-blur-sm rounded-md md:rounded-lg p-2 md:p-2.5 border-l-4 border-coral">
+              <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.61rem' /* 20% más pequeño */ }}>
                 "{achievement.fullDescription}"
               </p>
             </div>
@@ -215,8 +215,8 @@ export default function AchievementsSection() {
             {isCenter && (
               <button
                 onClick={() => openModal(achievement)}
-                className="mt-3.5 md:mt-5 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-5.5 py-2 md:px-7 md:py-2.5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
-                style={{ fontSize: '0.855rem' /* text-base reducido 5% */ }}
+                className="mt-2.5 md:mt-3 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+                style={{ fontSize: '0.68rem' /* 20% más pequeño */ }}
               >
                 Ver Certificado Completo
               </button>
@@ -271,18 +271,20 @@ export default function AchievementsSection() {
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Carrusel 3D con 3 cards visibles */}
-            <div className="relative min-h-[500px] md:min-h-[600px] flex items-center justify-center px-4 md:px-0">
-              {/* Contenedor de las 3 cards con perspectiva */}
-              <div className="relative w-full max-w-6xl" style={{ perspective: '2000px' }}>
-                <div className="relative flex items-center justify-center gap-2">
-                  {/* Card Izquierda (pequeña, atrás) - Mucho más cerca */}
+            {/* Carrusel con 3 cards visibles - Estructura similar a testimonios */}
+            <div className="relative min-h-[400px] md:min-h-[450px] flex items-center justify-center px-4 md:px-8">
+              {/* Contenedor principal centrado */}
+              <div className="relative w-full max-w-5xl mx-auto">
+                {/* Grid de 3 columnas para las cards - Centrado */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 items-center justify-items-center">
+                  
+                  {/* Card Izquierda (pequeña, atrás) */}
                   <div 
                     className="hidden md:block cursor-pointer transition-all duration-700 hover:scale-105"
                     style={{
-                      transform: 'scale(0.375) translateX(18%) translateZ(-50px) rotateY(10deg)',
-                      opacity: 0.85,
-                      zIndex: 1
+                      transform: 'scale(0.7) translateZ(-20px)',
+                      opacity: 0.8,
+                      zIndex: 2
                     }}
                     onClick={goToPrev}
                   >
@@ -293,7 +295,7 @@ export default function AchievementsSection() {
                   <div 
                     className="transition-all duration-700"
                     style={{
-                      transform: 'scale(0.75) translateZ(0px)',
+                      transform: 'scale(1) translateZ(0px)',
                       opacity: 1,
                       zIndex: 10
                     }}
@@ -301,13 +303,13 @@ export default function AchievementsSection() {
                     {renderCard(achievements[visibleIndices.current], true)}
                   </div>
 
-                  {/* Card Derecha (pequeña, atrás) - Mucho más cerca */}
+                  {/* Card Derecha (pequeña, atrás) */}
                   <div 
                     className="hidden md:block cursor-pointer transition-all duration-700 hover:scale-105"
                     style={{
-                      transform: 'scale(0.375) translateX(-18%) translateZ(-50px) rotateY(-10deg)',
-                      opacity: 0.85,
-                      zIndex: 1
+                      transform: 'scale(0.7) translateZ(-20px)',
+                      opacity: 0.8,
+                      zIndex: 2
                     }}
                     onClick={goToNext}
                   >

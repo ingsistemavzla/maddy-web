@@ -10,6 +10,7 @@ import ShapeDivider from "@/components/ShapeDivider";
 import OpportunitySection from "@/components/OpportunitySection";
 import AuthoritySection from "@/components/AuthoritySection";
 import AchievementsSection from "@/components/AchievementsSection";
+import AwardsSection from "@/components/AwardsSection";
 import RecruitmentSection from "@/components/RecruitmentSection";
 import TestimonialsCardsSection from "@/components/TestimonialsCardsSection";
 import ClosingFormSection from "@/components/ClosingFormSection";
@@ -37,6 +38,7 @@ export default function Home() {
       <OpportunitySection onCTAClick={handleOpenModal} />
       <AuthoritySection />
       <AchievementsSection />
+      <AwardsSection />
       <RecruitmentSection onCTAClick={handleOpenModal} />
       <TestimonialsCardsSection onCTAClick={handleOpenModal} />
       <ClosingFormSection />

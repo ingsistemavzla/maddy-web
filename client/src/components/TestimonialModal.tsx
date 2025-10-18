@@ -75,13 +75,23 @@ Me queda mucho por avanzar en esta maravillosa carrera y no dudo que mi crecimie
 
 Llegar a Estados Unidos fue como abrir un libro en blanco, un lugar lleno de oportunidades que no siempre sabía cómo alcanzar, pero que despertaba en mí ganas de aprender y crecer. Antes, mi vida pasaba entre trabajos de delivery y fábricas, empleos que me enseñaron a luchar, pero no a soñar en grande. Cuando comencé con American Income Life, jamás imaginé que podía generar en una semana lo que antes ganaba en un mes, ni que este camino me ofrecería tanta libertad y posibilidades.
 
-Me he mudado tres veces de estado, y donde voy llevo la bandera de AIL, porque creo en lo que hago y en su propósito. 
+Formar parte de esta organización y en particular formar parte del equipo de Maddy ha sido una de las mejores decisiones que he tomado. Gracias a su liderazgo y a su apoyo constante, he aprendido a creer más en mí, a confiar en el proceso y a ver mi trabajo con una mentalidad completamente diferente. Este trabajo me ha dado la libertad de poder moverme, viajar y trabajar desde diferentes estados sin tener que empezar desde cero.
+
+Me he mudado tres veces de estado, y donde voy llevo la bandera de AIL, porque creo en lo que hago y en su propósito. He crecido muchísimo en mi forma de pensar, en mi disciplina y en la seguridad que tengo hoy en día. Siempre súper agradecida con Maddy porque ha creído en mí desde el día uno, incluso cuando yo dudaba.
 
 Cada día tengo la oportunidad de educar a familias, de proteger su futuro y de mostrarles que la seguridad y la tranquilidad son posibles cuando alguien se atreve a dar un paso con corazón y convicción.
 
-Este trabajo me ha transformado de muchas formas, me ha enseñado a confiar en mí misma, a escuchar, a valorar el esfuerzo diario y a comprender que nuestro crecimiento no se mide solo en ingresos, sino en la capacidad de cambiar nuestra propia vida y tocar la de los demás.
+Este trabajo me ha transformado de muchas formas, me ha enseñado a confiar en mí misma, a escuchar, a valorar el esfuerzo diario y a comprender que nuestro crecimiento no se mide solo en ingresos, sino en la capacidad de cambiar nuestra propia vida y tocar la de los demás.`,
 
-Mi historia es un recordatorio de que, cuando uno se atreve a creer, a persistir y a dar lo mejor de sí mismo, la vida se abre en caminos llenos de posibilidades. Y cada día que dedico a lo que amo, siento que estoy construyendo algo más grande que yo misma, algo que tiene propósito, sentido y alma.`
+    "Sebastián López": `Mi nombre es Sebastián López, nací en Nueva York y me crié en Venezuela, dos lugares que marcaron mi visión de la vida y me enseñaron el valor del esfuerzo, la gratitud y la determinación. Crecer entre dos culturas me dio una mentalidad abierta y un profundo deseo de superación.
+
+La verdad, formar parte del equipo de Maddy y de Carta Business Group ha sido un antes y un después en mi vida. Antes de llegar aquí trabajaba haciendo deliveries en construcción, en restaurantes, sin mucha dirección ni metas claras. Pero desde que empecé con este equipo pues todo ha cambiado.
+
+He aprendido a ser más responsable, a tener convicción y sobre todo a enfocarme en mi crecimiento personal y financiero. Gracias al liderazgo de Maddy hoy en día y a su guía y al sistema que tenemos hoy, me siento una persona completamente diferente. Me siento más centrado, con visión, con metas reales y con la seguridad de que estoy construyendo un futuro muy sólido.
+
+Hace cinco meses comencé mi camino en American Income Life, donde encontré un entorno de crecimiento constante con personas que realmente inspiran y siempre están dispuestas a ayudar que han sido clave para avanzar y alcanzar resultados que me motivan a seguir mejorando cada día.
+
+Gracias a Maddy por creer en mí una vez más, por impulsarme y por enseñarme que cuando uno se compromete de verdad los resultados llegan. Estoy muy agradecido con esta oportunidad y por todo lo que he aprendido en estos últimos meses.`
   };
 
   const biography = biographies[testimonial.name] || "Biografía disponible próximamente.";

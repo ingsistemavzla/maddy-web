@@ -7,7 +7,7 @@ const testimonials = [
     name: "Aknerson Hernández",
     role: "SA - Supervisor Agent",
     quote: "Bueno, honestamente quiero agradecerte sinceramente por todo el apoyo, la guía, la confianza que siempre has depositado en mí desde el primer día. Gracias a tu liderazgo, a tu compromiso conmigo. Todo eso siempre ha sido fundamental para mi crecimiento profesional y personal dentro de la compañía. Honestamente gracias por siempre inspirarme, por creer en mí, por empujarme siempre a dar lo mejor de mí mismo. Valoro mucho tu ejemplo, todo lo que he aprendido trabajando de la mano contigo de verdad aprecio mucho y gracias a tu compañía esto ha sido algo increíble gracias.",
-    shortQuote: "Gracias por todo el apoyo y la confianza desde el primer día. Tu liderazgo ha sido fundamental para mi crecimiento.",
+    shortQuote: "Gracias por todo el apoyo y la confianza desde el primer día. Tu liderazgo ha sido fundamental para mi crecimie...",
     initials: "AH",
     image: "/images/Aknerson.jpg",
     audioUrl: "/audio/aknerson-testimonio.ogg",
@@ -21,7 +21,7 @@ const testimonials = [
     name: "Carol Fernández",
     role: "MGA - Master General Agent",
     quote: "Antes me sentía estancada, sin propósito y trabajando en algo que no me llenaba. Hoy, gracias a esta oportunidad y al increíble equipo que me rodea, he encontrado libertad financiera, un propósito claro y la capacidad de ayudar a otros a transformar sus vidas también.",
-    shortQuote: "Antes me sentía estancada. Hoy tengo libertad y propósito gracias al equipo.",
+    shortQuote: "Antes me sentía estancada. Hoy tengo libertad y propósito gracias al equipo de Maddy y Carta Business...",
     initials: "CF",
     image: "/images/Carol.jpg",
     audioUrl: "/audio/carol-testimonio.mp3",
@@ -33,11 +33,11 @@ const testimonials = [
   {
     name: "Carlos Penalver",
     role: "Agente",
-    quote: "Durante años trabajé sin rumbo, saltando de empleo en empleo sin sentir que realmente estaba construyendo algo. Esta oportunidad cambió completamente mi vida. Ahora vivo de lo que amo, lidero una comunidad increíble y cada día me levanto con emoción por lo que hago.",
-    shortQuote: "Pasé de trabajar sin rumbo a vivir de lo que amo. Esta oportunidad cambió mi vida.",
+    quote: "Estoy muy feliz de formar parte de tu equipo, Maddy. Desde el principio he sentido el apoyo y la forma en que me impulsa para seguir creciendo. Gracias a ella y a todo el sistema de Carta Business Group y American Income Life, mi vida ha cambiado a 180 grados. Antes trabajaba de delivery en empresas, en viajados, y cobraba al mes 2.500 dólares. Y hoy en día, en mi primera semana aquí con American Income Life, en mi primera semana cobré 2.900 dólares. Más allá del dinero, he encontrado aquí un lugar donde se me reta a crecer y a ser más abundante. Y siempre le doy gracias a Dios por ponerme a Maddy y a este equipo tan maravilloso en mi vida. Seguimos adelante y siempre con Dios de la mano.",
+    shortQuote: "Mi vida ha cambiado a 180 grados. En mi primera semana cobré 2.900 dólares, más de lo que ganaba al mes...",
     initials: "CP",
     image: "/images/Carlos.jpg",
-    audioUrl: "/audio/carlos-testimonio.mp3",
+    audioUrl: "/audio/audio-carlos.m4a",
     socials: {
       instagram: "https://www.instagram.com/penuelamaddy",
       facebook: "https://www.facebook.com/maddy.penuela",
@@ -46,11 +46,25 @@ const testimonials = [
   {
     name: "Génesis Díaz",
     role: "Agente Especializada",
-    quote: "Llegar a Estados Unidos fue como abrir un libro en blanco, lleno de oportunidades. Antes trabajaba en delivery y fábricas, empleos que me enseñaron a luchar pero no a soñar en grande. Con American Income Life, ahora genero en una semana lo que antes ganaba en un mes. Este trabajo me ha transformado, me ha enseñado a confiar en mí misma y a valorar que nuestro crecimiento no se mide solo en ingresos, sino en la capacidad de cambiar nuestra vida y tocar la de los demás.",
-    shortQuote: "Ahora genero en una semana lo que antes ganaba en un mes. Este trabajo me transformó completamente.",
+    quote: "Formar parte de esta organización y en particular formar parte del equipo de Maddy ha sido una de las mejores decisiones que he tomado. Gracias a su liderazgo y a su apoyo constante, he aprendido a creer más en mí, a confiar en el proceso y a ver mi trabajo con una mentalidad completamente diferente. Este trabajo me ha dado la libertad de poder moverme, viajar y trabajar desde diferentes estados sin tener que empezar desde cero. Y eso para mí ha sido algo increíble. He crecido muchísimo en mi forma de pensar, en mi disciplina y en la seguridad que tengo hoy en día. Siempre súper agradecida con Maddy porque ha creído en mí desde el día uno, incluso cuando yo dudaba.",
+    shortQuote: "Formar parte del equipo de Maddy ha sido una de las mejores decisiones que he tomado. He crecido muchísimo...",
     initials: "GD",
     image: "/images/Genesis.jpg",
-    audioUrl: "/audio/genesis-testimonio.mp3",
+    audioUrl: "/audio/audio-genesis.ogg",
+    socials: {
+      instagram: "https://www.instagram.com/penuelamaddy",
+      facebook: "https://www.facebook.com/maddy.penuela",
+      linkedin: "https://www.linkedin.com",
+    }
+  },
+  {
+    name: "Sebastián López",
+    role: "Agente",
+    quote: "La verdad, formar parte del equipo de Maddy y de Carta Business Group ha sido un antes y un después en mi vida. Antes de llegar aquí trabajaba haciendo deliveries en construcción, en restaurantes, sin mucha dirección ni metas claras. Pero desde que empecé con este equipo pues todo ha cambiado. He aprendido a ser más responsable, a tener convicción y sobre todo a enfocarme en mi crecimiento personal y financiero. Gracias al liderazgo de Maddy hoy en día y a su guía y al sistema que tenemos hoy, me siento una persona completamente diferente. Me siento más centrado, con visión, con metas reales y con la seguridad de que estoy construyendo un futuro muy sólido. Gracias a Maddy por creer en mí una vez más, por impulsarme y por enseñarme que cuando uno se compromete de verdad los resultados llegan. Estoy muy agradecido con esta oportunidad y por todo lo que he aprendido en estos últimos meses.",
+    shortQuote: "Formar parte del equipo de Maddy y Carta Business Group ha sido un antes y un después en mi vida. Me siento...",
+    initials: "SL",
+    image: "/images/Sebastian.png",
+    audioUrl: "/audio/audio-sebastian.ogg",
     socials: {
       instagram: "https://www.instagram.com/penuelamaddy",
       facebook: "https://www.facebook.com/maddy.penuela",
@@ -240,7 +254,7 @@ const TestimonialCard = ({
 
           {/* Contenido del testimonio (responsive) */}
           <div className="flex-1 flex flex-col justify-center relative z-10">
-            <p className="text-white text-[8px] sm:text-[7px] md:text-[9px] lg:text-[10px] font-semibold italic leading-[1.3] tracking-[-0.01em]" style={{ textShadow: '0 1px 4px rgba(16,44,58,0.12)' }}>
+            <p className="text-white text-[7px] sm:text-[6px] md:text-[8px] lg:text-[9px] font-semibold italic leading-[1.3] tracking-[-0.01em]" style={{ textShadow: '0 1px 4px rgba(16,44,58,0.12)' }}>
               {testimonial.shortQuote}
             </p>
             
