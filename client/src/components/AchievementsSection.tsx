@@ -159,17 +159,20 @@ export default function AchievementsSection() {
   const renderCard = (achievement: typeof achievements[0], isCenter: boolean) => {
     return (
       <div 
-        className={`bg-gradient-to-br ${achievement.bgGradient} rounded-2xl shadow-xl p-2 md:p-4 transition-all duration-500 w-full`}
-        style={{ minWidth: '480px', minHeight: '220px' }}
+        className={`bg-gradient-to-br ${achievement.bgGradient} rounded-2xl shadow-xl p-1.5 md:p-4 transition-all duration-500 w-full`}
+        style={{ 
+          minWidth: window.innerWidth < 768 ? '336px' : '480px', // 30% reducción en móvil
+          minHeight: window.innerWidth < 768 ? '154px' : '220px' // 30% reducción en móvil
+        }}
       >
         {/* Grid: Imagen (izquierda) + Info (derecha) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5 md:gap-3 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-3 items-center">
           {/* Imagen del certificado - Más rectangular (85% de altura, 15% menos) */}
           <div 
             className={`relative group ${isCenter ? 'cursor-pointer' : 'pointer-events-none'}`}
             onClick={() => isCenter && openModal(achievement)}
           >
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative" style={{ aspectRatio: '1 / 0.85' }}>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative" style={{ aspectRatio: '1 / 0.85', maxWidth: window.innerWidth < 768 ? '140px' : '100%' }}>
               {/* Visor del certificado JPG */}
               <img
                 src={achievement.imageJpg}
@@ -191,29 +194,29 @@ export default function AchievementsSection() {
 
           {/* Información del logro - Reducido 5% */}
           <div className="text-center md:text-left">
-            <div className="inline-block bg-coral/10 text-coral px-1 py-0.5 md:px-2.5 md:py-0.5 rounded-full font-bold mb-1 md:mb-1.5" style={{ fontSize: '0.37rem' /* 30% más pequeño para móvil */ }}>
+            <div className="inline-block bg-coral/10 text-coral px-0.5 py-0.5 md:px-2.5 md:py-0.5 rounded-full font-bold mb-0.5 md:mb-1.5" style={{ fontSize: '0.32rem' /* 30% más pequeño para móvil */ }}>
               <span className="md:hidden">🏆 Reconocimiento Oficial</span>
               <span className="hidden md:inline">🏆 Reconocimiento Oficial</span>
             </div>
             
-            <h3 className="font-bold text-navy mb-0.5 md:mb-1" style={{ fontSize: '0.58rem', lineHeight: '0.77rem' /* 30% más pequeño para móvil */ }}>
+            <h3 className="font-bold text-navy mb-0.5 md:mb-1" style={{ fontSize: '0.50rem', lineHeight: '0.65rem' /* 30% más pequeño para móvil */ }}>
               <span className="md:hidden">{achievement.title}</span>
               <span className="hidden md:inline" style={{ fontSize: '0.828rem', lineHeight: '1.104rem' }}>{achievement.title}</span>
             </h3>
             
-            <div className="mb-2 md:mb-2.5">
-              <div className="font-bold bg-gradient-to-r from-coral to-orange-500 bg-clip-text text-transparent mb-0.5" style={{ fontSize: '1.23rem', lineHeight: '1.34rem' /* 30% más pequeño para móvil */ }}>
+            <div className="mb-1.5 md:mb-2.5">
+              <div className="font-bold bg-gradient-to-r from-coral to-orange-500 bg-clip-text text-transparent mb-0.5" style={{ fontSize: '1.05rem', lineHeight: '1.15rem' /* 30% más pequeño para móvil */ }}>
                 <span className="md:hidden">{achievement.amount}</span>
                 <span className="hidden md:inline" style={{ fontSize: '1.76rem', lineHeight: '1.92rem' }}>{achievement.amount}</span>
               </div>
-              <p className="text-gray-700 font-semibold" style={{ fontSize: '0.48rem' /* 30% más pequeño para móvil */ }}>
+              <p className="text-gray-700 font-semibold" style={{ fontSize: '0.42rem' /* 30% más pequeño para móvil */ }}>
                 <span className="md:hidden">{achievement.description}</span>
                 <span className="hidden md:inline" style={{ fontSize: '0.68rem' }}>{achievement.description}</span>
               </p>
             </div>
 
-            <div className="flex items-center justify-center md:justify-start gap-0.5 md:gap-1 text-gray-600 mb-2 md:mb-2.5" style={{ fontSize: '0.42rem' /* 30% más pequeño para móvil */ }}>
-              <svg className="w-2 h-2 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center justify-center md:justify-start gap-0.5 md:gap-1 text-gray-600 mb-1.5 md:mb-2.5" style={{ fontSize: '0.38rem' /* 30% más pequeño para móvil */ }}>
+              <svg className="w-1.5 h-1.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span className="font-medium">
@@ -222,8 +225,8 @@ export default function AchievementsSection() {
               </span>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-md md:rounded-lg p-1.5 md:p-2.5 border-l-4 border-coral">
-              <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.43rem' /* 30% más pequeño para móvil */ }}>
+            <div className="bg-white/60 backdrop-blur-sm rounded-md md:rounded-lg p-1 md:p-2.5 border-l-4 border-coral">
+              <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.38rem' /* 30% más pequeño para móvil */ }}>
                 <span className="md:hidden">"{achievement.fullDescription}"</span>
                 <span className="hidden md:inline" style={{ fontSize: '0.61rem' }}>"{achievement.fullDescription}"</span>
               </p>
@@ -233,8 +236,8 @@ export default function AchievementsSection() {
             {isCenter && (
               <button
                 onClick={() => openModal(achievement)}
-                className="mt-2 md:mt-3 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-3 py-1 md:px-5 md:py-2 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
-                style={{ fontSize: '0.48rem' /* 30% más pequeño para móvil */ }}
+                className="mt-1.5 md:mt-3 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-2 py-0.5 md:px-5 md:py-2 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+                style={{ fontSize: '0.42rem' /* 30% más pequeño para móvil */ }}
               >
                 <span className="md:hidden">Ver Certificado Completo</span>
                 <span className="hidden md:inline" style={{ fontSize: '0.68rem' }}>Ver Certificado Completo</span>

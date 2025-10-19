@@ -41,6 +41,7 @@ console.log('Premio Top Supervising Agent:', awards.find(award => award.title ==
 export default function AwardsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const carouselRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -51,6 +52,8 @@ export default function AwardsSection() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
+            // Cargar imágenes solo cuando la sección es visible
+            setLoadedImages(new Set([currentIndex]));
           }
         });
       },
@@ -62,19 +65,23 @@ export default function AwardsSection() {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [currentIndex]);
 
   // Función para mover el carrusel vertical
   const moveCarousel = (direction: 'up' | 'down' | number) => {
     if (typeof direction === 'number') {
       setCurrentIndex(direction);
+      // Cargar imagen del nuevo índice
+      setLoadedImages(prev => new Set([...prev, direction]));
     } else {
       setCurrentIndex(prev => {
-        if (direction === 'down') {
-          return prev === awards.length - 1 ? 0 : prev + 1;
-        } else {
-          return prev === 0 ? awards.length - 1 : prev - 1;
-        }
+        const newIndex = direction === 'down' 
+          ? (prev === awards.length - 1 ? 0 : prev + 1)
+          : (prev === 0 ? awards.length - 1 : prev - 1);
+        
+        // Cargar imagen del nuevo índice
+        setLoadedImages(prevLoaded => new Set([...prevLoaded, newIndex]));
+        return newIndex;
       });
     }
   };
@@ -170,20 +177,42 @@ export default function AwardsSection() {
                     <div className="flex justify-center mb-4">
                       <div className="relative">
                         <div className="absolute inset-0 bg-coral/20 rounded-full blur-lg group-hover:blur-xl transition-all duration-500"></div>
-                        <div className="relative w-80 h-80 bg-white rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110 overflow-hidden border-2 border-coral/20">
-                          <img 
-                            src={`${award.image}?v=${Date.now()}`} 
-                            alt={award.title}
-                            className="w-full h-full object-contain object-center"
-                            style={{ 
-                              maxWidth: '100%', 
-                              maxHeight: '100%',
-                              display: 'block'
+                        <div className="relative w-72 h-72 bg-white rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110 overflow-hidden border-2 border-coral/20">
+                          {/* Placeholder mientras carga */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse flex items-center justify-center">
+                            <div className="w-16 h-16 bg-coral/20 rounded-full flex items-center justify-center">
+                              <Trophy className="w-8 h-8 text-coral/60" />
+                            </div>
+                          </div>
+                          
+                          {/* Imagen optimizada para PNG */}
+                          {loadedImages.has(index) && (
+                            <img 
+                              src={award.image} 
+                              alt={award.title}
+                              loading="lazy"
+                              decoding="async"
+                              fetchPriority="low"
+                              className="w-full h-full object-contain object-center transition-opacity duration-500"
+                              style={{ 
+                                maxWidth: '100%', 
+                                maxHeight: '100%',
+                                display: 'block',
+                                opacity: 0,
+                                willChange: 'opacity'
+                              }}
+                            onLoad={(e) => {
+                              console.log('✅ Imagen cargada exitosamente:', award.image, 'para premio:', award.title);
+                              const target = e.target as HTMLImageElement;
+                              target.style.opacity = '1';
+                              // Ocultar placeholder
+                              const placeholder = target.previousElementSibling as HTMLElement;
+                              if (placeholder) {
+                                placeholder.style.display = 'none';
+                              }
                             }}
-                            onLoad={() => console.log('✅ Imagen cargada exitosamente:', award.image, 'para premio:', award.title)}
                             onError={(e) => {
                               console.error('❌ Error cargando imagen:', award.image, 'para premio:', award.title);
-                              console.error('Error details:', e);
                               const target = e.target as HTMLImageElement;
                               target.style.display = 'none';
                               const parent = target.parentElement;
@@ -191,7 +220,8 @@ export default function AwardsSection() {
                                 parent.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-coral to-coral/80 rounded-2xl flex items-center justify-center"><svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>';
                               }
                             }}
-                          />
+                            />
+                          )}
                         </div>
                       </div>
                     </div>
