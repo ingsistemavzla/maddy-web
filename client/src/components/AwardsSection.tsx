@@ -8,7 +8,7 @@ const awards = [
     highlight: "1st Qualification",
     date: "October 2024",
     organization: "Globe Life Inc.",
-    description: "Reconocimiento por calificación excepcional en el primer año",
+    description: "Reconocimiento por mantener más de $13,500 en ventas durante 4 meses consecutivos",
     image: "/premios/placa1.png", // Placa de madera "Founder's Club" de Globe Life
     category: "Liderazgo"
   },
@@ -18,24 +18,25 @@ const awards = [
     highlight: "Silver Status",
     date: "March 2025",
     organization: "American Income Life",
-    description: "Distinción por alcanzar el estatus de plata en ventas",
+    description: "Distinción por alcanzar el estatus de plata en el Pinnacle de reclutamiento",
     image: "/premios/cerfi1.png", // Placa "Silver Status Pinnacle"
     category: "Excelencia"
   },
   {
     id: 3,
-    title: "Ventas Nacionales",
-    highlight: "Top 1%",
-    date: "2024 Recognition",
+    title: "Top Supervising Agent",
+    highlight: "Top 10",
+    date: "2023 Recognition",
     organization: "Carta Business Group",
-    description: "Reconocimiento por estar en el 1% superior de ventas nacionales",
+    description: "Reconocimiento por estar entre los 10 mejores supervisores del año 2023",
     image: "/premios/placa2.png", // Icono estilizado (trofeo con estrella o gráfico ascendente)
-    category: "Ventas"
+    category: "Supervisión"
   }
 ];
 
 // Debug: Log de las rutas de imágenes
 console.log('Rutas de imágenes de premios:', awards.map(award => award.image));
+console.log('Premio Top Supervising Agent:', awards.find(award => award.title === 'Top Supervising Agent'));
 
 export default function AwardsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -169,9 +170,9 @@ export default function AwardsSection() {
                     <div className="flex justify-center mb-4">
                       <div className="relative">
                         <div className="absolute inset-0 bg-coral/20 rounded-full blur-lg group-hover:blur-xl transition-all duration-500"></div>
-                        <div className="relative w-56 h-56 bg-white rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110 overflow-hidden border-2 border-coral/20">
+                        <div className="relative w-80 h-80 bg-white rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110 overflow-hidden border-2 border-coral/20">
                           <img 
-                            src={award.image} 
+                            src={`${award.image}?v=${Date.now()}`} 
                             alt={award.title}
                             className="w-full h-full object-contain object-center"
                             style={{ 
@@ -179,9 +180,10 @@ export default function AwardsSection() {
                               maxHeight: '100%',
                               display: 'block'
                             }}
-                            onLoad={() => console.log('Imagen cargada:', award.image)}
+                            onLoad={() => console.log('✅ Imagen cargada exitosamente:', award.image, 'para premio:', award.title)}
                             onError={(e) => {
-                              console.error('Error cargando imagen:', award.image);
+                              console.error('❌ Error cargando imagen:', award.image, 'para premio:', award.title);
+                              console.error('Error details:', e);
                               const target = e.target as HTMLImageElement;
                               target.style.display = 'none';
                               const parent = target.parentElement;
@@ -286,7 +288,7 @@ export default function AwardsSection() {
             
             <p className="text-lg md:text-xl text-gray-200 font-light max-w-4xl mx-auto leading-relaxed italic"
                style={{ fontFamily: 'Poppins, sans-serif' }}>
-              "Estos reconocimientos son el reflejo de años de constancia y pasión por inspirar a otros a creer en su propio crecimiento."
+              "Estos logros son el fruto de la constancia y la pasión por crecer, mientras inspiro a otros a descubrir su propio camino hacia el éxito."
             </p>
             
             <div className="mt-4 text-coral font-semibold"

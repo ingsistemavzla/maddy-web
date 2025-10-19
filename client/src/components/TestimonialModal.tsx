@@ -41,7 +41,7 @@ export default function TestimonialModal({
 
 Venezolana, nacida en Barinas, llegué a Estados Unidos a los 20 años con muchas metas, sueños y el firme deseo de salir adelante.
 
-Antes de pertenecer a Globe Life, trabajé como mesera en varios restaurantes mientras completaba mi Licenciatura en Negocios Internacionales (B.A. in International Business).
+Antes de pertenecer a American Income Life, trabajé como mesera en varios restaurantes mientras completaba mi Licenciatura en Negocios Internacionales (B.A. in International Business).
 Durante ese tiempo aprendí el valor del esfuerzo, la disciplina y la resiliencia.
 
 Hace siete años comencé mi carrera en el mundo de los seguros y desde que llegué a American Income Life, mi vida cambió por completo.

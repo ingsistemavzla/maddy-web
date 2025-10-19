@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Play, Instagram, Facebook, Linkedin, User, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import TestimonialModal from "./TestimonialModal";
 
@@ -19,15 +19,16 @@ const testimonials = [
   },
   {
     name: "Carol Fernández",
-    role: "MGA - Master General Agent",
-    quote: "Antes me sentía estancada, sin propósito y trabajando en algo que no me llenaba. Hoy, gracias a esta oportunidad y al increíble equipo que me rodea, he encontrado libertad financiera, un propósito claro y la capacidad de ayudar a otros a transformar sus vidas también.",
-    shortQuote: "Antes me sentía estancada. Hoy tengo libertad y propósito gracias al equipo de Maddy y Carta Business...",
+    role: "RGA - Regional General Agent",
+    quote: "Hola, mi nombre es Carol Fernández, soy una RGA para American Income Life, una fundadora de Carta Business Group y para mí es un honor y un enorme placer haber sido partícipe de la vida de Maddy desde el inicio en su carrera en American Income Life. Ha sido mi primera alumna y de las más especiales que he tenido, saber su crecimiento, ver su evolución, saber que soy parte de este proceso de mejora en todos los sentidos, me hace sentir muy orgullosa. Ver a Maddy meter todas sus cosas en un carro con su esposo y su perra y mudarse de Florida a California es súper gratificante saber que estaba poniendo de ella todo su empeño para hacer sus sueños realidad, sus metas realidad, tener un propósito muy claro de poder ayudar a su familia, a sus conocidos, a ella a cumplir sus sueños, porque verla cumplir todo lo que ha cumplido, Maddy, gracias a su trabajo, a su enfoque, a su disciplina, ha podido comprar su casa, ha podido comprar el carro de sus sueños y más aún, lo que me hace más feliz es verla con su familia, saber que su madre trabaja en conjunto con nuestra compañía, saber que está feliz, está contenta, está agradecida, verla crear su equipo de trabajo con personas de una calidad humana espectacular, saber que es un pilar fundamental en su grupo, saber que la admiran, que la quieren, que la apoyan, eso también es sumamente gratificante, es súper lindo. Esto es solamente el inicio, sé que Maddy solamente está iniciando y que todo lo que ha podido lograr se queda pequeño cuando ella se vea en tres, cinco años y vea para atrás y esté orgullosa de la mujer que ha creado, porque se lo merece. El gran corazón siempre da buenos frutos, así que encantada de trabajar de tu mano y saber que esto solo está iniciando.",
+    shortQuote: "Ha sido mi primera alumna y de las más especiales. Ver su crecimiento me hace sentir muy orgullosa...",
     initials: "CF",
     image: "/images/Carol.jpg",
-    audioUrl: "/audio/carol-testimonio.mp3",
+    audioUrl: "/audio/audio-carol.ogg",
     socials: {
       instagram: "https://www.instagram.com/penuelamaddy",
       facebook: "https://www.facebook.com/maddy.penuela",
+      linkedin: "https://www.linkedin.com",
     }
   },
   {
@@ -94,7 +95,9 @@ const TestimonialCard = ({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [audioError, setAudioError] = useState(false);
-  const audioRef = useState<HTMLAudioElement | null>(() => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
     if (typeof window !== 'undefined' && testimonial.audioUrl) {
       const audio = new Audio(testimonial.audioUrl);
       audio.addEventListener('loadedmetadata', () => {
@@ -111,19 +114,24 @@ const TestimonialCard = ({
         console.error('Error loading audio:', testimonial.audioUrl);
         setAudioError(true);
       });
-      return audio;
+      audioRef.current = audio;
     }
-    return null;
-  })[0];
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = '';
+      }
+    };
+  }, [testimonial.audioUrl]);
 
   const toggleAudio = () => {
-    if (!audioRef) return;
+    if (!audioRef.current) return;
     
     if (isPlaying) {
-      audioRef.pause();
+      audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.play();
+      audioRef.current.play();
       setIsPlaying(true);
     }
   };
@@ -137,14 +145,6 @@ const TestimonialCard = ({
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   // Limpiar audio al desmontar
-  useEffect(() => {
-    return () => {
-      if (audioRef) {
-        audioRef.pause();
-        audioRef.src = '';
-      }
-    };
-  }, [audioRef]);
   
   return (
     <div 
@@ -285,9 +285,9 @@ const TestimonialCard = ({
             <div className="flex items-center gap-1 sm:gap-1.5">
               <button
                 onClick={toggleAudio}
-                disabled={audioError || !audioRef}
+                disabled={audioError || !audioRef.current}
                 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center transition-all border ${
-                  audioError || !audioRef
+                  audioError || !audioRef.current
                     ? 'bg-gray-300 text-gray-500 border-gray-400 cursor-not-allowed'
                     : isPlaying 
                       ? 'bg-white text-coral border-coral shadow-md' 
