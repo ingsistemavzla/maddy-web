@@ -159,20 +159,20 @@ export default function AchievementsSection() {
   const renderCard = (achievement: typeof achievements[0], isCenter: boolean) => {
     return (
       <div 
-        className={`bg-gradient-to-br ${achievement.bgGradient} rounded-2xl shadow-xl p-1.7 md:p-4 transition-all duration-500 w-full`}
+        className={`bg-gradient-to-br ${achievement.bgGradient} rounded-2xl shadow-xl p-1.9 md:p-4 transition-all duration-500 w-full`}
         style={{ 
           minWidth: window.innerWidth < 768 ? '264px' : '480px', // 45% reducción en móvil (+10% del anterior)
           minHeight: window.innerWidth < 768 ? '121px' : '220px' // 45% reducción en móvil (+10% del anterior)
         }}
       >
         {/* Grid: Imagen (izquierda) + Info (derecha) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.2 md:gap-3 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.3 md:gap-3 items-center">
           {/* Imagen del certificado - Más rectangular (85% de altura, 15% menos) */}
           <div 
             className={`relative group ${isCenter ? 'cursor-pointer' : 'pointer-events-none'}`}
             onClick={() => isCenter && openModal(achievement)}
           >
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative mx-auto" style={{ aspectRatio: '1 / 0.85', maxWidth: window.innerWidth < 768 ? '220px' : '100%' }}>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative mx-auto" style={{ aspectRatio: '1 / 0.85', maxWidth: window.innerWidth < 768 ? '264px' : '100%' }}>
               {/* Visor del certificado JPG */}
               <img
                 src={achievement.imageJpg}
@@ -194,7 +194,7 @@ export default function AchievementsSection() {
 
           {/* Información del logro - Reducido 5% */}
           <div className="text-center md:text-left">
-            <div className="inline-block bg-coral/10 text-coral px-0.6 py-0.6 md:px-2.5 md:py-0.5 rounded-full font-bold mb-0.5 md:mb-1.5" style={{ fontSize: '0.30rem' /* +20% del tamaño anterior */ }}>
+            <div className="inline-block bg-coral/10 text-coral px-0.7 py-0.7 md:px-2.5 md:py-0.5 rounded-full font-bold mb-0.5 md:mb-1.5" style={{ fontSize: '0.30rem' /* +20% del tamaño anterior */ }}>
               <span className="md:hidden">🏆 Reconocimiento Oficial</span>
               <span className="hidden md:inline">🏆 Reconocimiento Oficial</span>
             </div>
@@ -216,7 +216,7 @@ export default function AchievementsSection() {
             </div>
 
             <div className="flex items-center justify-center md:justify-start gap-0.5 md:gap-1 text-gray-600 mb-1 md:mb-2.5" style={{ fontSize: '0.34rem' /* +20% del tamaño anterior */ }}>
-              <svg className="w-1.2 h-1.2 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-1.5 h-1.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span className="font-medium">
@@ -225,7 +225,7 @@ export default function AchievementsSection() {
               </span>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-md md:rounded-lg p-0.7 md:p-2.5 border-l-4 border-coral">
+            <div className="bg-white/60 backdrop-blur-sm rounded-md md:rounded-lg p-0.8 md:p-2.5 border-l-4 border-coral">
               <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.34rem' /* +20% del tamaño anterior */ }}>
                 <span className="md:hidden">"{achievement.fullDescription}"</span>
                 <span className="hidden md:inline" style={{ fontSize: '0.61rem' }}>"{achievement.fullDescription}"</span>
@@ -236,7 +236,7 @@ export default function AchievementsSection() {
             {isCenter && (
               <button
                 onClick={() => openModal(achievement)}
-                className="mt-1 md:mt-3 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-2 py-0.7 md:px-5 md:py-2 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+                className="mt-1 md:mt-3 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-2.2 py-0.8 md:px-5 md:py-2 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
                 style={{ fontSize: '0.36rem' /* +20% del tamaño anterior */ }}
               >
                 <span className="md:hidden">Ver Certificado Completo</span>
