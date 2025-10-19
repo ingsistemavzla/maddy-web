@@ -194,41 +194,41 @@ export default function AchievementsSection() {
 
           {/* Información del logro - Reducido 5% */}
           <div className="text-center md:text-left">
-            <div className="inline-block bg-coral/10 text-coral px-0.7 py-0.7 md:px-2.5 md:py-0.5 rounded-full font-bold mb-0.5 md:mb-1.5" style={{ fontSize: '0.30rem' /* +20% del tamaño anterior */ }}>
+            <div className="inline-block bg-coral/10 text-coral px-0.7 py-0.7 md:px-2.5 md:py-0.5 rounded-full font-bold mb-0.5 md:mb-1.5" style={{ fontSize: '0.36rem' /* +20% del tamaño anterior */ }}>
               <span className="md:hidden">🏆 Reconocimiento Oficial</span>
               <span className="hidden md:inline">🏆 Reconocimiento Oficial</span>
             </div>
             
-            <h3 className="font-bold text-navy mb-0.5 md:mb-1" style={{ fontSize: '0.42rem', lineHeight: '0.54rem' /* +20% del tamaño anterior */ }}>
+            <h3 className="font-bold text-navy mb-0.5 md:mb-1" style={{ fontSize: '0.50rem', lineHeight: '0.65rem' /* +20% del tamaño anterior */ }}>
               <span className="md:hidden">{achievement.title}</span>
-              <span className="hidden md:inline" style={{ fontSize: '0.828rem', lineHeight: '1.104rem' }}>{achievement.title}</span>
+              <span className="hidden md:inline" style={{ fontSize: '0.994rem', lineHeight: '1.325rem' }}>{achievement.title}</span>
             </h3>
             
             <div className="mb-1 md:mb-2.5">
-              <div className="font-bold bg-gradient-to-r from-coral to-orange-500 bg-clip-text text-transparent mb-0.5" style={{ fontSize: '0.90rem', lineHeight: '1.02rem' /* +20% del tamaño anterior */ }}>
+              <div className="font-bold bg-gradient-to-r from-coral to-orange-500 bg-clip-text text-transparent mb-0.5" style={{ fontSize: '1.08rem', lineHeight: '1.22rem' /* +20% del tamaño anterior */ }}>
                 <span className="md:hidden">{achievement.amount}</span>
-                <span className="hidden md:inline" style={{ fontSize: '1.76rem', lineHeight: '1.92rem' }}>{achievement.amount}</span>
+                <span className="hidden md:inline" style={{ fontSize: '2.11rem', lineHeight: '2.30rem' }}>{achievement.amount}</span>
               </div>
-              <p className="text-gray-700 font-semibold" style={{ fontSize: '0.36rem' /* +20% del tamaño anterior */ }}>
+              <p className="text-gray-700 font-semibold" style={{ fontSize: '0.43rem' /* +20% del tamaño anterior */ }}>
                 <span className="md:hidden">{achievement.description}</span>
-                <span className="hidden md:inline" style={{ fontSize: '0.68rem' }}>{achievement.description}</span>
+                <span className="hidden md:inline" style={{ fontSize: '0.82rem' }}>{achievement.description}</span>
               </p>
             </div>
 
-            <div className="flex items-center justify-center md:justify-start gap-0.5 md:gap-1 text-gray-600 mb-1 md:mb-2.5" style={{ fontSize: '0.34rem' /* +20% del tamaño anterior */ }}>
+            <div className="flex items-center justify-center md:justify-start gap-0.5 md:gap-1 text-gray-600 mb-1 md:mb-2.5" style={{ fontSize: '0.41rem' /* +20% del tamaño anterior */ }}>
               <svg className="w-1.5 h-1.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span className="font-medium">
                 <span className="md:hidden">{achievement.date}</span>
-                <span className="hidden md:inline" style={{ fontSize: '0.6rem' }}>{achievement.date}</span>
+                <span className="hidden md:inline" style={{ fontSize: '0.72rem' }}>{achievement.date}</span>
               </span>
             </div>
 
             <div className="bg-white/60 backdrop-blur-sm rounded-md md:rounded-lg p-0.8 md:p-2.5 border-l-4 border-coral">
-              <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.34rem' /* +20% del tamaño anterior */ }}>
+              <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.41rem' /* +20% del tamaño anterior */ }}>
                 <span className="md:hidden">"{achievement.fullDescription}"</span>
-                <span className="hidden md:inline" style={{ fontSize: '0.61rem' }}>"{achievement.fullDescription}"</span>
+                <span className="hidden md:inline" style={{ fontSize: '0.73rem' }}>"{achievement.fullDescription}"</span>
               </p>
             </div>
 
@@ -237,10 +237,10 @@ export default function AchievementsSection() {
               <button
                 onClick={() => openModal(achievement)}
                 className="mt-1 md:mt-3 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-2.2 py-0.8 md:px-5 md:py-2 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
-                style={{ fontSize: '0.36rem' /* +20% del tamaño anterior */ }}
+                style={{ fontSize: '0.43rem' /* +20% del tamaño anterior */ }}
               >
                 <span className="md:hidden">Ver Certificado Completo</span>
-                <span className="hidden md:inline" style={{ fontSize: '0.68rem' }}>Ver Certificado Completo</span>
+                <span className="hidden md:inline" style={{ fontSize: '0.82rem' }}>Ver Certificado Completo</span>
               </button>
             )}
           </div>
@@ -294,7 +294,7 @@ export default function AchievementsSection() {
             </button>
 
             {/* Carrusel con 3 cards visibles - Estructura similar a testimonios */}
-            <div className="relative min-h-[400px] md:min-h-[450px] flex items-center justify-center px-4 md:px-8">
+            <div className="relative min-h-[400px] md:min-h-[450px] flex items-center justify-center px-4 md:px-8 pb-20 md:pb-0">
               {/* Contenedor principal centrado */}
               <div className="relative w-full max-w-5xl mx-auto">
                 {/* Grid de 3 columnas para las cards - Centrado */}
@@ -341,7 +341,7 @@ export default function AchievementsSection() {
               </div>
 
               {/* Controles móviles - Flechas abajo de la card */}
-              <div className="flex md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 justify-center gap-4 mt-6">
+              <div className="flex md:hidden absolute bottom-2 left-1/2 -translate-x-1/2 justify-center gap-4 mt-6">
                 <button
                   onClick={goToPrev}
                   className="bg-white hover:bg-coral text-coral hover:text-white p-3 rounded-full border-2 border-coral shadow-lg transition-all duration-300"
