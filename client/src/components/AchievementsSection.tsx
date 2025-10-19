@@ -159,20 +159,20 @@ export default function AchievementsSection() {
   const renderCard = (achievement: typeof achievements[0], isCenter: boolean) => {
     return (
       <div 
-        className={`bg-gradient-to-br ${achievement.bgGradient} rounded-2xl shadow-xl p-1 md:p-4 transition-all duration-500 w-full`}
+        className={`bg-gradient-to-br ${achievement.bgGradient} rounded-2xl shadow-xl p-1.5 md:p-4 transition-all duration-500 w-full`}
         style={{ 
-          minWidth: window.innerWidth < 768 ? '240px' : '480px', // 50% reducción en móvil
-          minHeight: window.innerWidth < 768 ? '110px' : '220px' // 50% reducción en móvil
+          minWidth: window.innerWidth < 768 ? '264px' : '480px', // 45% reducción en móvil (+10% del anterior)
+          minHeight: window.innerWidth < 768 ? '121px' : '220px' // 45% reducción en móvil (+10% del anterior)
         }}
       >
         {/* Grid: Imagen (izquierda) + Info (derecha) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0.5 md:gap-3 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-3 items-center">
           {/* Imagen del certificado - Más rectangular (85% de altura, 15% menos) */}
           <div 
             className={`relative group ${isCenter ? 'cursor-pointer' : 'pointer-events-none'}`}
             onClick={() => isCenter && openModal(achievement)}
           >
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative" style={{ aspectRatio: '1 / 0.85', maxWidth: window.innerWidth < 768 ? '100px' : '100%' }}>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative mx-auto" style={{ aspectRatio: '1 / 0.85', maxWidth: window.innerWidth < 768 ? '130px' : '100%' }}>
               {/* Visor del certificado JPG */}
               <img
                 src={achievement.imageJpg}
@@ -405,16 +405,16 @@ export default function AchievementsSection() {
             </button>
 
             <div className="p-6 md:p-10">
-              <div className="text-center mb-6">
-                <Award className="w-16 h-16 text-coral mx-auto mb-4" />
-                <h3 className="text-3xl font-bold text-navy mb-2">
+              <div className="text-center mb-4">
+                <Award className="w-16 h-16 text-coral mx-auto mb-2" />
+                <h3 className="text-3xl font-bold text-navy mb-1">
                   {selectedAchievement.title}
                 </h3>
                 <p className="text-xl text-gray-600">{selectedAchievement.date}</p>
               </div>
 
               {/* Certificado JPG ampliado */}
-              <div className="w-full max-w-3xl mx-auto bg-white rounded-xl mb-6 shadow-lg border-4 border-gray-200 overflow-hidden" style={{ height: '70vh' }}>
+              <div className="w-full max-w-3xl mx-auto bg-white rounded-xl mb-4 shadow-lg border-4 border-gray-200 overflow-hidden" style={{ height: '70vh' }}>
                 <img
                   src={selectedAchievement.imageJpg}
                   alt={`Certificado ${selectedAchievement.title}`}
@@ -423,8 +423,8 @@ export default function AchievementsSection() {
               </div>
 
               {/* Detalles */}
-              <div className="bg-gradient-to-br from-coral/5 to-orange-50 rounded-xl p-6 border-l-4 border-coral">
-                <h4 className="text-xl font-bold text-navy mb-3">Detalles del Reconocimiento</h4>
+              <div className="bg-gradient-to-br from-coral/5 to-orange-50 rounded-xl p-4 border-l-4 border-coral">
+                <h4 className="text-xl font-bold text-navy mb-2">Detalles del Reconocimiento</h4>
                 <div className="space-y-2 text-gray-700">
                   <p><strong>Logro:</strong> {selectedAchievement.amount} {selectedAchievement.description}</p>
                   <p><strong>Fecha:</strong> {selectedAchievement.date}</p>
@@ -436,7 +436,7 @@ export default function AchievementsSection() {
               </div>
 
               {/* Botón para ver PDF original */}
-              <div className="text-center mt-6">
+              <div className="text-center mt-4">
                 <button
                   onClick={() => window.open(selectedAchievement.image, '_blank')}
                   className="bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
