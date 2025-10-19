@@ -172,7 +172,7 @@ export default function AchievementsSection() {
             className={`relative group ${isCenter ? 'cursor-pointer' : 'pointer-events-none'}`}
             onClick={() => isCenter && openModal(achievement)}
           >
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative mx-auto" style={{ aspectRatio: '1 / 0.85', maxWidth: window.innerWidth < 768 ? '130px' : '100%' }}>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative mx-auto" style={{ aspectRatio: '1 / 0.85', maxWidth: window.innerWidth < 768 ? '169px' : '100%' }}>
               {/* Visor del certificado JPG */}
               <img
                 src={achievement.imageJpg}
@@ -194,29 +194,29 @@ export default function AchievementsSection() {
 
           {/* Información del logro - Reducido 5% */}
           <div className="text-center md:text-left">
-            <div className="inline-block bg-coral/10 text-coral px-0.5 py-0.5 md:px-2.5 md:py-0.5 rounded-full font-bold mb-0.5 md:mb-1.5" style={{ fontSize: '0.25rem' /* 50% más pequeño para móvil */ }}>
+            <div className="inline-block bg-coral/10 text-coral px-0.5 py-0.5 md:px-2.5 md:py-0.5 rounded-full font-bold mb-0.5 md:mb-1.5" style={{ fontSize: '0.30rem' /* +20% del tamaño anterior */ }}>
               <span className="md:hidden">🏆 Reconocimiento Oficial</span>
               <span className="hidden md:inline">🏆 Reconocimiento Oficial</span>
             </div>
             
-            <h3 className="font-bold text-navy mb-0.5 md:mb-1" style={{ fontSize: '0.35rem', lineHeight: '0.45rem' /* 50% más pequeño para móvil */ }}>
+            <h3 className="font-bold text-navy mb-0.5 md:mb-1" style={{ fontSize: '0.42rem', lineHeight: '0.54rem' /* +20% del tamaño anterior */ }}>
               <span className="md:hidden">{achievement.title}</span>
               <span className="hidden md:inline" style={{ fontSize: '0.828rem', lineHeight: '1.104rem' }}>{achievement.title}</span>
             </h3>
             
             <div className="mb-1 md:mb-2.5">
-              <div className="font-bold bg-gradient-to-r from-coral to-orange-500 bg-clip-text text-transparent mb-0.5" style={{ fontSize: '0.75rem', lineHeight: '0.85rem' /* 50% más pequeño para móvil */ }}>
+              <div className="font-bold bg-gradient-to-r from-coral to-orange-500 bg-clip-text text-transparent mb-0.5" style={{ fontSize: '0.90rem', lineHeight: '1.02rem' /* +20% del tamaño anterior */ }}>
                 <span className="md:hidden">{achievement.amount}</span>
                 <span className="hidden md:inline" style={{ fontSize: '1.76rem', lineHeight: '1.92rem' }}>{achievement.amount}</span>
               </div>
-              <p className="text-gray-700 font-semibold" style={{ fontSize: '0.30rem' /* 50% más pequeño para móvil */ }}>
+              <p className="text-gray-700 font-semibold" style={{ fontSize: '0.36rem' /* +20% del tamaño anterior */ }}>
                 <span className="md:hidden">{achievement.description}</span>
                 <span className="hidden md:inline" style={{ fontSize: '0.68rem' }}>{achievement.description}</span>
               </p>
             </div>
 
-            <div className="flex items-center justify-center md:justify-start gap-0.5 md:gap-1 text-gray-600 mb-1 md:mb-2.5" style={{ fontSize: '0.28rem' /* 50% más pequeño para móvil */ }}>
-              <svg className="w-1 h-1 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center justify-center md:justify-start gap-0.5 md:gap-1 text-gray-600 mb-1 md:mb-2.5" style={{ fontSize: '0.34rem' /* +20% del tamaño anterior */ }}>
+              <svg className="w-1.2 h-1.2 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span className="font-medium">
@@ -225,8 +225,8 @@ export default function AchievementsSection() {
               </span>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-md md:rounded-lg p-0.5 md:p-2.5 border-l-4 border-coral">
-              <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.28rem' /* 50% más pequeño para móvil */ }}>
+            <div className="bg-white/60 backdrop-blur-sm rounded-md md:rounded-lg p-0.6 md:p-2.5 border-l-4 border-coral">
+              <p className="text-gray-700 italic line-clamp-3" style={{ fontSize: '0.34rem' /* +20% del tamaño anterior */ }}>
                 <span className="md:hidden">"{achievement.fullDescription}"</span>
                 <span className="hidden md:inline" style={{ fontSize: '0.61rem' }}>"{achievement.fullDescription}"</span>
               </p>
@@ -236,8 +236,8 @@ export default function AchievementsSection() {
             {isCenter && (
               <button
                 onClick={() => openModal(achievement)}
-                className="mt-1 md:mt-3 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-1.5 py-0.5 md:px-5 md:py-2 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
-                style={{ fontSize: '0.30rem' /* 50% más pequeño para móvil */ }}
+                className="mt-1 md:mt-3 bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-1.7 py-0.6 md:px-5 md:py-2 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+                style={{ fontSize: '0.36rem' /* +20% del tamaño anterior */ }}
               >
                 <span className="md:hidden">Ver Certificado Completo</span>
                 <span className="hidden md:inline" style={{ fontSize: '0.68rem' }}>Ver Certificado Completo</span>
@@ -414,7 +414,7 @@ export default function AchievementsSection() {
               </div>
 
               {/* Certificado JPG ampliado */}
-              <div className="w-full max-w-3xl mx-auto bg-white rounded-xl mb-4 shadow-lg border-4 border-gray-200 overflow-hidden" style={{ height: '70vh' }}>
+              <div className="w-full max-w-3xl mx-auto bg-white rounded-xl mb-4 shadow-lg border-4 border-gray-200 overflow-hidden" style={{ height: '50vh' }}>
                 <img
                   src={selectedAchievement.imageJpg}
                   alt={`Certificado ${selectedAchievement.title}`}
