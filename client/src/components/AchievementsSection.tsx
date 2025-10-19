@@ -9,6 +9,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 23 de Agosto, 2024",
     image: "/certified/Aug23PP110.pdf",
+    imageJpg: "/certified/Aug23PP110_page-0001.jpg",
     bgGradient: "from-blue-50 to-cyan-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -19,6 +20,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 02 de Agosto, 2024",
     image: "/certified/Aug02PP180.pdf",
+    imageJpg: "/certified/Aug02PP180_page-0001.jpg",
     bgGradient: "from-coral-50 to-orange-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -29,6 +31,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 26 de Julio, 2024",
     image: "/certified/Jul26PP298.pdf",
+    imageJpg: "/certified/Jul26PP298_page-0001.jpg",
     bgGradient: "from-purple-50 to-pink-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -39,6 +42,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 01 de Diciembre, 2023",
     image: "/certified/Dec01SAGA35.pdf",
+    imageJpg: "/certified/Dec01SAGA35_page-0001.jpg",
     bgGradient: "from-green-50 to-emerald-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas como gerente y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -49,6 +53,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 10 de Noviembre, 2023",
     image: "/certified/Nov10SAGA37.pdf",
+    imageJpg: "/certified/Nov10SAGA37_page-0001.jpg",
     bgGradient: "from-amber-50 to-yellow-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas como gerente y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -59,6 +64,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 27 de Octubre, 2023",
     image: "/certified/Oct27SAGA33.pdf",
+    imageJpg: "/certified/Oct27SAGA33_page-0001.jpg",
     bgGradient: "from-indigo-50 to-purple-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas como gerente y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -69,6 +75,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 18 de Agosto, 2023",
     image: "/certified/Aug18PP225.pdf",
+    imageJpg: "/certified/Aug18PP225_page-0001.jpg",
     bgGradient: "from-rose-50 to-pink-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -79,6 +86,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 04 de Agosto, 2023",
     image: "/certified/Aug04PP358.pdf",
+    imageJpg: "/certified/Aug04PP358_page-0001.jpg",
     bgGradient: "from-teal-50 to-cyan-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -89,6 +97,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 28 de Julio, 2023",
     image: "/certified/July28PP436.pdf",
+    imageJpg: "/certified/July28PP436_page-0001.jpg",
     bgGradient: "from-orange-50 to-amber-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas y liderazgo profesional dentro de Globe Life American Income Division."
   },
@@ -99,6 +108,7 @@ const achievements = [
     description: "en Ventas - American Income Division",
     date: "Semana del 14 de Julio, 2023",
     image: "/certified/July14PP378.pdf",
+    imageJpg: "/certified/July14PP378_page-0001.jpg",
     bgGradient: "from-sky-50 to-blue-50",
     fullDescription: "Otorgado por desempeño sobresaliente en ventas y liderazgo profesional dentro de Globe Life American Income Division."
   }
@@ -160,11 +170,11 @@ export default function AchievementsSection() {
             onClick={() => isCenter && openModal(achievement)}
           >
             <div className="bg-white rounded-lg shadow-lg overflow-hidden border-2 md:border-3 border-white relative" style={{ aspectRatio: '1 / 0.85' }}>
-              {/* Visor del certificado PDF */}
-              <embed
-                src={achievement.image}
-                type="application/pdf"
-                className="w-full h-full"
+              {/* Visor del certificado JPG */}
+              <img
+                src={achievement.imageJpg}
+                alt={`Certificado ${achievement.title}`}
+                className="w-full h-full object-cover"
               />
               
               {/* Overlay en hover (solo en card central) */}
@@ -400,12 +410,12 @@ export default function AchievementsSection() {
                 <p className="text-xl text-gray-600">{selectedAchievement.date}</p>
               </div>
 
-              {/* Certificado PDF ampliado */}
+              {/* Certificado JPG ampliado */}
               <div className="w-full max-w-3xl mx-auto bg-white rounded-xl mb-6 shadow-lg border-4 border-gray-200 overflow-hidden" style={{ height: '70vh' }}>
-                <embed
-                  src={selectedAchievement.image}
-                  type="application/pdf"
-                  className="w-full h-full"
+                <img
+                  src={selectedAchievement.imageJpg}
+                  alt={`Certificado ${selectedAchievement.title}`}
+                  className="w-full h-full object-contain"
                 />
               </div>
 
@@ -420,6 +430,16 @@ export default function AchievementsSection() {
                     {selectedAchievement.fullDescription}
                   </p>
                 </div>
+              </div>
+
+              {/* Botón para ver PDF original */}
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => window.open(selectedAchievement.image, '_blank')}
+                  className="bg-gradient-to-r from-coral to-orange-500 hover:from-coral hover:to-orange-600 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  📄 Ver PDF Original
+                </button>
               </div>
             </div>
           </div>
